@@ -1,0 +1,1139 @@
+from src.main.tlv.tlv import Tlv
+
+STR_INP_SINGLE_NON_NESTED_TLV = '86020102'
+
+STR_OP_SINGLE_NON_NESTED_TLV = """
+86 02 (2)
+  0102
+"""
+
+LIST_OP_SINGLE_NON_NESTED_TLV = [
+    Tlv(tag_list=[0x86], len_list=[0x02], len_dec=2, value_list=[0x01, 0x02])
+]
+
+STR_INP_MULTIPLE_NON_NESTED_TLV = '81020105 820106 830209AB'
+
+STR_OP_MULTIPLE_NON_NESTED_TLV = """
+81 02 (2)
+  0105
+82 01 (1)
+  06
+83 02 (2)
+  09AB
+"""
+
+LIST_OP_MULTIPLE_NON_NESTED_TLV = [
+    Tlv(tag_list=[0x81], len_list=[0x02], len_dec=2, value_list=[0x01, 0x05]),
+    Tlv(tag_list=[0x82], len_list=[0x01], len_dec=1, value_list=[0x06]),
+    Tlv(tag_list=[0x83], len_list=[0x02], len_dec=2, value_list=[0x09, 0xAB]),
+]
+
+STR_INP_SINGLE_POSSIBLE_NESTED_TLV = '8603010203'
+
+STR_OP_SINGLE_POSSIBLE_NESTED_TLV = """
+86 03 (3)
+  010203
+"""
+
+LIST_OP_SINGLE_POSSIBLE_NESTED_TLV = [
+    Tlv(tag_list=[0x86], len_list=[0x03], value_list=[0x01, 0x02, 0x03], len_dec=3),
+]
+
+STR_INP_THREE_BYTES_TAG_NO_LENGTH = 'DF8106'
+
+STR_OP_THREE_BYTES_TAG_NO_LENGTH = """
+DF8106
+"""
+
+LIST_OP_THREE_BYTES_TAG_NO_LENGTH = [
+    0xDF, 0x81, 0x06
+]
+
+STR_INP_FOUR_BYTES_TAG_NO_LENGTH = 'DF818206'
+
+STR_OP_FOUR_BYTES_TAG_NO_LENGTH = """
+DF818206
+"""
+
+LIST_OP_FOUR_BYTES_TAG_NO_LENGTH = [
+    0xDF, 0x81, 0x82, 0x06
+]
+
+STR_INP_THREE_BYTES_TAG_0_LENGTH = 'DF810600'
+
+STR_OP_THREE_BYTES_TAG_0_LENGTH = """
+DF8106 00 (0)
+"""
+
+LIST_OP_THREE_BYTES_TAG_0_LENGTH = [
+    Tlv(tag_list=[0xDF, 0x81, 0x06], len_list=[0x00], len_dec=0, value_list=[]),
+]
+
+STR_INP_FOUR_BYTES_TAG_0_LENGTH = 'DF81820600'
+
+STR_OP_FOUR_BYTES_TAG_0_LENGTH = """
+DF818206 00 (0)
+"""
+
+LIST_OP_FOUR_BYTES_TAG_0_LENGTH = [
+    Tlv(tag_list=[0xDF, 0x81, 0x82, 0x06], len_list=[0x00], len_dec=0, value_list=[]),
+]
+
+STR_INP_MULTIPLE_NON_NESTED_AND_SINGLE_NESTED_TLV = '81020105 8208 850106 8600 820101 830209AB'
+
+STR_OP_MULTIPLE_NON_NESTED_AND_SINGLE_NESTED_TLV = """
+81 02 (2)
+  0105
+82 08 (8)
+  85 01 (1)
+    06
+  86 00 (0)
+  82 01 (1)
+    01
+83 02 (2)
+  09AB
+"""
+
+LIST_OP_MULTIPLE_NON_NESTED_AND_SINGLE_NESTED_TLV = [
+    Tlv(tag_list=[0x81], len_list=[0x02], len_dec=2, value_list=[0x01, 0x05]),
+    Tlv(tag_list=[0x82], len_list=[0x08], len_dec=8, value_list=[
+        Tlv(tag_list=[0x85], len_list=[0x01], len_dec=1, value_list=[0x06]),
+        Tlv(tag_list=[0x86], len_list=[0x00], len_dec=0),
+        Tlv(tag_list=[0x82], len_list=[0x01], len_dec=1, value_list=[0x01]),
+    ]),
+    Tlv(tag_list=[0x83], len_list=[0x02], len_dec=2, value_list=[0x09, 0xAB]),
+]
+
+STR_INP_MULTIPLE_NON_NESTED_AND_MULTIPLE_NESTED_TLV = '81020105 8208 850106 8603010203 830209AB 8908 850106 8600 820101'
+
+STR_OP_MULTIPLE_NON_NESTED_AND_MULTIPLE_NESTED_TLV = """
+81 02 (2)
+  0105
+82 08 (8)
+  85 01 (1)
+    06
+  86 03 (3)
+    010203
+83 02 (2)
+  09AB
+89 08 (8)
+  85 01 (1)
+    06
+  86 00 (0)
+  82 01 (1)
+    01
+"""
+
+LIST_OP_MULTIPLE_NON_NESTED_AND_MULTIPLE_NESTED_TLV = [
+    Tlv(tag_list=[0x81], len_list=[0x02], len_dec=2, value_list=[0x01, 0x05]),
+    Tlv(tag_list=[0x82], len_list=[0x08], len_dec=8, value_list=[
+        Tlv(tag_list=[0x85], len_list=[0x01], len_dec=1, value_list=[0x06]),
+        Tlv(tag_list=[0x86], len_list=[0x03], len_dec=3, value_list=[0x01, 0x02, 0x03]),
+    ]),
+    Tlv(tag_list=[0x83], len_list=[0x02], len_dec=2, value_list=[0x09, 0xAB]),
+    Tlv(tag_list=[0x82], len_list=[0x08], len_dec=8, value_list=[
+        Tlv(tag_list=[0x85], len_list=[0x01], len_dec=1, value_list=[0x06]),
+        Tlv(tag_list=[0x86], len_list=[0x00], len_dec=0, value_list=[]),
+        Tlv(tag_list=[0x82], len_list=[0x01], len_dec=1, value_list=[0x01]),
+    ]),
+]
+
+STR_INP_SINGLE_NESTED_TLV_WITH_1_LEN = '8603 850103'
+
+STR_OP_SINGLE_NESTED_TLV_WITH_1_LEN = """
+86 03 (3)
+  85 01 (1)
+    03
+"""
+
+LIST_OP_SINGLE_NESTED_TLV_WITH_1_LEN = [
+    Tlv(tag_list=[0x86], len_list=[0x03], len_dec=3, value_list=[
+        Tlv(tag_list=[0x85], len_list=[0x01], len_dec=1, value_list=[0x03]),
+    ]),
+]
+
+STR_INP_SINGLE_NESTED_TLV_WITH_2_LEN = '8504 8602 0102'
+
+STR_OP_SINGLE_NESTED_TLV_WITH_2_LEN = """
+85 04 (4)
+  86 02 (2)
+    0102
+"""
+
+LIST_OP_SINGLE_NESTED_TLV_WITH_2_LEN = [
+    Tlv(tag_list=[0x85], len_list=[0x04], len_dec=4, value_list=[
+        Tlv(tag_list=[0x86], len_list=[0x02], len_dec=2, value_list=[0x01, 0x02])]),
+]
+
+STR_INP_SINGLE_NESTED_TLV_POSSIBLE_SUB_NESTED = '8505 8603 010203'
+
+STR_OP_SINGLE_NESTED_TLV_POSSIBLE_SUB_NESTED = """
+85 05 (5)
+  86 03 (3)
+    010203
+"""
+
+LIST_OP_SINGLE_NESTED_TLV_POSSIBLE_SUB_NESTED = [
+    Tlv(tag_list=[0x85], len_list=[0x05], len_dec=5, value_list=[
+        Tlv(tag_list=[0x86], len_list=[0x03], len_dec=3, value_list=[0x01, 0x02, 0x03])]),
+]
+
+STR_INP_MULTIPLE_SUB_NESTED_TLV = 'D0 13 8103010500 02028281 030100 05028281 030100'
+
+STR_OP_MULTIPLE_SUB_NESTED_TLV = """
+D0 13 (19)
+  81 03 (3)
+    010500
+  02 02 (2)
+    8281
+  03 01 (1)
+    00
+  05 02 (2)
+    8281
+  03 01 (1)
+    00
+"""
+
+LIST_OP_MULTIPLE_SUB_NESTED_TLV = [
+    Tlv(tag_list=[0xD0], len_list=[0x13], len_dec=18, value_list=[
+        Tlv(tag_list=[0x81], len_list=[0x03], len_dec=3, value_list=[0x01, 0x05, 0x00]),
+        Tlv(tag_list=[0x02], len_list=[0x02], len_dec=2, value_list=[0x82, 0x81]),
+        Tlv(tag_list=[0x03], len_list=[0x01], len_dec=1, value_list=[0x00]),
+        Tlv(tag_list=[0x05], len_list=[0x02], len_dec=2, value_list=[0x82, 0x81]),
+        Tlv(tag_list=[0x03], len_list=[0x01], len_dec=1, value_list=[0x00]),
+    ]),
+]
+
+STR_INP_MULTIPLE_SUB_NESTED_TLV_POSSIBLE_GRAND_SUB_NESTED = 'D00D 8103010500 82028182 9902090A'
+
+STR_OP_MULTIPLE_SUB_NESTED_TLV_POSSIBLE_GRAND_SUB_NESTED = """
+D0 0D (13)
+  81 03 (3)
+    010500
+  82 02 (2)
+    8182
+  99 02 (2)
+    090A
+"""
+
+LIST_OP_MULTIPLE_SUB_NESTED_TLV_POSSIBLE_GRAND_SUB_NESTED = [
+    Tlv(tag_list=[0xD0], len_list=[0x0D], len_dec=13, value_list=[
+        Tlv(tag_list=[0x81], len_list=[0x03], len_dec=3, value_list=[0x01, 0x05, 0x00]),
+        Tlv(tag_list=[0x82], len_list=[0x02], len_dec=2, value_list=[0x81, 0x82]),
+        Tlv(tag_list=[0x99], len_list=[0x02], len_dec=2, value_list=[0x09, 0x0A])
+    ]),
+]
+
+STR_INP_MULTI_BYTE_TAG_FAKE_SUB_NESTED = 'BF3E 12 5A 10 89049032123451234512345678901235'
+
+STR_OP_MULTI_BYTE_TAG_FAKE_SUB_NESTED = """
+BF3E 12 (18)
+  5A 10 (16)
+    89049032123451234512345678901235
+"""
+
+LIST_OP_MULTI_BYTE_TAG_FAKE_SUB_NESTED = [
+    Tlv(tag_list=[0xBF, 0x3E], len_list=[0x05], len_dec=5, value_list=[
+        Tlv(tag_list=[0x86], len_list=[0x03], len_dec=3, value_list=[0x01, 0x02, 0x03])]),
+]
+
+STR_INP_MULTI_BYTE_TAG_FAKE_SUB_NESTED_ALONG_WITH_SIBLINGS_TLV = 'D0 0D 8103 010500 82028182 9902090A BF3E125A1089049032123451234512345678901235 8103 010500 02028281 030100'
+
+STR_OP_MULTI_BYTE_TAG_FAKE_SUB_NESTED_ALONG_WITH_SIBLINGS_TLV = """
+D0 0D (13)
+  81 03 (3)
+    010500
+  82 02 (2)
+    8182
+  99 02 (2)
+    090A
+BF3E 12 (18)
+  5A 10 (16)
+    89049032123451234512345678901235
+81 03 (3)
+  010500
+02 02 (2)
+  8281
+03 01 (1)
+  00
+"""
+
+LIST_OP_MULTI_BYTE_TAG_FAKE_SUB_NESTED_ALONG_WITH_SIBLINGS_TLV = [
+    Tlv(tag_list=[0x85], len_list=[0x05], len_dec=5, value_list=[
+        Tlv(tag_list=[0x86], len_list=[0x03], len_dec=3, value_list=[0x01, 0x02, 0x03])]),
+]
+
+STR_INP_FAKE_MULTIBYTE_TAG_IN_NESTED_TLV = '9F41 04 01009F42'
+
+STR_OP_FAKE_MULTIBYTE_TAG_IN_NESTED_TLV = """
+9F41 04 (4)
+  01009F42
+"""
+
+LIST_OP_FAKE_MULTIBYTE_TAG_IN_NESTED_TLV = [
+    Tlv(tag_list=[0x9F, 0x41], len_list=[0x04], len_dec=4, value_list=[0x01, 0x00, 0x9F, 0x42]),
+]
+
+STR_INP_FAKE_MULTIBYTE_LENGTH_IN_NESTED_TLV = '9F41 04 010001B3'
+
+STR_OP_FAKE_MULTIBYTE_LENGTH_IN_NESTED_TLV = """
+9F41 04 (4)
+  010001B3
+"""
+
+LIST_OP_FAKE_MULTIBYTE_LENGTH_IN_NESTED_TLV = [
+    Tlv(tag_list=[0x9F, 0x41], len_list=[0x04], len_dec=4, value_list=[0x01, 0x00, 0x01, 0xB3]),
+]
+
+STR_INP_NESTED_TLVS_WITH_ASCII_DATA = '064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500'
+
+STR_OP_NESTED_TLVS_WITH_ASCII_DATA = """
+06 4B (75)
+  21 22 (34)
+    0D 20 (32)
+      48656C6C6F2C204275792031204742204461746120666F7220302E3520555344 (Hello, Buy 1 GB Data for 0.5 USD)
+  21 0F (15)
+    0D 0D (13)
+      41726520596F7520537572653F (Are You Sure?)
+  15 14 (20)
+    31 10 (16)
+      7777772E66616365626F6F6B2E636F6D (www.facebook.com)
+    05 00 (0)
+"""
+
+LIST_OP_NESTED_TLVS_WITH_ASCII_DATA = [
+    Tlv(tag_list=[0x06], len_list=[0x4B], len_dec=75, value_list=[
+        Tlv(tag_list=[0x21], len_list=[0x22], len_dec=34, value_list=[
+            Tlv(tag_list=[0x0D], len_list=[0x20], len_dec=32, value_list=[
+                0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x42, 0x75, 0x79, 0x20, 0x31, 0x20, 0x47, 0x42,
+                0x20, 0x44, 0x61, 0x74, 0x61, 0x20, 0x66, 0x6F, 0x72, 0x20, 0x30, 0x2E, 0x35, 0x20, 0x55,
+                0x53, 0x44,
+            ]),
+        ]),
+    ]),
+    Tlv(tag_list=[0x21], len_list=[0x0F], len_dec=15, value_list=[
+        Tlv(tag_list=[0x0D], len_list=[0x0D], len_dec=13, value_list=[
+            0x41, 0x72, 0x65, 0x20, 0x59, 0x6F, 0x75, 0x20, 0x53, 0x75, 0x72, 0x65, 0x3F,
+        ]),
+    ]),
+    Tlv(tag_list=[0x15], len_list=[0x14], len_dec=20, value_list=[
+        Tlv(tag_list=[0x31], len_list=[0x10], len_dec=16, value_list=[
+            0x77, 0x77, 0x77, 0x2E, 0x66, 0x61, 0x63, 0x65, 0x62, 0x6F, 0x6F, 0x6B, 0x2E, 0x63, 0x6F, 0x6D
+        ]),
+        Tlv(tag_list=[0x05], len_list=[0x00], len_dec=0),
+    ]),
+]
+
+STR_INP_NESTED_TLV_MULTI_BYTE_LEN_81 = 'B381C3A0058000810104810667810F010204A21DA11B83027FF18410A0000000871002FF33FF018900000100C60301810AA30B8309082999181132547698A406A104C7022F06A80F830D0A2E148CE73204000000000000AB45A10D82044221003483026F428001688334534D53433120FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1FFFFFFFFFFFFFFFFFFFFFFFF07916427417900F4FFFFFFFFFFFFFFAD1383110247534D41206555494343FFFFFFFFFFFFAE03830100B20483020040B606830419F1FF01'
+
+STR_OP_NESTED_TLV_MULTI_BYTE_LEN_81 = """
+B3 81C3 (195)
+  A0 05 (5)
+    80 00 (0)
+    81 01 (1)
+      04
+  81 06 (6)
+    67810F010204
+  A2 1D (29)
+    A1 1B (27)
+      83 02 (2)
+        7FF1
+      84 10 (16)
+        A0000000871002FF33FF018900000100
+      C6 03 (3)
+        01810A
+  A3 0B (11)
+    83 09 (9)
+      082999181132547698
+  A4 06 (6)
+    A1 04 (4)
+      C7 02 (2)
+        2F06
+  A8 0F (15)
+    83 0D (13)
+      0A2E148CE73204000000000000
+  AB 45 (69)
+    A1 0D (13)
+      82 04 (4)
+        42210034
+      83 02 (2)
+        6F42 (oB)
+      80 01 (1)
+        68 (h)
+    83 34 (52)
+      534D53433120FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1FFFFFFFFFFFFFFFFFFFFFFFF07916427417900F4FFFFFFFFFFFFFF
+  AD 13 (19)
+    83 11 (17)
+      0247534D41206555494343FFFFFFFFFFFF
+  AE 03 (3)
+    83 01 (1)
+      00
+  B2 04 (4)
+    83 02 (2)
+      0040
+  B6 06 (6)
+    83 04 (4)
+      19F1FF01
+"""
+
+LIST_OP_NESTED_TLV_MULTI_BYTE_LEN_81 = [
+    Tlv(tag_list=[0x9F, 0x41], len_list=[0x04], len_dec=4, value_list=[0x01, 0x00, 0x01, 0xB3]),
+]
+
+STR_INP_NESTED_TLV_MULTI_BYTE_LEN_82 = 'B08201F8A0058000810101810667810F010201A207A105C60301020AA305A1038B010FA40C830A989209012143658709F5A527A109820442210026800198831A61184F10A0000000871002FF33FF01890000010050045553494DA682019EA10A8204422100258002022B831B8001019000800102A406830101950108800158A40683010A95010882010A8316800101A40683010195010880015AA40683010A95010882010F830B80015BA40683010A95010882011A830A800101900080015A970082011B8316800103A406830101950108800158A40683010A95010882010F8316800111A40683010195010880014AA40683010A95010882010F8321800103A406830101950108800158A40683010A950108840132A4068301019501088201048321800101A406830101950108800102A406830181950108800158A40683010A950108820104831B800101900080011AA406830101950108800140A40683010A95010882010A8310800101900080015AA40683010A95010882011583158001019000800118A40683010A95010880014297008201108310800101A40683010195010880015A97008201158316800113A406830101950108800148A40683010A95010882010F830B80015EA40683010A95010882011A83258001019000800102A010A406830101950108A406830102950108800158A40683010A950108'
+
+STR_OP_NESTED_TLV_MULTI_BYTE_LEN_82 = """
+B0 8201F8 (504)
+  A0 05 (5)
+    80 00 (0)
+    81 01 (1)
+      01
+  81 06 (6)
+    67810F010201
+  A2 07 (7)
+    A1 05 (5)
+      C6 03 (3)
+        01020A
+  A3 05 (5)
+    A1 03 (3)
+      8B 01 (1)
+        0F
+  A4 0C (12)
+    83 0A (10)
+      989209012143658709F5
+  A5 27 (39)
+    A1 09 (9)
+      82 04 (4)
+        42210026
+      80 01 (1)
+        98
+    83 1A (26)
+      61 18 (24)
+        4F 10 (16)
+          A0000000871002FF33FF018900000100
+        50 04 (4)
+          5553494D (USIM)
+  A6 82019E (414)
+    A1 0A (10)
+      82 04 (4)
+        42210025
+      80 02 (2)
+        022B
+    83 1B (27)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        02
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        58 (X)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0A
+    83 16 (22)
+      80 01 (1)
+        01
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        5A (Z)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0F
+    83 0B (11)
+      80 01 (1)
+        5B ([)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      1A
+    83 0A (10)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        5A (Z)
+      97 00 (0)
+    82 01 (1)
+      1B
+    83 16 (22)
+      80 01 (1)
+        03
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        58 (X)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0F
+    83 16 (22)
+      80 01 (1)
+        11
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        4A (J)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0F
+    83 21 (33)
+      80 01 (1)
+        03
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        58 (X)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+      84 01 (1)
+        32 (2)
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+    82 01 (1)
+      04
+    83 21 (33)
+      80 01 (1)
+        01
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        02
+      A4 06 (6)
+        83 01 (1)
+          81
+        95 01 (1)
+          08
+      80 01 (1)
+        58 (X)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      04
+    83 1B (27)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        1A
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        40 (@)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0A
+    83 10 (16)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        5A (Z)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      15
+    83 15 (21)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        18
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+      80 01 (1)
+        42 (B)
+      97 00 (0)
+    82 01 (1)
+      10
+    83 10 (16)
+      80 01 (1)
+        01
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        5A (Z)
+      97 00 (0)
+    82 01 (1)
+      15
+    83 16 (22)
+      80 01 (1)
+        13
+      A4 06 (6)
+        83 01 (1)
+          01
+        95 01 (1)
+          08
+      80 01 (1)
+        48 (H)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      0F
+    83 0B (11)
+      80 01 (1)
+        5E (^)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+    82 01 (1)
+      1A
+    83 25 (37)
+      80 01 (1)
+        01
+      90 00 (0)
+      80 01 (1)
+        02
+      A0 10 (16)
+        A4 06 (6)
+          83 01 (1)
+            01
+          95 01 (1)
+            08
+        A4 06 (6)
+          83 01 (1)
+            02
+          95 01 (1)
+            08
+      80 01 (1)
+        58 (X)
+      A4 06 (6)
+        83 01 (1)
+          0A
+        95 01 (1)
+          08
+"""
+
+LIST_OP_NESTED_TLV_MULTI_BYTE_LEN_82 = [
+    Tlv(tag_list=[0x9F, 0x41], len_list=[0x04], len_dec=4, value_list=[0x01, 0x00, 0x01, 0xB3]),
+]
+
+STR_INP_SINGLE_NON_NESTED_TLV_DATA_FF = '6203FFFFFF'
+
+STR_OP_SINGLE_NON_NESTED_TLV_DATA_FF = """
+62 03 (3)
+  FFFFFF
+"""
+
+LIST_OP_SINGLE_NON_NESTED_TLV_DATA_FF = [
+    Tlv(tag_list=[0x62], len_list=[0x03], len_dec=3, value_list=[0xFF, 0xFF, 0xFF]),
+]
+
+STR_INP_SINGLE_NON_NESTED_TLV_DATA_FF_BULK = '627FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF'
+
+STR_OP_SINGLE_NON_NESTED_TLV_DATA_FF_BULK = """
+62 7F (127)
+  FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+"""
+
+LIST_OP_SINGLE_NON_NESTED_TLV_DATA_FF_BULK = [
+    Tlv(tag_list=[0x62], len_list=[0x7F], len_dec=127,
+        value_list=[0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+                    0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, ]),
+]
+
+STR_INP_RSP_TLVS = """
+622B8202782183023F00A50B800171830307B19A8701018A01058B032F060EC60C9001E083010183010283010A
+62178202412183022FE28A01058B032F060B8002000A880110
+6F1F8410A0000005591010FFFFFFFF8900000100A5049F6501FFE0058203020200
+BF3E125A1089049032123451234512345678901235
+BF3203800100
+611B4F10A0000000871002FF56F00189000001FF5003574F4D51027FF0
+611C4F10A0000000871004FF56F00189000001FF50044953494D51027FF2
+BF2D81BBA081B8E33C5A0A986590701452983685014F10A0000005591010FFFFFFFF89000011009F7001009108616C666131323334920B70726F66696C656E616D65950102E33C5A0A986590701452983675684F10A0000005591010FFFFFFFF89000012009F7001009108616C666131323334920B70726F66696C656E616D65950102E33A5A0A987920283013695456344F10A0000005591010FFFFFFFF89000013009F70010091064A415757414C920B70726F66696C656E616D65950102
+BF3103800100
+BF3203800100
+BF3303800100
+"""
+
+STR_OP_RSP_TLVS = """
+62 2B (43)
+  82 02 (2)
+    7821 (x!)
+  83 02 (2)
+    3F00
+  A5 0B (11)
+    80 01 (1)
+      71 (q)
+    83 03 (3)
+      07B19A
+    87 01 (1)
+      01
+  8A 01 (1)
+    05
+  8B 03 (3)
+    2F060E
+  C6 0C (12)
+    90 01 (1)
+      E0
+    83 01 (1)
+      01
+    83 01 (1)
+      02
+    83 01 (1)
+      0A
+62 17 (23)
+  82 02 (2)
+    4121 (A!)
+  83 02 (2)
+    2FE2
+  8A 01 (1)
+    05
+  8B 03 (3)
+    2F060B
+  80 02 (2)
+    000A
+  88 01 (1)
+    10
+6F 1F (31)
+  84 10 (16)
+    A0000005591010FFFFFFFF8900000100
+  A5 04 (4)
+    9F65 01 (1)
+      FF
+  E0 05 (5)
+    82 03 (3)
+      020200
+BF3E 12 (18)
+  5A 10 (16)
+    89049032123451234512345678901235
+BF32 03 (3)
+  80 01 (1)
+    00
+61 1B (27)
+  4F 10 (16)
+    A0000000871002FF56F00189000001FF
+  50 03 (3)
+    574F4D (WOM)
+  51 02 (2)
+    7FF0
+61 1C (28)
+  4F 10 (16)
+    A0000000871004FF56F00189000001FF
+  50 04 (4)
+    4953494D (ISIM)
+  51 02 (2)
+    7FF2
+BF2D 81BB (187)
+  A0 81B8 (184)
+    E3 3C (60)
+      5A 0A (10)
+        98659070145298368501
+      4F 10 (16)
+        A0000005591010FFFFFFFF8900001100
+      9F70 01 (1)
+        00
+      91 08 (8)
+        616C666131323334 (alfa1234)
+      92 0B (11)
+        70726F66696C656E616D65 (profilename)
+      95 01 (1)
+        02
+    E3 3C (60)
+      5A 0A (10)
+        98659070145298367568
+      4F 10 (16)
+        A0000005591010FFFFFFFF8900001200
+      9F70 01 (1)
+        00
+      91 08 (8)
+        616C666131323334 (alfa1234)
+      92 0B (11)
+        70726F66696C656E616D65 (profilename)
+      95 01 (1)
+        02
+    E3 3A (58)
+      5A 0A (10)
+        98792028301369545634
+      4F 10 (16)
+        A0000005591010FFFFFFFF8900001300
+      9F70 01 (1)
+        00
+      91 06 (6)
+        4A415757414C (JAWWAL)
+      92 0B (11)
+        70726F66696C656E616D65 (profilename)
+      95 01 (1)
+        02
+BF31 03 (3)
+  80 01 (1)
+    00
+BF32 03 (3)
+  80 01 (1)
+    00
+BF33 03 (3)
+  80 01 (1)
+    00
+"""
+
+LIST_OP_RSP_TLVS = [
+    Tlv(tag_list=[0x9F, 0x40], len_list=[0x05], len_dec=5, value_list=[0xFF, 0x80, 0xF0, 0xF0, 0x01]),
+]
+
+STR_OP_RSP_TLVS_ONE_LINER_PLAIN = """
+62 2B
+  82 02 7821
+  83 02 3F00
+  A5 0B
+    80 01 71
+    83 03 07B19A
+    87 01 01
+  8A 01 05
+  8B 03 2F060E
+  C6 0C
+    90 01 E0
+    83 01 01
+    83 01 02
+    83 01 0A
+62 17
+  82 02 4121
+  83 02 2FE2
+  8A 01 05
+  8B 03 2F060B
+  80 02 000A
+  88 01 10
+6F 1F
+  84 10 A0000005591010FFFFFFFF8900000100
+  A5 04
+    9F65 01 FF
+  E0 05
+    82 03 020200
+BF3E 12
+  5A 10 89049032123451234512345678901235
+BF32 03
+  80 01 00
+61 1B
+  4F 10 A0000000871002FF56F00189000001FF
+  50 03 574F4D
+  51 02 7FF0
+61 1C
+  4F 10 A0000000871004FF56F00189000001FF
+  50 04 4953494D
+  51 02 7FF2
+BF2D 81BB
+  A0 81B8
+    E3 3C
+      5A 0A 98659070145298368501
+      4F 10 A0000005591010FFFFFFFF8900001100
+      9F70 01 00
+      91 08 616C666131323334
+      92 0B 70726F66696C656E616D65
+      95 01 02
+    E3 3C
+      5A 0A 98659070145298367568
+      4F 10 A0000005591010FFFFFFFF8900001200
+      9F70 01 00
+      91 08 616C666131323334
+      92 0B 70726F66696C656E616D65
+      95 01 02
+    E3 3A
+      5A 0A 98792028301369545634
+      4F 10 A0000005591010FFFFFFFF8900001300
+      9F70 01 00
+      91 06 4A415757414C
+      92 0B 70726F66696C656E616D65
+      95 01 02
+BF31 03
+  80 01 00
+BF32 03
+  80 01 00
+BF33 03
+  80 01 00
+"""
+
+STR_INP_EMV_TLVS = """
+9F4005FF80F0F001
+91102263BCC1C2D9C4420013
+9F0206000000012345
+9F0306000000004000
+9F26088E19ED4BCA5C670A
+82025C00
+5F340102
+9F3602000A
+9F0702FF00
+9F080208C1
+9F09021001
+8A025931
+9F3403A40002
+9F270180
+9F1E0853455249414C3132
+9F0D05F040008800
+9F0E05FCF8FCF8F0
+9F0F05FCF8FCF8F0
+5F28020840
+9F390100
+9F1A020840
+9F350122
+95050000048000
+5F2A020840
+9B024800
+9F2103123456
+9C0100
+9F370400BC614E
+4F07A0000000031010
+9F0607A0000000031010
+9F7C0412345678
+8407A0000000031010
+9F1006010A03600000
+9F5B052000000000
+9F4104000001B3
+910A2263BCC1C2D9C4420013
+710A0102030405060708090A
+720A0102030405060708090A
+"""
+
+STR_OP_EMV_TLVS = """
+9F40 05 (5)
+  FF80F0F001
+91 10 (16)
+  2263BCC1C2D9C44200139F0206000000
+01 23 (35)
+  459F03060000000040009F26088E19ED4BCA5C670A82025C005F3401029F3602000A9F
+07 02 (2)
+  FF00
+9F08 02 (2)
+  08C1
+9F09 02 (2)
+  1001
+8A 02 (2)
+  5931 (Y1)
+9F34 03 (3)
+  A40002
+9F27 01 (1)
+  80
+9F1E 08 (8)
+  53455249414C3132 (SERIAL12)
+9F0D 05 (5)
+  F040008800
+9F0E 05 (5)
+  FCF8FCF8F0
+9F0F 05 (5)
+  FCF8FCF8F0
+5F28 02 (2)
+  0840
+9F39 01 (1)
+  00
+9F1A 02 (2)
+  0840
+9F35 01 (1)
+  22 (")
+95 05 (5)
+  0000048000
+5F2A 02 (2)
+  0840
+9B 02 (2)
+  4800
+9F21 03 (3)
+  123456
+9C 01 (1)
+  00
+9F37 04 (4)
+  00BC614E
+4F 07 (7)
+  A0000000031010
+9F06 07 (7)
+  A0000000031010
+9F7C 04 (4)
+  12345678
+84 07 (7)
+  A0000000031010
+9F10 06 (6)
+  010A03600000
+9F5B 05 (5)
+  2000000000
+9F41 04 (4)
+  000001B3
+91 0A (10)
+  2263BCC1C2D9C4420013
+71 0A (10)
+  0102030405060708090A
+72 0A (10)
+  0102030405060708090A
+"""
+
+LIST_OP_EMV_TLVS = [
+    Tlv(tag_list=[0x9F, 0x40], len_list=[0x05], len_dec=5, value_list=[0xFF, 0x80, 0xF0, 0xF0, 0x01]),
+]
+
+STR_OP_EMV_TLVS_ONE_LINER_PLAIN = """
+9F40 05 FF80F0F001
+91 10 2263BCC1C2D9C44200139F0206000000
+01 23 459F03060000000040009F26088E19ED4BCA5C670A82025C005F3401029F3602000A9F
+07 02 FF00
+9F08 02 08C1
+9F09 02 1001
+8A 02 5931
+9F34 03 A40002
+9F27 01 80
+9F1E 08 53455249414C3132
+9F0D 05 F040008800
+9F0E 05 FCF8FCF8F0
+9F0F 05 FCF8FCF8F0
+5F28 02 0840
+9F39 01 00
+9F1A 02 0840
+9F35 01 22
+95 05 0000048000
+5F2A 02 0840
+9B 02 4800
+9F21 03 123456
+9C 01 00
+9F37 04 00BC614E
+4F 07 A0000000031010
+9F06 07 A0000000031010
+9F7C 04 12345678
+84 07 A0000000031010
+9F10 06 010A03600000
+9F5B 05 2000000000
+9F41 04 000001B3
+91 0A 2263BCC1C2D9C4420013
+71 0A 0102030405060708090A
+72 0A 0102030405060708090A
+"""
+
+STR_INP_AID_00_TAG = 'A000 00 05 041010FFFF FFFF8900 00 0100'
+
+STR_OP_AID_00_TAG = """
+A0000005041010FFFFFFFF8900000100
+"""
+
+LIST_OP_AID_00_TAG = [
+    0xA0, 0x00, 0x00, 0x05, 0x04, 0x10, 0x10, 0xFF, 0xFF, 0xFF, 0xFF, 0x89, 0x00, 0x00, 0x01, 0x00,
+]
+
+STR_INP_AID_01_TAG = 'A000 01 05 041010FFFF FFFF8900 00 0100'
+
+STR_OP_AID_01_TAG = """
+A0 00 (0)
+01 05 (5)
+  041010FFFF
+FFFF8900 00 (0)
+01 00 (0)
+"""
+
+LIST_OP_AID_01_TAG = [
+    Tlv(tag_list=[0xA0], len_list=[0x00], len_dec=0, value_list=[]),
+    Tlv(tag_list=[0x01], len_list=[0x05], len_dec=5, value_list=[0x04, 0x10, 0x10, 0xFF, 0xFF]),
+    Tlv(tag_list=[0xFF, 0xFF, 0x89, 0x00], len_dec=0, len_list=[0x00], value_list=[]),
+    Tlv(tag_list=[0x01], len_list=[0x00], len_dec=0, value_list=[]),
+]
+
+STR_INP_RESTRICT_CHILD_MAPPING = 'C6 0C 9001E083010183010283010A'
+
+STR_OP_RESTRICT_CHILD_MAPPING = """
+C6 0C (12)
+  90 01 (1)
+    E0
+  83 01 (1)
+    01
+  83 01 (1)
+    02
+  83 01 (1)
+    0A
+"""
+
+LIST_OP_RESTRICT_CHILD_MAPPING = [
+    Tlv(tag_list=[0xC6], len_list=[0x0C], len_dec=12, value_list=[
+        Tlv(tag_list=[0x90], len_list=[0x01], len_dec=1, value_list=[0xE0]),
+        Tlv(tag_list=[0x83], len_list=[0x01], len_dec=1, value_list=[0x01]),
+        Tlv(tag_list=[0x83], len_list=[0x01], len_dec=1, value_list=[0x02]),
+        Tlv(tag_list=[0x83], len_list=[0x01], len_dec=1, value_list=[0x0A]),
+    ]),
+]
+
+STR_INP_RESTRICT_TWO_BYTE_TAG = 'FFC6 05 FCF8FCF8F0'
+
+STR_OP_RESTRICT_TWO_BYTE_TAG = """
+FFC605FCF8FCF8F0
+"""
+
+LIST_OP_RESTRICT_TWO_BYTE_TAG = [
+    0xFF, 0xC6, 0x05, 0xFC, 0xF8, 0xFC, 0xF8, 0xF0,
+]
+
+STR_INP_RESTRICT_TWO_BYTE_TAGS = 'FFC6 05 FCF8FCF8F0  FFC7 05 FCF8FCF8F0  FFC8 05 FCF8FCF8F0'
+
+STR_OP_RESTRICT_TWO_BYTE_TAGS = """
+FFC605FCF8FCF8F0FFC705FCF8FCF8F0FFC805FCF8FCF8F0
+"""
+
+LIST_OP_RESTRICT_TWO_BYTE_TAGS = [
+    0xFF, 0xC6, 0x05, 0xFC, 0xF8, 0xFC, 0xF8, 0xF0, 0xFF, 0xC7, 0x05, 0xFC, 0xF8, 0xFC, 0xF8, 0xF0, 0xFF, 0xC8, 0x05,
+    0xFC, 0xF8, 0xFC, 0xF8, 0xF0,
+]

@@ -1,0 +1,8 @@
+# Required Build Tool
+wheel
+# Required Build Tool
+cmake
+# Util Lib From Main Branch
+# git+https://github.com/impratikjaiswal/pythonHelpers
+# Util Lib From Specific Tag
+git+https://github.com/impratikjaiswal/pythonHelpers@v1.3.0

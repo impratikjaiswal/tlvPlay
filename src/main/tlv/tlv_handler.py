@@ -1,0 +1,116 @@
+import binascii
+from util_helpers.constants import Constants
+from util_helpers.util import trim_and_kill_all_white_spaces, hex_str_to_dec, to_hex_string
+
+from src.main.tlv.tlv import Tlv
+
+# if b5 b4 b3 b2 b1 are set, then see subsequent bytes
+tag_mask_first_byte_subsequent_bytes = 0x1F
+# if b8 is set, Another byte follows
+tag_mask_subsequent_bytes = 0x80
+len_mask_additional_bytes = 0x0F
+invalid_tags_list = [[0x00]]
+
+
+class TlvHandler:
+    def __init__(self, raw_data):
+        self.raw_data_list = []
+        if isinstance(raw_data, str):
+            raw_data = trim_and_kill_all_white_spaces(raw_data)
+            raw_data = binascii.unhexlify(raw_data)
+            self.raw_data_list = list(raw_data)
+
+    def process_tlv(self, data_list, level, initial_offset):
+        """
+
+        :return:
+        """
+        offset = initial_offset
+        """
+        TAG: coded on one or two bytes
+        """
+        data_len = len(data_list)
+        if data_len < 2:
+            return None, -1  # Minimum Tag Len is needed
+        tag_list = [data_list[offset]]
+        if tag_list[0] & tag_mask_first_byte_subsequent_bytes == tag_mask_first_byte_subsequent_bytes:
+            offset += 1
+            tag_list.append(data_list[offset])
+            while data_list[offset] & tag_mask_subsequent_bytes == tag_mask_subsequent_bytes:
+                offset += 1
+                if offset >= data_len:
+                    return None, -1  # Tag is not available
+                tag_list.append(data_list[offset])
+        # check for invalid Tags
+        for invalid_tag in invalid_tags_list:
+            if invalid_tag == tag_list:
+                return None, -1  # Invalid Tag Found
+        """
+        LEN: consists of one or more consecutive bytes
+        """
+        offset += 1
+        len_offset = 0
+        if data_len <= offset:
+            return None, -1  # Len is not available
+        len_list = [data_list[offset]]
+        if data_list[offset] & tag_mask_subsequent_bytes == tag_mask_subsequent_bytes:
+            len_additional_bytes = data_list[offset] & len_mask_additional_bytes
+            if data_len <= offset + len_mask_additional_bytes:
+                return None, -1  # Mentioned Len is not available
+            while len_offset < len_additional_bytes:
+                offset += 1
+                len_offset += 1
+                len_list.append(data_list[offset])
+            len_offset = 0
+            len_dec = hex_str_to_dec(
+                to_hex_string(len_list[len_offset + 1: len_offset + 1 + len_additional_bytes],
+                              Constants.FORMAT_HEX_STRING_AS_PACK))
+        else:
+            len_dec = len_list[len_offset]
+        """
+        Value
+        """
+        offset += 1
+        if data_len < offset + len_dec:
+            return None, -1  # Value is not available
+        value_list = data_list[offset:offset + len_dec]
+        offset += len_dec
+        return Tlv(tag_list, len_list, value_list, len_dec, level), offset
+
+    def process_data(self, raw_data_list=None, level=0):
+        if raw_data_list is None:
+            raw_data_list = self.raw_data_list
+        offset = 0
+        tlv_data = []
+        sub_tlv_obj_temp = []
+        while offset < len(raw_data_list):
+            tlv_obj, temp_offset = self.process_tlv(raw_data_list, level, offset)
+            if tlv_obj is None:
+                break
+            offset = temp_offset
+            if len(tlv_obj.value_list) > 2:  # Possible nested TLV, parse it & store result in temp list
+                sub_tlv_data_temp = self.process_data(tlv_obj.value_list, level=level + 1)
+                # Always returned a list
+                if isinstance(sub_tlv_data_temp[0], Tlv):  # Nested TLV Suspected, & Found
+                    tlv_obj.value_list = sub_tlv_data_temp.copy()
+                    sub_tlv_obj_temp.append(tlv_obj)
+                else:
+                    sub_tlv_obj_temp.append(tlv_obj)  # Nested TLV Suspected, but Not Found
+            else:  # No Nested TLV
+                # TODO: ESIM-1475: Actually this should be concat_tlv_obj_temp, For Concatenated TLV Handling
+                sub_tlv_obj_temp.append(tlv_obj)
+        if len(sub_tlv_obj_temp) > 0 and tlv_obj is not None:
+            for item in sub_tlv_obj_temp:
+                if isinstance(item, list):
+                    tlv_obj.value_list = item
+                else:  # instance of tlv
+                    if item.level == tlv_obj.level:
+                        # print('Same Level')
+                        tlv_data.append(item)
+                    else:
+                        # print('Parent')
+                        tlv_obj.value_list = item
+                        tlv_data.append(tlv_obj)
+            return tlv_data
+        else:
+            return raw_data_list
