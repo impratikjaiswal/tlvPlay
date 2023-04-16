@@ -1,6 +1,6 @@
 import binascii
-from util_helpers.constants import Constants
-from util_helpers.util import trim_and_kill_all_white_spaces, hex_str_to_dec, to_hex_string
+from python_helpers.ph_constants import PhConstants
+from python_helpers.ph_util import PhUtil
 
 from src.main.tlv.tlv import Tlv
 
@@ -16,7 +16,7 @@ class TlvHandler:
     def __init__(self, raw_data):
         self.raw_data_list = []
         if isinstance(raw_data, str):
-            raw_data = trim_and_kill_all_white_spaces(raw_data)
+            raw_data = PhUtil.trim_and_kill_all_white_spaces(raw_data)
             raw_data = binascii.unhexlify(raw_data)
             self.raw_data_list = list(raw_data)
 
@@ -62,9 +62,9 @@ class TlvHandler:
                 len_offset += 1
                 len_list.append(data_list[offset])
             len_offset = 0
-            len_dec = hex_str_to_dec(
-                to_hex_string(len_list[len_offset + 1: len_offset + 1 + len_additional_bytes],
-                              Constants.FORMAT_HEX_STRING_AS_PACK))
+            len_dec = PhUtil.hex_str_to_dec(
+                PhUtil.to_hex_string(len_list[len_offset + 1: len_offset + 1 + len_additional_bytes],
+                                     PhConstants.FORMAT_HEX_STRING_AS_PACK))
         else:
             len_dec = len_list[len_offset]
         """

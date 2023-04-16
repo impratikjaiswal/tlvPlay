@@ -1,5 +1,5 @@
-from util_helpers.constants import Constants
-from util_helpers.util import to_hex_string
+from python_helpers.ph_constants import PhConstants
+from python_helpers.ph_util import PhUtil
 
 from src.main.tlv.tlv import Tlv
 from src.main.tlv.tlv_print import TlvPrint
@@ -25,7 +25,7 @@ class TlvParser:
                     parsed_data = TlvPrint.SEP_CONCAT_TLVS.join(filter(None, [parsed_data, parsed_data_temp]))
                 return parsed_data
             if isinstance(tlv_obj[0], int):
-                return to_hex_string(tlv_obj, Constants.FORMAT_HEX_STRING_AS_PACK)
+                return PhUtil.to_hex_string(tlv_obj, PhConstants.FORMAT_HEX_STRING_AS_PACK)
         else:  # Single Object
             return self._parse_tlv(tlv_obj, level=level, length_in_decimal=length_in_decimal,
                                    value_in_ascii=value_in_ascii, one_liner=one_liner)

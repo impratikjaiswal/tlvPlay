@@ -1,3 +1,3 @@
 class ConfigConst:
-    TOOL_VERSION = '1.0.0'
+    TOOL_VERSION = '2.0.0'
     TOOL_NAME = 'tlvPlay'
