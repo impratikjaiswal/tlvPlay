@@ -1,7 +1,7 @@
-from src.main.data_type.data_type_master import DataTypeMaster
+from tlv_play.main.data_type.data_type_master import DataTypeMaster
 
 
-class UnitTesting(DataTypeMaster):
+class Dev(DataTypeMaster):
 
     def set_one_liner(self):
         one_liner = None
@@ -20,10 +20,7 @@ class UnitTesting(DataTypeMaster):
         super().set_remarks_list(remarks_list)
 
     def set_data_pool(self):
-        data_pool_positive = [
+        data_pool = [
             #
         ]
-        data_pool_negative = [
-            #
-        ]
-        super().set_data_pool(data_pool_positive + data_pool_negative)
+        super().set_data_pool(data_pool)

@@ -1,8 +1,8 @@
 import io
 import unittest.mock
 
-from src.main.tlv.tlv_handler import TlvHandler
-from src.main.tlv.tlv_parser import TlvParser
+from tlv_play.main.tlv.tlv_handler import TlvHandler
+from tlv_play.main.tlv.tlv_parser import TlvParser
 import test_tlv_data
 
 STR_TEST_OBJ = 'test_obj :'

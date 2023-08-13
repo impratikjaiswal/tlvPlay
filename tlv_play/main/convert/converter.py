@@ -1,4 +1,4 @@
-from src.main.helper.defaults import Defaults
+from tlv_play.main.helper.defaults import Defaults
 
 
 def set_defaults(data):

@@ -1,5 +1,5 @@
-from src.main.convert.parser import parse_or_update_any_data_safe
-from src.main.helper.tlv_data import TlvData
+from tlv_play.main.convert.parser import parse_or_update_any_data_safe
+from tlv_play.main.helper.tlv_data import TlvData
 
 
 class DataTypeMaster(object):

@@ -3,9 +3,9 @@ import traceback
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
-from src.main.convert import converter
-from src.main.tlv.tlv_handler import TlvHandler
-from src.main.tlv.tlv_parser import TlvParser
+from tlv_play.main.convert import converter
+from tlv_play.main.tlv.tlv_handler import TlvHandler
+from tlv_play.main.tlv.tlv_parser import TlvParser
 
 
 def parse_or_update_any_data_safe(data, error_handling_mode):

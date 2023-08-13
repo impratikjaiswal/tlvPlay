@@ -1,4 +1,4 @@
-from src.main.tlv.tlv import Tlv
+from tlv_play.main.tlv.tlv import Tlv
 
 STR_INP_SINGLE_NON_NESTED_TLV = '86020102'
 
