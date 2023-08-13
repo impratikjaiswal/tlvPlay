@@ -11,7 +11,8 @@ packages = find_packages()
 if not packages:
     print(f'Selecting Hardcoded Packages')
     packages = [
-        "tlv_play",
+        "tlv_play.main",
+        "tlv_play.test",
     ]
 print(f'Packages are {packages}')
 # potential dependencies
