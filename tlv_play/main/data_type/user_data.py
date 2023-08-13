@@ -1,5 +1,5 @@
-from src.main.data_type.data_type_master import DataTypeMaster
-from src.main.helper.tlv_data import TlvData
+from tlv_play.main.data_type.data_type_master import DataTypeMaster
+from tlv_play.main.helper.tlv_data import TlvData
 
 
 class UserData(DataTypeMaster):
