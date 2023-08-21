@@ -3,6 +3,10 @@ from python_helpers.ph_modes_execution import PhExecutionModes
 
 
 class Defaults:
+    PRINT_INFO = True
+    PRINT_INPUT = True
+    PRINT_OUTPUT = True
+    QUITE_MODE = False
     LENGTH_IN_DECIMAL = False
     VALUE_IN_ASCII = False
     ONE_LINER = True

@@ -1,8 +1,28 @@
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
-from tlv_play.main.helper.tlv_data import TlvData
+from tlv_play.main.helper.data import Data
 
 
 class UserData(DataTypeMaster):
+
+    def set_print_input(self):
+        print_input = None
+        super().set_print_input(print_input)
+
+    def set_print_output(self):
+        print_output = None
+        super().set_print_output(print_output)
+
+    def set_print_info(self):
+        print_info = None
+        super().set_print_info(print_info)
+
+    def set_quiet_mode(self):
+        quite_mode = None
+        super().set_quiet_mode(quite_mode)
+
+    def set_remarks_list(self):
+        remarks_list = None
+        super().set_remarks_list(remarks_list)
 
     def set_one_liner(self):
         one_liner = None
@@ -16,14 +36,10 @@ class UserData(DataTypeMaster):
         length_in_decimal = None
         super().set_length_in_decimal(length_in_decimal)
 
-    def set_remarks_list(self):
-        remarks_list = None
-        super().set_remarks_list(remarks_list)
-
     def set_data_pool(self):
         data_pool = [
             #
-            TlvData(
+            Data(
                 remarks_list='Simple TLV',
                 raw_data='86020102',
             ),

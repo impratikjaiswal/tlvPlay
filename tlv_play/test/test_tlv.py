@@ -1,9 +1,9 @@
 import io
 import unittest.mock
 
+import test_tlv_data
 from tlv_play.main.tlv.tlv_handler import TlvHandler
 from tlv_play.main.tlv.tlv_parser import TlvParser
-import test_tlv_data
 
 STR_TEST_OBJ = 'test_obj :'
 
@@ -212,16 +212,22 @@ class test_tlv(unittest.TestCase):
                      expected_op=test_tlv_data.LIST_OP_PROFILE_1,
                      expected_op_print=test_tlv_data.STR_OP_PROFILE_1,
                      test_name='Profile 1'),
+
+        test_obj_tlv(input_data=test_tlv_data.STR_INP_LEN_ADDITIONAL_BYTES_AS_0,
+                     expected_op=test_tlv_data.LIST_OP_LEN_ADDITIONAL_BYTES_AS_0,
+                     expected_op_print=test_tlv_data.STR_OP_LEN_ADDITIONAL_BYTES_AS_0,
+                     test_name='Length as F0, Len Additional bytes are 0'),
     ]
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_stdout(self, test_obj, mock_stdout):
         expected_op_print = test_obj.expected_op_print[1:] if test_obj.expected_op_print[
                                                                   0] == '\n' else test_obj.expected_op_print
-        TlvParser(TlvHandler(test_obj.input_data).process_data()).print_tlv(
+        TlvParser(TlvHandler(test_obj.input_data).process_data()).get_printable_tlv(
             length_in_decimal=test_obj.length_in_decimal,
             value_in_ascii=test_obj.value_in_ascii,
-            one_liner=test_obj.one_liner)
+            one_liner=test_obj.one_liner,
+            print_also=True)
         self.assertEqual(mock_stdout.getvalue(), expected_op_print)
 
     def test_tlv_data(self):

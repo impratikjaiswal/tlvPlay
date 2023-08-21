@@ -9,8 +9,11 @@ class TlvParser:
     def __init__(self, tlv_objs):
         self.tlv_obj = tlv_objs
 
-    def print_tlv(self, length_in_decimal=None, value_in_ascii=None, one_liner=None):
-        print(self.parse_tlv(length_in_decimal=length_in_decimal, value_in_ascii=value_in_ascii, one_liner=one_liner))
+    def get_printable_tlv(self, length_in_decimal=None, value_in_ascii=None, one_liner=None, print_also=False):
+        result = self.parse_tlv(length_in_decimal=length_in_decimal, value_in_ascii=value_in_ascii, one_liner=one_liner)
+        if print_also:
+            print(result)
+        return result
 
     def parse_tlv(self, tlv_obj=None, level=0, length_in_decimal=None, value_in_ascii=None, one_liner=None):
         if tlv_obj is None:

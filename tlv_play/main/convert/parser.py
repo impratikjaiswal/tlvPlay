@@ -1,30 +1,25 @@
-import traceback
-
-from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
 from tlv_play.main.convert import converter
+from tlv_play.main.helper.metadata import MetaData
 from tlv_play.main.tlv.tlv_handler import TlvHandler
 from tlv_play.main.tlv.tlv_parser import TlvParser
 
 
-def parse_or_update_any_data_safe(data, error_handling_mode):
-    try:
-        parse_or_update_any_data(data)
-    except Exception as e:
-        print(f'Exception Occurred {e}')
-        traceback.print_exc()
-        if error_handling_mode == PhErrorHandlingModes.STOP_ON_ERROR:
-            raise
-
-
-def parse_or_update_any_data(data):
+def parse_or_update_any_data(data, meta_data=None):
     """
 
+    :param meta_data:
     :param data:
     :return:
     """
-    converter.set_defaults(data)
-    PhUtil.print_heading(data.get_remarks_as_str(), heading_level=3)
+    converter.set_defaults_for_printing(data)
+    if meta_data is None:
+        meta_data = MetaData(raw_data_org=data.raw_data)
+    data.set_auto_generated_remarks_if_needed()
+    PhUtil.print_heading(data.get_remarks_as_str(), heading_level=2)
+    converter.set_defaults(data, meta_data)
     tlv_obj = TlvHandler(data.raw_data).process_data()
-    TlvParser(tlv_obj).print_tlv(data.length_in_decimal, data.value_in_ascii, data.one_liner)
+    meta_data.parsed_data = TlvParser(tlv_obj).get_printable_tlv(data.length_in_decimal, data.value_in_ascii,
+                                                                 data.one_liner)
+    converter.print_data(data, meta_data)

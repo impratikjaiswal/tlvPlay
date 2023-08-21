@@ -52,16 +52,21 @@ def process_data(execution_mode, error_handling_mode):
     data_types = data_types_pool.get(execution_mode, Defaults.EXECUTION_MODE)
     for data_type in data_types:
         PhUtil.print_heading(str_heading=str(data_type.__class__.__name__))
+        data_type.set_print_input()
+        data_type.set_print_output()
+        data_type.set_print_info()
+        data_type.set_quiet_mode()
+        data_type.set_remarks_list()
         data_type.set_one_liner()
         data_type.set_value_in_ascii()
         data_type.set_length_in_decimal()
-        data_type.set_remarks_list()
+
         data_type.set_data_pool()
         if isinstance(data_type, UnitTesting):
             error_handling_mode = PhErrorHandlingModes.CONTINUE_ON_ERROR
         if isinstance(data_type, Dev):
             error_handling_mode = PhErrorHandlingModes.STOP_ON_ERROR
-        DataTypeMaster.parse(data_type, error_handling_mode)
+        DataTypeMaster.parse_safe(data_type, error_handling_mode)
 
 
 def main():

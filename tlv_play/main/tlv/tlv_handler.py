@@ -32,6 +32,9 @@ class TlvHandler:
         data_len = len(data_list)
         if data_len < 2:
             return None, -1  # Minimum Tag Len is needed
+        # Debug
+        # print(
+        #     f'level: {level}; initial_offset: {initial_offset}; data_list: {PhUtil.to_hex_string(data_list, PhConstants.FORMAT_HEX_STRING_AS_PACK)}')
         tag_list = [data_list[offset]]
         if tag_list[0] & tag_mask_first_byte_subsequent_bytes == tag_mask_first_byte_subsequent_bytes:
             offset += 1
@@ -57,6 +60,8 @@ class TlvHandler:
             len_additional_bytes = data_list[offset] & len_mask_additional_bytes
             if data_len <= offset + len_mask_additional_bytes:
                 return None, -1  # Mentioned Len is not available
+            if len_additional_bytes == 0:
+                return None, -1  # Not Multi Length, e.g.: F0
             while len_offset < len_additional_bytes:
                 offset += 1
                 len_offset += 1
