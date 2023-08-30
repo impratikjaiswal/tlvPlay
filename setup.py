@@ -33,7 +33,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/impratikjaiswal/tlvPlay",
     project_urls={
-        "Bug Tracker": "https://github.com/impratikjaiswal/tlvPlay",
+        "Bug Tracker": "https://github.com/impratikjaiswal/tlvPlay/issues",
     },
     keywords="TLV Parser Tag Length Value",
     license="MIT",
