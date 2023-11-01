@@ -3,7 +3,7 @@ import traceback
 import binascii
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_data_master import PhMasterData
-from python_helpers.ph_exceptions import PhExceptions
+from python_helpers.ph_exception_helper import PhExceptionHelper
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
@@ -25,7 +25,7 @@ class DataTypeMaster(object):
         self.value_in_ascii = None
         self.length_in_decimal = None
         self.data_pool = []
-        self.__master_data = (Data(raw_data=None), MetaData(raw_data_org=None), PhExceptions(msg=None))
+        self.__master_data = (Data(raw_data=None), MetaData(raw_data_org=None), PhExceptionHelper(msg=None))
 
     def set_print_input(self, print_input):
         self.print_input = print_input
@@ -83,20 +83,16 @@ class DataTypeMaster(object):
         except Exception as e:
             known = False
             additional_msg = None
-            if isinstance(e.args[0], PhExceptions):
-                exception_msg = e.args[0].get_details()
-                self.__master_data = (
-                    self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
-                    e.args[0])
-            else:
+            exception_object = e.args[0]
+            if not isinstance(exception_object, PhExceptionHelper):
                 # for scenarios like FileExistsError where a touple is returned, (17, 'Cannot create a file when that file already exists')
-                exception_msg = str(e)
-                self.__master_data = (
-                    self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
-                    PhExceptions(exception_msg))
+                exception_object = PhExceptionHelper(exception=e)
+            self.__master_data = (
+                self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
+                exception_object)
             if isinstance(e, binascii.Error):
                 known = True
-                additional_msg = 'raw_data is invalid'
+                additional_msg = 'invalid raw_data error'
             elif isinstance(e, ValueError):
                 known = True
             elif isinstance(e, PermissionError):
@@ -108,9 +104,9 @@ class DataTypeMaster(object):
             processed_data = self.__master_data[PhMasterData.INDEX_DATA]
             processed_meta_data = self.__master_data[PhMasterData.INDEX_META_DATA]
             converter.print_data(processed_data, processed_meta_data)
-            msg = PhUtil.get_key_value_pair(PhConstants.EXCEPTION_KNOWN if known else PhConstants.EXCEPTION_UNKNOWN,
-                                            PhConstants.SEPERATOR_MULTI_OBJ.join(
-                                                filter(None, [additional_msg, exception_msg])))
+            exception_msg = PhConstants.SEPERATOR_TWO_WORDS.join(
+                [PhConstants.KNOWN if known else PhConstants.UNKNOWN, exception_object.get_details()])
+            msg = PhConstants.SEPERATOR_MULTI_OBJ.join(filter(None, [additional_msg, exception_msg]))
             print(f'{msg}')
             if not known:
                 traceback.print_exc()
@@ -157,7 +153,8 @@ class DataTypeMaster(object):
         if len(self.__master_data) > PhMasterData.INDEX_ERROR_DATA:
             # Exception Object is Present
             exception_data = self.__master_data[PhMasterData.INDEX_ERROR_DATA]
-            output_data = exception_data.get_details() if isinstance(exception_data, PhExceptions) else exception_data
+            output_data = exception_data.get_details() if isinstance(exception_data,
+                                                                     PhExceptionHelper) else exception_data
             return output_data
         if len(self.__master_data) > PhMasterData.INDEX_META_DATA:
             # MetaData Object is Present
