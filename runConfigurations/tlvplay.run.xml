@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="tlvplay" type="PythonConfigurationType" factoryName="Python" folderName="tlvPlay" nameIsGenerated="true">
-    <output_file path="$PROJECT_DIR$/../../Github_Personal/AmenityPj/TempFiles/pycharm.log" is_save="true" />
+    <output_file path="$PROJECT_DIR$/../../Github_Personal/AmenityPjRaw/TempFiles/pycharm.log" is_save="true" />
     <module name="tlvplay" />
+    <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
