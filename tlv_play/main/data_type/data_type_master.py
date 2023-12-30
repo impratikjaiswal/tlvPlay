@@ -4,9 +4,7 @@ import binascii
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_data_master import PhMasterData
 from python_helpers.ph_exception_helper import PhExceptionHelper
-from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
-from python_helpers.ph_util import PhUtil
 
 from tlv_play.main.convert import converter
 from tlv_play.main.convert.converter import read_web_request
@@ -145,7 +143,7 @@ class DataTypeMaster(object):
         self.__master_data = (data, meta_data)
         parse_or_update_any_data(data, meta_data)
 
-    def get_output_data(self):
+    def get_output_data(self, only_output=True):
         """
 
         :return:
@@ -163,5 +161,4 @@ class DataTypeMaster(object):
             exception_data = self.__master_data[PhMasterData.INDEX_ERROR_DATA]
             output_data = exception_data.get_details() if isinstance(exception_data,
                                                                      PhExceptionHelper) else exception_data
-            return output_data, info_data
-        return output_data, info_data
+        return output_data if only_output else (output_data, info_data)
