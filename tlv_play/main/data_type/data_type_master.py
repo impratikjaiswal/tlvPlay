@@ -4,6 +4,7 @@ import binascii
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_data_master import PhMasterData
 from python_helpers.ph_exception_helper import PhExceptionHelper
+from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_util import PhUtil
 
@@ -25,7 +26,7 @@ class DataTypeMaster(object):
         self.value_in_ascii = None
         self.length_in_decimal = None
         self.data_pool = []
-        self.__master_data = (Data(raw_data=None), MetaData(raw_data_org=None), PhExceptionHelper(msg=None))
+        self.__master_data = (Data(raw_data=None), MetaData(raw_data_org=None), PhExceptionHelper(msg_key=None))
 
     def set_print_input(self, print_input):
         self.print_input = print_input
@@ -82,31 +83,31 @@ class DataTypeMaster(object):
             self.__parse_safe_individual(data)
         except Exception as e:
             known = False
-            additional_msg = None
+            summary_msg = None
             exception_object = e.args[0]
             if not isinstance(exception_object, PhExceptionHelper):
                 # for scenarios like FileExistsError where a touple is returned, (17, 'Cannot create a file when that file already exists')
                 exception_object = PhExceptionHelper(exception=e)
-            self.__master_data = (
-                self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
-                exception_object)
             if isinstance(e, binascii.Error):
                 known = True
-                additional_msg = 'invalid raw_data error'
+                summary_msg = PhConstants.INVALID_RAW_DATA
             elif isinstance(e, ValueError):
                 known = True
             elif isinstance(e, PermissionError):
                 known = True
-                additional_msg = 'input/output path reading/writing error'
+                summary_msg = PhConstants.READ_WRITE_ERROR
             elif isinstance(e, FileExistsError):
                 known = True
-                additional_msg = 'Output path writing error'
+                summary_msg = PhConstants.WRITE_PATH_ERROR
+            exception_object.set_summary_msg(summary_msg)
+            self.__master_data = (
+                self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
+                exception_object)
             processed_data = self.__master_data[PhMasterData.INDEX_DATA]
             processed_meta_data = self.__master_data[PhMasterData.INDEX_META_DATA]
             converter.print_data(processed_data, processed_meta_data)
-            exception_msg = PhConstants.SEPERATOR_TWO_WORDS.join(
+            msg = PhConstants.SEPERATOR_TWO_WORDS.join(
                 [PhConstants.KNOWN if known else PhConstants.UNKNOWN, exception_object.get_details()])
-            msg = PhConstants.SEPERATOR_MULTI_OBJ.join(filter(None, [additional_msg, exception_msg]))
             print(f'{msg}')
             if not known:
                 traceback.print_exc()
@@ -149,15 +150,18 @@ class DataTypeMaster(object):
 
         :return:
         """
-        output_data = ''
+        output_data = PhConstants.STR_EMPTY
+        info_data = PhConstants.STR_EMPTY
+        if len(self.__master_data) > PhMasterData.INDEX_META_DATA:
+            # MetaData Object is Present
+            meta_data = self.__master_data[PhMasterData.INDEX_META_DATA]
+            if isinstance(meta_data, MetaData):
+                output_data = meta_data.parsed_data
+                info_data = meta_data.get_info_data()
         if len(self.__master_data) > PhMasterData.INDEX_ERROR_DATA:
             # Exception Object is Present
             exception_data = self.__master_data[PhMasterData.INDEX_ERROR_DATA]
             output_data = exception_data.get_details() if isinstance(exception_data,
                                                                      PhExceptionHelper) else exception_data
-            return output_data
-        if len(self.__master_data) > PhMasterData.INDEX_META_DATA:
-            # MetaData Object is Present
-            meta_data = self.__master_data[PhMasterData.INDEX_META_DATA]
-            output_data = meta_data.parsed_data if isinstance(meta_data, MetaData) else output_data
-        return output_data
+            return output_data, info_data
+        return output_data, info_data
