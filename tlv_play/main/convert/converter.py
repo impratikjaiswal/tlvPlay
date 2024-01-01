@@ -53,9 +53,27 @@ def get_dic_data_and_print(key, sep, value, dic_format=True, print_also=True):
 
 
 def parse_config(config_data):
+    # PhUtil.print_iter(config_data, 'config_data initial', verbose=True)
     for k, v in config_data.items():
-        if v is not None and v in ['None']:
-            config_data[k] = None
+        if v:
+            # Trim Garbage data
+            v = PhUtil.trim_white_spaces_in_str(v)
+            if v in ['None']:
+                v = None
+                config_data[k] = v
+            if v in [PhConstants.STR_SELECT_OPTION]:
+                v = None
+                config_data[k] = v
+            if v in ['True']:
+                v = True
+                config_data[k] = v
+            if v in ['False']:
+                v = False
+                config_data[k] = v
+        if not v:
+            continue
+        config_data[k] = v
+    # PhUtil.print_iter(config_data, 'config_data processed', verbose=True, depth_level=1)
     return config_data
 
 
