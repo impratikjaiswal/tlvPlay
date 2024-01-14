@@ -1,5 +1,7 @@
 # tlvPlay
-Generic TLV Parser. Will parse any TLV upto **nth Level**.
+Generic TLV Parser based on standard TLV rules 
+<BR>Can parse any TLV upto **nth Level**.
+<BR>Single-Multi byte Tag, Length & values are Supported.
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/tlvPlay)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
@@ -9,6 +11,7 @@ Generic TLV Parser. Will parse any TLV upto **nth Level**.
 
 [![Static Badge](https://img.shields.io/badge/amenitypj.in/tlvPlay-a?label=website%20url)](https://amenitypj.in/tlvPlay)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in/tlvPlay&label=website%20status)](https://amenitypj.in/tlvPlay)
+
 [![Static Badge](https://img.shields.io/badge/impratikjaiswal.github.io/tlvPlay-a?label=gihub%20website%20url)](https://impratikjaiswal.github.io/tlvPlay)
 [![Website](https://img.shields.io/website?url=https://amenitypj.in/tlvPlay&label=website%20status)](https://impratikjaiswal.github.io/tlvPlay)
 
