@@ -1,5 +1,5 @@
 # tlvPlay
-Generic TLV Parser based on standard TLV rules 
+Generic TLV Parser based on TLV and related standards
 <BR>Can parse any TLV upto **nth Level**.
 <BR>Single-Multi byte Tag, Length & values are Supported.
 

@@ -17,6 +17,13 @@ if not packages:
 print(f'Packages are {packages}')
 # potential dependencies
 install_reqs = [
+    'incremental',
+    'click',
+    'twisted',
+]
+
+setup_reqs = [
+    'incremental',
 ]
 
 # get long description from the README.md
@@ -24,8 +31,9 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), "r", encoding="u
     long_description = fd.read()
 
 setup(
+    use_incremental=True,
+    setup_requires=setup_reqs,
     name=ConfigConst.TOOL_NAME,
-    version=ConfigConst.TOOL_VERSION_DETAILED,
     author="Pratik Jaiswal",
     author_email="impratikjaiswal@gmail.com",
     description="Generic TLV Parser.",

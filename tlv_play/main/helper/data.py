@@ -30,7 +30,7 @@ class Data:
         self.set_user_remarks(remarks_list)
 
     def set_user_remarks(self, remarks_list):
-        self.remarks_list = PhUtil.cast_to_list(remarks_list, trim_data=True, all_str=True)
+        self.remarks_list = PhUtil.to_list(remarks_list, trim_data=True, all_str=True)
 
     def __get_default_remarks(self):
         str_raw_data = PhUtil.combine_list_items(self.raw_data)
