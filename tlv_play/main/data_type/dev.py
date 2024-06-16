@@ -19,9 +19,9 @@ class Dev(DataTypeMaster):
         quite_mode = None
         super().set_quiet_mode(quite_mode)
 
-    def set_remarks_list(self):
-        remarks_list = None
-        super().set_remarks_list(remarks_list)
+    def set_remarks(self):
+        remarks = None
+        super().set_remarks(remarks)
 
     def set_one_liner(self):
         one_liner = None

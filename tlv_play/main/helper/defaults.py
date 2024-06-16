@@ -7,8 +7,8 @@ class Defaults:
     PRINT_INPUT = True
     PRINT_OUTPUT = True
     QUITE_MODE = False
+    EXECUTION_MODE = PhExecutionModes.USER
+    ERROR_HANDLING_MODE = PhErrorHandlingModes.CONTINUE_ON_ERROR
     LENGTH_IN_DECIMAL = False
     VALUE_IN_ASCII = False
     ONE_LINER = True
-    EXECUTION_MODE = PhExecutionModes.USER
-    ERROR_HANDLING_MODE = PhErrorHandlingModes.CONTINUE_ON_ERROR

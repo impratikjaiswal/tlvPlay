@@ -24,10 +24,10 @@ def print_data(data, meta_data):
                 if remarks_original in remarks_generated:
                     remarks_generated = ''
             meta_data.output_dic.update(
-                get_dic_data_and_print(PhKeys.REMARKS_LIST, PhConstants.SEPERATOR_ONE_LINE, remarks_original))
+                get_dic_data_and_print(PhKeys.REMARKS, PhConstants.SEPERATOR_ONE_LINE, remarks_original))
         if remarks_generated:
             meta_data.output_dic.update(
-                get_dic_data_and_print(PhKeys.REMARKS_LIST_GENERATED, PhConstants.SEPERATOR_ONE_LINE,
+                get_dic_data_and_print(PhKeys.REMARKS_GENERATED, PhConstants.SEPERATOR_ONE_LINE,
                                        remarks_generated))
         info = PhConstants.SEPERATOR_MULTI_OBJ.join(filter(None, [
             get_dic_data_and_print(PhKeys.ONE_LINER, PhConstants.SEPERATOR_ONE_LINE, data.one_liner,
@@ -41,7 +41,7 @@ def print_data(data, meta_data):
         ]))
         meta_data.output_dic.update(get_dic_data_and_print(PhKeys.INFO, PhConstants.SEPERATOR_INFO, info))
     if data.print_input:
-        meta_data.output_dic.update(get_dic_data_and_print(PhKeys.INPUT_DATA, input_sep, data.raw_data))
+        meta_data.output_dic.update(get_dic_data_and_print(PhKeys.INPUT_DATA, input_sep, meta_data.input_data_org))
     print_output = data.print_output
     if data.print_output and print_output:  # and meta_data.parsed_data:
         meta_data.output_dic.update(get_dic_data_and_print(PhKeys.OUTPUT_DATA, output_sep, meta_data.parsed_data))

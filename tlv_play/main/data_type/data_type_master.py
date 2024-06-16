@@ -1,9 +1,11 @@
+import subprocess
 import traceback
 
 import binascii
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_data_master import PhMasterData
 from python_helpers.ph_exception_helper import PhExceptionHelper
+from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 
 from tlv_play.main.convert import converter
@@ -19,12 +21,12 @@ class DataTypeMaster(object):
         self.print_output = None
         self.print_info = None
         self.quite_mode = None
-        self.remarks_list = None
+        self.remarks = None
         self.one_liner = None
         self.value_in_ascii = None
         self.length_in_decimal = None
         self.data_pool = []
-        self.__master_data = (Data(raw_data=None), MetaData(raw_data_org=None), PhExceptionHelper(msg_key=None))
+        self.__master_data = (Data(input_data=None), MetaData(input_data_org=None), PhExceptionHelper(msg_key=None))
 
     def set_print_input(self, print_input):
         self.print_input = print_input
@@ -38,8 +40,8 @@ class DataTypeMaster(object):
     def set_quiet_mode(self, quite_mode):
         self.quite_mode = quite_mode
 
-    def set_remarks_list(self, remarks_list):
-        self.remarks_list = remarks_list
+    def set_remarks(self, remarks):
+        self.remarks = remarks
 
     def set_one_liner(self, one_liner):
         self.one_liner = one_liner
@@ -82,13 +84,13 @@ class DataTypeMaster(object):
         except Exception as e:
             known = False
             summary_msg = None
-            exception_object = e.args[0]
+            exception_object = e.args[0] if len(e.args) > 0 else e
             if not isinstance(exception_object, PhExceptionHelper):
                 # for scenarios like FileExistsError where a touple is returned, (17, 'Cannot create a file when that file already exists')
                 exception_object = PhExceptionHelper(exception=e)
             if isinstance(e, binascii.Error):
                 known = True
-                summary_msg = PhConstants.INVALID_RAW_DATA
+                summary_msg = PhConstants.INVALID_INPUT_DATA
             elif isinstance(e, ValueError):
                 known = True
             elif isinstance(e, PermissionError):
@@ -97,6 +99,12 @@ class DataTypeMaster(object):
             elif isinstance(e, FileExistsError):
                 known = True
                 summary_msg = PhConstants.WRITE_PATH_ERROR
+            elif isinstance(e, subprocess.TimeoutExpired):
+                known = True
+                summary_msg = PhConstants.TIME_OUT_ERROR
+            elif isinstance(e, subprocess.CalledProcessError):
+                known = True
+                summary_msg = e.stderr if e.stderr else PhConstants.NON_ZERO_EXIT_STATUS_ERROR
             exception_object.set_summary_msg(summary_msg)
             self.__master_data = (
                 self.__master_data[PhMasterData.INDEX_DATA], self.__master_data[PhMasterData.INDEX_META_DATA],
@@ -123,23 +131,23 @@ class DataTypeMaster(object):
             data.print_output = data.print_output if data.print_output is not None else self.print_output
             data.print_info = data.print_info if data.print_info is not None else self.print_info
             data.quite_mode = data.quite_mode if data.quite_mode is not None else self.quite_mode
-            data.remarks_list = data.remarks_list if data.remarks_list is not None else self.remarks_list
+            data.remarks = data.remarks if data.remarks is not None else self.remarks
             data.length_in_decimal = data.length_in_decimal if data.length_in_decimal is not None else self.length_in_decimal
             data.value_in_ascii = data.value_in_ascii if data.value_in_ascii is not None else self.value_in_ascii
             data.one_liner = data.one_liner if data.one_liner is not None else self.one_liner
         else:
             data = Data(
-                raw_data=data,
+                input_data=data,
                 print_input=self.print_input,
                 print_output=self.print_output,
                 print_info=self.print_info,
                 quite_mode=self.quite_mode,
-                remarks_list=self.remarks_list,
+                remarks=self.remarks,
                 length_in_decimal=self.length_in_decimal,
                 value_in_ascii=self.value_in_ascii,
                 one_liner=self.one_liner,
             )
-        meta_data = MetaData(raw_data_org=data.raw_data)
+        meta_data = MetaData(input_data_org=data.input_data)
         self.__master_data = (data, meta_data)
         parse_or_update_any_data(data, meta_data)
 
@@ -162,3 +170,18 @@ class DataTypeMaster(object):
             output_data = exception_data.get_details() if isinstance(exception_data,
                                                                      PhExceptionHelper) else exception_data
         return output_data if only_output else (output_data, info_data)
+
+    def to_dic(self, data):
+        """
+
+        :param data:
+        :return:
+        """
+        return {
+            PhKeys.INPUT_DATA: data.input_data,
+            PhKeys.REMARKS: data.remarks,
+            PhKeys.DATA_GROUP: data.data_group,
+            PhKeys.LENGTH_IN_DECIMAL: data.length_in_decimal,
+            PhKeys.VALUE_IN_ASCII: data.value_in_ascii,
+            PhKeys.ONE_LINER: data.one_liner,
+        }

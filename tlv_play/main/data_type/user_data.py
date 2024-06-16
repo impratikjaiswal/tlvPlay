@@ -20,9 +20,9 @@ class UserData(DataTypeMaster):
         quite_mode = None
         super().set_quiet_mode(quite_mode)
 
-    def set_remarks_list(self):
-        remarks_list = None
-        super().set_remarks_list(remarks_list)
+    def set_remarks(self):
+        remarks = None
+        super().set_remarks(remarks)
 
     def set_one_liner(self):
         one_liner = None
@@ -40,8 +40,13 @@ class UserData(DataTypeMaster):
         data_pool = [
             #
             Data(
-                remarks_list='Simple TLV',
-                raw_data='86020102',
+                remarks='Simple TLV',
+                input_data='86020102',
+            ),
+            #
+            Data(
+                remarks='Nested Ber TLV',
+                input_data='064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
             ),
         ]
         super().set_data_pool(data_pool)

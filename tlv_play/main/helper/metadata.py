@@ -5,8 +5,8 @@ from python_helpers.ph_keys import PhKeys
 
 
 class MetaData:
-    def __init__(self, raw_data_org):
-        self.raw_data_org = raw_data_org
+    def __init__(self, input_data_org):
+        self.input_data_org = input_data_org
         self.parsed_data = None
         self.output_dic = OrderedDict()
 

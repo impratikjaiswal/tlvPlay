@@ -13,12 +13,12 @@ invalid_tags_list = [[0x00]]
 
 
 class TlvHandler:
-    def __init__(self, raw_data):
-        self.raw_data_list = []
-        if isinstance(raw_data, str):
-            raw_data = PhUtil.trim_and_kill_all_white_spaces(raw_data)
-            raw_data = binascii.unhexlify(raw_data)
-            self.raw_data_list = list(raw_data)
+    def __init__(self, input_data):
+        self.input_data_list = []
+        if isinstance(input_data, str):
+            input_data = PhUtil.trim_and_kill_all_white_spaces(input_data)
+            input_data = binascii.unhexlify(input_data)
+            self.input_data_list = list(input_data)
 
     def process_tlv(self, data_list, level, initial_offset):
         """
@@ -82,14 +82,14 @@ class TlvHandler:
         offset += len_dec
         return Tlv(tag_list, len_list, value_list, len_dec, level), offset
 
-    def process_data(self, raw_data_list=None, level=0):
-        if raw_data_list is None:
-            raw_data_list = self.raw_data_list
+    def process_data(self, input_data_list=None, level=0):
+        if input_data_list is None:
+            input_data_list = self.input_data_list
         offset = 0
         tlv_data = []
         sub_tlv_obj_temp = []
-        while offset < len(raw_data_list):
-            tlv_obj, temp_offset = self.process_tlv(raw_data_list, level, offset)
+        while offset < len(input_data_list):
+            tlv_obj, temp_offset = self.process_tlv(input_data_list, level, offset)
             if tlv_obj is None:
                 break
             offset = temp_offset
@@ -118,4 +118,4 @@ class TlvHandler:
                         tlv_data.append(tlv_obj)
             return tlv_data
         else:
-            return raw_data_list
+            return input_data_list
