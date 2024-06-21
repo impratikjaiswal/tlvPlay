@@ -7,13 +7,13 @@ User Name is Pratik Jaiswal
 --------------------------------------------------------------------------------
 User Account is impra
 --------------------------------------------------------------------------------
-Time Stamp is Monday, Jun 17 2024, 10:10:56:577631, IST (GMT+0530)
+Time Stamp is Friday, Jun 21 2024, 11:27:23:136765, IST (GMT+0530)
 --------------------------------------------------------------------------------
-Git Summary is 35fa931;  (HEAD -> main); 2024-06-17 01:42:35 +0530; imPratik <impratikjaiswal@gmail.com>; remarks_list fixed
+Git Summary is e2b65b7;  (HEAD -> main, tag: v4.0.0, origin/main, origin/HEAD); 2024-06-17 10:12:58 +0530; imPratik <impratikjaiswal@gmail.com>; v4.0.0
 --------------------------------------------------------------------------------
-pythonHelpers version is v3.0.9.dev11
+pythonHelpers version is v3.1.3
 --------------------------------------------------------------------------------
-tlvPlay version is v4.0.0
+tlvPlay version is v4.0.1
 --------------------------------------------------------------------------------
 Sample Data:
 Simple TLV: {'input_data': '86020102', 'remarks': 'Simple TLV', 'data_group': 'Simple TLV', 'length_in_decimal': False, 'value_in_ascii': False, 'one_liner': True}
@@ -30,14 +30,14 @@ Nested BER TLV; Complex; ESIM Profile; length_in_decimal=True; value_in_ascii=Tr
 -------------------------------------------------------- Sample --------------------------------------------------------
 ****************************************************** Simple TLV ******************************************************
 Remarks: Simple TLV
-Info => One Liner: True
+Info => Transaction Id: 5joq1yq6c9o7; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 *************************************** Simple TLV; Parallel Multiple Simple TLVs **************************************
 Remarks: Simple TLV; Parallel Multiple Simple TLVs
-Info => One Liner: True
+Info => Transaction Id: acwjjxpc6n7y; One Liner: True
 Input Data: 81020105820106830209AB
 Output Data:
 81 02 0105
@@ -46,7 +46,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ********************************************** Simple TLV; Multi Byte Tag **********************************************
 Remarks: Simple TLV; Multi Byte Tag
-Info => One Liner: True
+Info => Transaction Id: 3s7h4bxalky5; One Liner: True
 Input Data: BF3E125A1089049032123451234512345678901235
 Output Data:
 BF3E 12
@@ -54,7 +54,7 @@ BF3E 12
 --------------------------------------------------------------------------------
 **************************************** Nested BER TLV; length_in_decimal=True ****************************************
 Remarks: Nested BER TLV; length_in_decimal=True
-Info => One Liner: True; Length In Decimal: True
+Info => Transaction Id: b7zda1m1zpys; One Liner: True; Length In Decimal: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B (75)
@@ -68,7 +68,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ******************************************* BER TLV; length_in_decimal=False *******************************************
 Remarks: BER TLV; length_in_decimal=False
-Info => One Liner: True
+Info => Transaction Id: owa5d2lowcjw; One Liner: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -82,7 +82,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ****************************************** Nested BER TLV; value_in_ascii=True *****************************************
 Remarks: Nested BER TLV; value_in_ascii=True
-Info => One Liner: True; Value In Ascii: True
+Info => Transaction Id: oci3qla77cxv; One Liner: True; Value In Ascii: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -96,7 +96,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ********************************************* BER TLV; value_in_ascii=False ********************************************
 Remarks: BER TLV; value_in_ascii=False
-Info => One Liner: True
+Info => Transaction Id: cwl4xgcwwud7; One Liner: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -110,7 +110,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ******************************************** Nested BER TLV; one_liner=True ********************************************
 Remarks: Nested BER TLV; one_liner=True
-Info => One Liner: True
+Info => Transaction Id: b3lxdl1owfyq; One Liner: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -124,7 +124,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ******************************************** Nested BER TLV; one_liner=False *******************************************
 Remarks: Nested BER TLV; one_liner=False
-Info => 
+Info => Transaction Id: 3dwmsgmxdtow
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -141,7 +141,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ********** Nested BER TLV; Complex; ESIM Profile; length_in_decimal=True; value_in_ascii=True; one_liner=True **********
 Remarks: Nested BER TLV; Complex; ESIM Profile; length_in_decimal=True; value_in_ascii=True; one_liner=True
-Info => One Liner: True; Value In Ascii: True; Length In Decimal: True
+Info => Transaction Id: y6huyu00rsey; One Liner: True; Value In Ascii: True; Length In Decimal: True
 Input Data: A042800102810101821447534D412050726F66696C65205061636B616765830A8929901012345678905FA506810084008B00A610060667810F010201060667810F010204B08201F8A0058000810101810667810F010201A207A105C60301020AA305A1038B010FA40C830A989209012143658709F5A527A109820442210026800198831A61184F10A0000000871002FF33FF01890000010050045553494DA682019EA10A8204422100258002022B831B8001019000800102A406830101950108800158A40683010A95010882010A8316800101A40683010195010880015AA40683010A95010882010F830B80015BA40683010A95010882011A830A800101900080015A970082011B8316800103A406830101950108800158A40683010A95010882010F8316800111A40683010195010880014AA40683010A95010882010F8321800103A406830101950108800158A40683010A950108840132A4068301019501088201048321800101A406830101950108800102A406830181950108800158A40683010A950108820104831B800101900080011AA406830101950108800140A40683010A95010882010A8310800101900080015AA40683010A95010882011583158001019000800118A40683010A95010880014297008201108310800101A40683010195010880015A97008201158316800113A406830101950108800148A40683010A95010882010F830B80015EA40683010A95010882011A83258001019000800102A010A406830101950108A406830102950108800158A40683010A950108A33FA0058000810102A13630118001018108303030303030303082020099300D800102810831323334353637383012800200818108393239343536373882020088A244A0058000810103A13BA0393013800101810831323334FFFFFFFF8201018301063010800102810830303030FFFFFFFF820102301080010A810835363738FFFFFFFF830101B381C3A0058000810104810667810F010204A21DA11B83027FF18410A0000000871002FF33FF018900000100C60301810AA30B8309082999181132547698A406A104C7022F06A80F830D0A2E148CE73204000000000000AB45A10D82044221003483026F428001688334534D53433120FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1FFFFFFFFFFFFFFFFFFFFFFFF07916427417900F4FFFFFFFFFFFFFFAD1383110247534D41206555494343FFFFFFFFFFFFAE03830100B20483020040B606830419F1FF01A225A0058000810105A11CA01A301880020081810839323338FFFFFFFF82020081830101840122A43AA0058000810106A131A12F8001018101018210000102030405060708090A0B0C0D0E0F83100102030405060708090A0B0C0D0E0F008603010203A681BBA0058000810107A1444F07A00000015153504F08A0000001515350414F08A000000151000000820382DC0083010FC90A810280008201F08701F0EA11800F0100000100000002011203B2010000A26C302295013882010183010130173015800180861066778899AABBCCDD1122334455EEFF103022950134820102830101301730158001808610112233445566778899AABBCCDDEEFF1030229501C882010383010130173015800180861099AABBCCDDEEFF101122334455667788A681C0A0058000810108A1494F07A00000015153504F08A0000001515350414F10A00000055910100102736456616C7565820380800083010FC907810280008201F0EA11800F01000001000000020112036C756500A26C30229501388201018301013017301580018086101122334455667788112233445566778830229501348201028301013017301580018086101122334455667788112233445566778830229501C882010383010130173015800180861011223344556677881122334455667788A720A00381010B4F09A00000055910100001A0050403B00000810112040100040100A740A00381010C4F09A00000055910100002A0050403B00020810112040100040100301E8010A0000000871002FF33FF018900000100810402000100820402000100AA07A0058000810163
 Output Data:
 A0 42 (66)
@@ -536,7 +536,7 @@ AA 07 (7)
 ------------------------------------------------------ UnitTesting -----------------------------------------------------
 *************************************** BER TLV; Multiple Simple TLV as Children ***************************************
 Remarks: BER TLV; Multiple Simple TLV as Children
-Info => One Liner: True
+Info => Transaction Id: gv5fce1jd8z9; One Liner: True
 Input Data: D00D8103010500820281829902090A
 Output Data:
 D0 0D
@@ -546,21 +546,21 @@ D0 0D
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=True ******************************************
 Remarks: Simple TLV; length_in_decimal=True
-Info => One Liner: True; Length In Decimal: True
+Info => Transaction Id: sw7cezxjcmhp; One Liner: True; Length In Decimal: True
 Input Data: 86020102
 Output Data:
 86 02 (2) 0102
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=False *****************************************
 Remarks: Simple TLV; length_in_decimal=False
-Info => One Liner: True
+Info => Transaction Id: hpin1nmbc401; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=True *******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=True
-Info => One Liner: True
+Info => Transaction Id: 6t7spwfv1ibd; One Liner: True
 Input Data: D00D 8103010500 82028182 9902090A
 Output Data:
 D0 0D
@@ -570,7 +570,7 @@ D0 0D
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=False ******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=False
-Info => 
+Info => Transaction Id: kjjjgsuvv9rh
 Input Data: D00D 8103010500 82028182 9902090A
 Output Data:
 D0 0D
@@ -583,21 +583,21 @@ D0 0D
 --------------------------------------------------------------------------------
 ********************************* Simple TLV with ASCII Characters; value_in_ascii=True ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=True
-Info => One Liner: True; Value In Ascii: True
+Info => Transaction Id: z10l5h8adq4z; One Liner: True; Value In Ascii: True
 Input Data: 50 04 5553494D
 Output Data:
 50 04 5553494D (USIM)
 --------------------------------------------------------------------------------
 ******************************** Simple TLV with ASCII Characters; value_in_ascii=False ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=False
-Info => One Liner: True
+Info => Transaction Id: mpdc4ic2zfbk; One Liner: True
 Input Data: 50 04 5553494D
 Output Data:
 50 04 5553494D
 --------------------------------------------------------------------------------
 ******************************************************* Test TLV *******************************************************
 Remarks: Test TLV
-Info => 
+Info => Transaction Id: h70qasq63irm
 Input Data: 
             9F4005FF80F0F001
         91102263BCC1C2D9C4420013
@@ -708,7 +708,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ********************** Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True *********************
 Remarks: Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True
-Info => One Liner: True; Value In Ascii: True; Length In Decimal: True
+Info => Transaction Id: h7fngz9ss3o9; One Liner: True; Value In Ascii: True; Length In Decimal: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B (75)
@@ -722,28 +722,28 @@ Output Data:
 --------------------------------------------------------------------------------
 ******************************************************* 86020102 *******************************************************
 Remarks Generated: 86020102
-Info => One Liner: True
+Info => Transaction Id: 316e2p1wu0yb; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 *************************************************** Kwargs; raw_data ***************************************************
 Remarks: Kwargs; raw_data
-Info => One Liner: True
+Info => Transaction Id: oz0fkr6uhoh8; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 **************************************************** Kwargs; future ****************************************************
 Remarks: Kwargs; future
-Info => One Liner: True
+Info => Transaction Id: mzcy4p8xey6m; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 ****************************************************** Empty Data ******************************************************
 Remarks: Empty Data
-Info => One Liner: True
+Info => Transaction Id: 7igrr3cv57e2; One Liner: True
 Input Data: 
 Output Data:
 
@@ -751,7 +751,7 @@ Output Data:
 Known Exception Occurred; Details: Missing Input Data
 *************************************************** Garbage Hex Data ***************************************************
 Remarks: Garbage Hex Data
-Info => One Liner: True
+Info => Transaction Id: 00i5tlqu3nnk; One Liner: True
 Input Data: 124
 Output Data:
 
@@ -760,14 +760,14 @@ Known Exception Occurred; Summary: check your input data; Details: Odd-length st
 ------------------------------------------------------- UserData -------------------------------------------------------
 ****************************************************** Simple TLV ******************************************************
 Remarks: Simple TLV
-Info => One Liner: True
+Info => Transaction Id: q4tojlunj60l; One Liner: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 **************************************************** Nested Ber TLV ****************************************************
 Remarks: Nested Ber TLV
-Info => One Liner: True
+Info => Transaction Id: 4su36a9f66d7; One Liner: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
