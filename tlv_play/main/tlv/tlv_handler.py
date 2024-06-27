@@ -17,6 +17,7 @@ class TlvHandler:
         self.input_data_list = []
         if isinstance(input_data, str):
             input_data = PhUtil.trim_and_kill_all_white_spaces(input_data)
+            input_data = PhUtil.decode_to_hex_if_base64(input_data)
             input_data = binascii.unhexlify(input_data)
             self.input_data_list = list(input_data)
 

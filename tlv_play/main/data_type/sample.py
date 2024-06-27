@@ -69,7 +69,6 @@ class Sample(DataTypeMaster):
                 input_data='064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
                 length_in_decimal=False,
             ),
-
             #
             Data(
                 remarks='Nested BER TLV; value_in_ascii=True',
@@ -93,6 +92,11 @@ class Sample(DataTypeMaster):
                 remarks='Nested BER TLV; one_liner=False',
                 input_data='064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
                 one_liner=False,
+            ),
+            #
+            Data(
+                remarks='Nested BER TLV; Base64',
+                input_data='vyUzWgqYkgkBIUNlhwn1kQlTUCBOYW1lIDGSGk9wZXJhdGlvbmFsIFByb2ZpbGUgTmFtZSAx',
             ),
             #
             Data(

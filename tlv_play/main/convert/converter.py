@@ -105,5 +105,23 @@ def set_defaults(data, meta_data):
         data.one_liner = Defaults.ONE_LINER
 
 
+def set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner):
+    """
+    Set Default Values if nothing is set.
+
+    :param length_in_decimal:
+    :param value_in_ascii:
+    :param one_liner:
+    :return:
+    """
+    if length_in_decimal is None:
+        length_in_decimal = Defaults.LENGTH_IN_DECIMAL
+    if value_in_ascii is None:
+        value_in_ascii = Defaults.VALUE_IN_ASCII
+    if one_liner is None:
+        one_liner = Defaults.ONE_LINER
+    return length_in_decimal, value_in_ascii, one_liner
+
+
 def read_web_request(request_form):
     return Data(**parse_config(request_form))
