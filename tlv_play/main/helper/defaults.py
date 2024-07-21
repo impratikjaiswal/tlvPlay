@@ -12,3 +12,4 @@ class Defaults:
     LENGTH_IN_DECIMAL = False
     VALUE_IN_ASCII = False
     ONE_LINER = True
+    NON_TLV_NEIGHBOR = True

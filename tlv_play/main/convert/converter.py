@@ -32,12 +32,14 @@ def print_data(data, meta_data):
         info = PhConstants.SEPERATOR_MULTI_OBJ.join(filter(None, [
             get_dic_data_and_print(PhKeys.TRANSACTION_ID, PhConstants.SEPERATOR_ONE_LINE, meta_data.transaction_id,
                                    dic_format=False, print_also=False),
-            get_dic_data_and_print(PhKeys.ONE_LINER, PhConstants.SEPERATOR_ONE_LINE, data.one_liner,
-                                   dic_format=False, print_also=False) if data.one_liner else None,
-            get_dic_data_and_print(PhKeys.VALUE_IN_ASCII, PhConstants.SEPERATOR_ONE_LINE, data.value_in_ascii,
-                                   dic_format=False, print_also=False) if data.value_in_ascii else None,
             get_dic_data_and_print(PhKeys.LENGTH_IN_DECIMAL, PhConstants.SEPERATOR_ONE_LINE, data.length_in_decimal,
                                    dic_format=False, print_also=False) if data.length_in_decimal else None,
+            get_dic_data_and_print(PhKeys.VALUE_IN_ASCII, PhConstants.SEPERATOR_ONE_LINE, data.value_in_ascii,
+                                   dic_format=False, print_also=False) if data.value_in_ascii else None,
+            get_dic_data_and_print(PhKeys.ONE_LINER, PhConstants.SEPERATOR_ONE_LINE, data.one_liner,
+                                   dic_format=False, print_also=False) if data.one_liner else None,
+            get_dic_data_and_print(PhKeys.NON_TLV_NEIGHBOR, PhConstants.SEPERATOR_ONE_LINE, data.non_tlv_neighbor,
+                                   dic_format=False, print_also=False) if data.non_tlv_neighbor else None,
             get_dic_data_and_print(PhKeys.QUITE_MODE, PhConstants.SEPERATOR_ONE_LINE, data.quite_mode,
                                    dic_format=False, print_also=False) if data.quite_mode else None,
         ]))
@@ -103,12 +105,15 @@ def set_defaults(data, meta_data):
         data.value_in_ascii = Defaults.VALUE_IN_ASCII
     if data.one_liner is None:
         data.one_liner = Defaults.ONE_LINER
+    if data.non_tlv_neighbor is None:
+        data.non_tlv_neighbor = Defaults.NON_TLV_NEIGHBOR
 
 
-def set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner):
+def set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor):
     """
     Set Default Values if nothing is set.
 
+    :param non_tlv_neighbor:
     :param length_in_decimal:
     :param value_in_ascii:
     :param one_liner:
@@ -120,7 +125,9 @@ def set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner)
         value_in_ascii = Defaults.VALUE_IN_ASCII
     if one_liner is None:
         one_liner = Defaults.ONE_LINER
-    return length_in_decimal, value_in_ascii, one_liner
+    if one_liner is None:
+        non_tlv_neighbor = Defaults.NON_TLV_NEIGHBOR
+    return length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor
 
 
 def read_web_request(request_form):

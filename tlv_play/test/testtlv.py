@@ -1,6 +1,8 @@
 import io
 import unittest.mock
 
+from python_helpers.ph_keys import PhKeys
+
 import test_tlv_data
 from tlv_play.main.convert import converter
 from tlv_play.main.tlv.tlv_handler import TlvHandler
@@ -11,10 +13,9 @@ STR_TEST_OBJ = 'test_obj :'
 
 class TestObjTlv:
     def __init__(self, input_data, expected_op, expected_op_print, test_name='', length_in_decimal=None,
-                 value_in_ascii=None, one_liner=None):
-        length_in_decimal, value_in_ascii, one_liner = converter.set_defaults_individual_params(length_in_decimal,
-                                                                                                value_in_ascii,
-                                                                                                one_liner)
+                 value_in_ascii=None, one_liner=None, non_tlv_neighbor=None):
+        length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor = (
+            converter.set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor))
         self.input_data = input_data
         self.expected_op = expected_op
         self.expected_op_print = expected_op_print
@@ -22,6 +23,7 @@ class TestObjTlv:
         self.length_in_decimal = length_in_decimal
         self.value_in_ascii = value_in_ascii
         self.one_liner = one_liner
+        self.non_tlv_neighbor = non_tlv_neighbor
 
 
 class TestTlv(unittest.TestCase):
@@ -33,6 +35,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTIPLE_NON_NESTED_TLV,
@@ -42,6 +45,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_POSSIBLE_NESTED_TLV,
@@ -51,6 +55,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_THREE_BYTES_TAG_NO_LENGTH,
@@ -60,6 +65,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_FOUR_BYTES_TAG_NO_LENGTH,
@@ -69,6 +75,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_THREE_BYTES_TAG_0_LENGTH,
@@ -78,6 +85,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_FOUR_BYTES_TAG_0_LENGTH,
@@ -87,6 +95,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTIPLE_NON_NESTED_AND_SINGLE_NESTED_TLV,
@@ -96,6 +105,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTIPLE_NON_NESTED_AND_MULTIPLE_NESTED_TLV,
@@ -105,6 +115,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_NESTED_TLV_WITH_1_LEN,
@@ -114,6 +125,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_NESTED_TLV_WITH_2_LEN,
@@ -123,6 +135,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_NESTED_TLV_POSSIBLE_SUB_NESTED,
@@ -132,6 +145,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTIPLE_SUB_NESTED_TLV,
@@ -141,6 +155,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTIPLE_SUB_NESTED_TLV_POSSIBLE_GRAND_SUB_NESTED,
@@ -150,6 +165,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTI_BYTE_TAG_FAKE_SUB_NESTED,
@@ -159,6 +175,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_MULTI_BYTE_TAG_FAKE_SUB_NESTED_ALONG_WITH_SIBLINGS_TLV,
@@ -168,6 +185,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_FAKE_MULTIBYTE_TAG_IN_NESTED_TLV,
@@ -177,6 +195,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_FAKE_MULTIBYTE_LENGTH_IN_NESTED_TLV,
@@ -186,6 +205,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_NESTED_TLVS_WITH_ASCII_DATA,
@@ -195,6 +215,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_NESTED_TLVS_WITH_ASCII_DATA,
@@ -204,6 +225,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=False,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_NESTED_TLV_MULTI_BYTE_LEN_81,
@@ -213,6 +235,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_NESTED_TLV_MULTI_BYTE_LEN_81,
@@ -222,6 +245,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=False,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_NESTED_TLV_MULTI_BYTE_LEN_82,
@@ -231,6 +255,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_NON_NESTED_TLV_DATA_FF,
@@ -240,6 +265,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_SINGLE_NON_NESTED_TLV_DATA_FF_BULK,
@@ -249,6 +275,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_EMV_TLVS,
@@ -258,6 +285,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_EMV_TLVS,
@@ -267,6 +295,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=False,
                    value_in_ascii=False,
                    one_liner=True,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_EMV_TLVS,
@@ -276,6 +305,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=False,
                    value_in_ascii=False,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_RSP_TLVS,
@@ -285,6 +315,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_RSP_TLVS,
@@ -294,15 +325,27 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=False,
                    value_in_ascii=False,
                    one_liner=True,
+                   non_tlv_neighbor=True,
+                   ),
+
+        TestObjTlv(input_data=test_tlv_data.STR_INP_AID_00_TAG,
+                   expected_op=test_tlv_data.LIST_OP_AID_00_TAG_NON_TLV_NEIGHBOUR,
+                   expected_op_print=test_tlv_data.STR_OP_AID_00_TAG_NON_TLV_NEIGHBOUR,
+                   test_name='AID, 00 Tag, non_tlv_neighbor=True',
+                   length_in_decimal=True,
+                   value_in_ascii=True,
+                   one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_AID_00_TAG,
                    expected_op=test_tlv_data.LIST_OP_AID_00_TAG,
                    expected_op_print=test_tlv_data.STR_OP_AID_00_TAG,
-                   test_name='AID, 00 Tag',
+                   test_name='AID, 00 Tag, non_tlv_neighbor=False',
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=False,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_AID_01_TAG,
@@ -312,6 +355,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_RESTRICT_CHILD_MAPPING,
@@ -321,6 +365,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_RESTRICT_TWO_BYTE_TAG,
@@ -330,6 +375,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_PROFILE_1,
@@ -339,6 +385,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_LEN_ADDITIONAL_BYTES_AS_0,
@@ -348,6 +395,7 @@ class TestTlv(unittest.TestCase):
                    length_in_decimal=True,
                    value_in_ascii=True,
                    one_liner=False,
+                   non_tlv_neighbor=True,
                    ),
 
         TestObjTlv(input_data=test_tlv_data.STR_INP_BASE_64_TLV,
@@ -361,7 +409,9 @@ class TestTlv(unittest.TestCase):
     def assert_stdout(self, test_obj, mock_stdout):
         expected_op_print = test_obj.expected_op_print[1:] if test_obj.expected_op_print[
                                                                   0] == '\n' else test_obj.expected_op_print
-        TlvParser(TlvHandler(test_obj.input_data).process_data()).get_printable_tlv(
+        tlv_handler_result = TlvHandler(input_data=test_obj.input_data,
+                                        non_tlv_neighbor=test_obj.non_tlv_neighbor).process_data()
+        TlvParser(tlv_handler_result=tlv_handler_result).get_printable_tlv(
             length_in_decimal=test_obj.length_in_decimal,
             value_in_ascii=test_obj.value_in_ascii,
             one_liner=test_obj.one_liner,
@@ -375,7 +425,10 @@ class TestTlv(unittest.TestCase):
         self.maxDiff = None
         for count, test_obj in enumerate(TestTlv.test_obj_pool, start=1):
             with self.subTest(STR_TEST_OBJ + (test_obj.test_name if test_obj.test_name else str(count))):
-                self.assertEqual(TlvHandler(test_obj.input_data).process_data(), test_obj.expected_op)
+                tlv_handler_result = TlvHandler(input_data=test_obj.input_data,
+                                                non_tlv_neighbor=test_obj.non_tlv_neighbor).process_data()
+                tlv_obj = tlv_handler_result.get(PhKeys.RESULT_PROCESSED)
+                self.assertEqual(tlv_obj, test_obj.expected_op)
 
     def test_tlv_print(self):
         """

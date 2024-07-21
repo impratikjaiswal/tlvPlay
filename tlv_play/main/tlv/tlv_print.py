@@ -19,7 +19,10 @@ class TlvPrint:
         self.one_liner = one_liner
 
     def get_tl_as_str(self):
-        return f'{TlvPrint.SPACE * self.level}{PhUtil.to_hex_string(self.tlv_obj.tag_list, PhConstants.FORMAT_HEX_STRING_AS_PACK)}{TlvPrint.SPACE_TL}{PhUtil.to_hex_string(self.tlv_obj.len_list, PhConstants.FORMAT_HEX_STRING_AS_PACK)}' \
+        return (f'{TlvPrint.SPACE * self.level}'
+                f'{PhUtil.to_hex_string(self.tlv_obj.tag_list, PhConstants.FORMAT_HEX_STRING_AS_PACK)}'
+                f'{TlvPrint.SPACE_TL}'
+                f'{PhUtil.to_hex_string(self.tlv_obj.len_list, PhConstants.FORMAT_HEX_STRING_AS_PACK)}') \
             + (f' ({self.tlv_obj.len_dec})' if self.length_in_decimal else '')
 
     def get_v_as_str(self):

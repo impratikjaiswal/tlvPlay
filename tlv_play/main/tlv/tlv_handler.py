@@ -1,5 +1,6 @@
 import binascii
 from python_helpers.ph_constants import PhConstants
+from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
 from tlv_play.main.tlv.tlv import Tlv
@@ -13,15 +14,16 @@ invalid_tags_list = [[0x00]]
 
 
 class TlvHandler:
-    def __init__(self, input_data):
+    def __init__(self, input_data, non_tlv_neighbor):
         self.input_data_list = []
+        self.non_tlv_neighbor = non_tlv_neighbor
         if isinstance(input_data, str):
             input_data = PhUtil.trim_and_kill_all_white_spaces(input_data)
             input_data = PhUtil.decode_to_hex_if_base64(input_data)
             input_data = binascii.unhexlify(input_data)
             self.input_data_list = list(input_data)
 
-    def process_tlv(self, data_list, level, initial_offset):
+    def __process_tlv(self, data_list, level, initial_offset):
         """
 
         :return:
@@ -83,19 +85,23 @@ class TlvHandler:
         offset += len_dec
         return Tlv(tag_list, len_list, value_list, len_dec, level), offset
 
-    def process_data(self, input_data_list=None, level=0):
+    def process_data(self, input_data_list=None, level=0, non_tlv_neighbor=None):
         if input_data_list is None:
             input_data_list = self.input_data_list
+        if non_tlv_neighbor is None:
+            non_tlv_neighbor = self.non_tlv_neighbor
         offset = 0
         tlv_data = []
+        non_tlv_data = []
         sub_tlv_obj_temp = []
         while offset < len(input_data_list):
-            tlv_obj, temp_offset = self.process_tlv(input_data_list, level, offset)
+            tlv_obj, temp_offset = self.__process_tlv(input_data_list, level, offset)
             if tlv_obj is None:
                 break
             offset = temp_offset
             if len(tlv_obj.value_list) > 2:  # Possible nested TLV, parse it & store result in temp list
-                sub_tlv_data_temp = self.process_data(tlv_obj.value_list, level=level + 1)
+                sub_tlv_data_temp = (self.process_data(tlv_obj.value_list, level=level + 1, non_tlv_neighbor=False)
+                                     .get(PhKeys.RESULT_PROCESSED, None))
                 # Always returned a list
                 if isinstance(sub_tlv_data_temp[0], Tlv):  # Nested TLV Suspected, & Found
                     tlv_obj.value_list = sub_tlv_data_temp.copy()
@@ -105,7 +111,18 @@ class TlvHandler:
             else:  # No Nested TLV
                 # TODO: ESIM-1475: Actually this should be concat_tlv_obj_temp, For Concatenated TLV Handling
                 sub_tlv_obj_temp.append(tlv_obj)
-        if len(sub_tlv_obj_temp) > 0 and tlv_obj is not None:
+        count_sub_tlv_obj_temp = len(sub_tlv_obj_temp)
+        # Check if at least one TLV is found
+        if count_sub_tlv_obj_temp > 0:
+            # Check if neighbourhood is perfect or not
+            neighbour_tantrum = True if tlv_obj is None else False
+            if neighbour_tantrum:
+                # non TLV data
+                non_tlv_data = input_data_list[offset:]
+                if non_tlv_neighbor is False:
+                    # no need to handle non_tlv_neighbor
+                    return {PhKeys.RESULT_PROCESSED: input_data_list}
+                tlv_obj = sub_tlv_obj_temp[-1]
             for item in sub_tlv_obj_temp:
                 if isinstance(item, list):
                     tlv_obj.value_list = item
@@ -117,6 +134,10 @@ class TlvHandler:
                         # print('Parent')
                         tlv_obj.value_list = item
                         tlv_data.append(tlv_obj)
-            return tlv_data
+            result = {PhKeys.RESULT_PROCESSED: tlv_data}
+            if non_tlv_data:
+                result.update({PhKeys.RESULT_UNPROCESSED: non_tlv_data})
+            return result
         else:
-            return input_data_list
+            # No TLV Found
+            return {PhKeys.RESULT_PROCESSED: input_data_list}

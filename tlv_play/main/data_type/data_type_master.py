@@ -22,9 +22,10 @@ class DataTypeMaster(object):
         self.print_info = None
         self.quite_mode = None
         self.remarks = None
-        self.one_liner = None
-        self.value_in_ascii = None
         self.length_in_decimal = None
+        self.value_in_ascii = None
+        self.one_liner = None
+        self.non_tlv_neighbor = None
         self.data_pool = []
         self.__master_data = (Data(input_data=None), MetaData(input_data_org=None), PhExceptionHelper(msg_key=None))
 
@@ -43,14 +44,17 @@ class DataTypeMaster(object):
     def set_remarks(self, remarks):
         self.remarks = remarks
 
-    def set_one_liner(self, one_liner):
-        self.one_liner = one_liner
+    def set_length_in_decimal(self, length_in_decimal):
+        self.length_in_decimal = length_in_decimal
 
     def set_value_in_ascii(self, value_in_ascii):
         self.value_in_ascii = value_in_ascii
 
-    def set_length_in_decimal(self, length_in_decimal):
-        self.length_in_decimal = length_in_decimal
+    def set_one_liner(self, one_liner):
+        self.one_liner = one_liner
+
+    def set_non_tlv_neighbor(self, non_tlv_neighbor):
+        self.non_tlv_neighbor = non_tlv_neighbor
 
     def set_data_pool(self, data_pool):
         self.data_pool = data_pool
@@ -135,6 +139,7 @@ class DataTypeMaster(object):
             data.length_in_decimal = data.length_in_decimal if data.length_in_decimal is not None else self.length_in_decimal
             data.value_in_ascii = data.value_in_ascii if data.value_in_ascii is not None else self.value_in_ascii
             data.one_liner = data.one_liner if data.one_liner is not None else self.one_liner
+            data.non_tlv_neighbor = data.non_tlv_neighbor if data.non_tlv_neighbor is not None else self.non_tlv_neighbor
         else:
             data = Data(
                 input_data=data,
@@ -146,6 +151,7 @@ class DataTypeMaster(object):
                 length_in_decimal=self.length_in_decimal,
                 value_in_ascii=self.value_in_ascii,
                 one_liner=self.one_liner,
+                non_tlv_neighbor=self.non_tlv_neighbor,
             )
         meta_data = MetaData(input_data_org=data.input_data)
         self.__master_data = (data, meta_data)
@@ -185,4 +191,5 @@ class DataTypeMaster(object):
             PhKeys.LENGTH_IN_DECIMAL: data.length_in_decimal,
             PhKeys.VALUE_IN_ASCII: data.value_in_ascii,
             PhKeys.ONE_LINER: data.one_liner,
+            PhKeys.NON_TLV_NEIGHBOR: data.non_tlv_neighbor,
         }

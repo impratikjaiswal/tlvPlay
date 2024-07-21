@@ -26,7 +26,8 @@ def parse_or_update_any_data(data, meta_data=None):
     converter.set_defaults(data, meta_data)
     if not data.input_data:
         raise ValueError(PhExceptionHelper(msg_key=PhConstants.MISSING_INPUT_DATA))
-    tlv_obj = TlvHandler(data.input_data).process_data()
-    meta_data.parsed_data = TlvParser(tlv_obj).get_printable_tlv(data.length_in_decimal, data.value_in_ascii,
-                                                                 data.one_liner)
+    tlv_handler_result = TlvHandler(input_data=data.input_data, non_tlv_neighbor=data.non_tlv_neighbor).process_data()
+    meta_data.parsed_data = TlvParser(tlv_handler_result=tlv_handler_result).get_printable_tlv(data.length_in_decimal,
+                                                                                               data.value_in_ascii,
+                                                                                               data.one_liner)
     converter.print_data(data, meta_data)

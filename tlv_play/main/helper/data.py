@@ -13,6 +13,7 @@ class Data:
                  length_in_decimal=None,
                  value_in_ascii=None,
                  one_liner=None,
+                 non_tlv_neighbor=None,
                  **kwargs,
                  ):
         """
@@ -24,9 +25,10 @@ class Data:
         :param print_info:  Printing of info needed ?
         :param quite_mode: Quite mode needed ? if yes, no printing at all.
         :param remarks: Remarks for Input Data
-        :param length_in_decimal: Lenght in Decimal is needed ?
+        :param length_in_decimal: Length in Decimal is needed ?
         :param value_in_ascii: Value in ASCII is needed ?
         :param one_liner: One Liner output needed ?
+        :param non_tlv_neighbor: Non TLV Neighbor needs to be handled ?
         :param kwargs: To Handle unwanted/deprecated/internal/additional arguments (See Description)
         ----------
 
@@ -46,6 +48,7 @@ class Data:
         self.length_in_decimal = length_in_decimal
         self.value_in_ascii = value_in_ascii
         self.one_liner = one_liner
+        self.non_tlv_neighbor = non_tlv_neighbor
         # Handle kwargs
         if self.input_data is None and PhKeys.RAW_DATA in kwargs:
             self.input_data = kwargs[PhKeys.RAW_DATA]
