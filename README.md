@@ -1,7 +1,7 @@
 # tlvPlay
 Generic TLV Parser based on TLV and related standards
-<BR>Can parse any TLV upto **nth Level**.
-<BR>Single-Multi byte Tag, Length & values are Supported.
+<BR>Can parse any Simple or BER TLV upto **nth Level** automatically.
+<BR>Multi byte Tag, Multi byte Length is also Supported.
 
 [![GitHub License](https://img.shields.io/github/license/impratikjaiswal/tlvPlay)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
