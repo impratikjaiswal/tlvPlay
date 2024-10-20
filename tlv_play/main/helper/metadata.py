@@ -18,3 +18,6 @@ class MetaData:
             if info is not None:
                 return str(info)
         return PhConstants.STR_EMPTY
+
+    def get_parsed_data(self):
+        return self.parsed_data
