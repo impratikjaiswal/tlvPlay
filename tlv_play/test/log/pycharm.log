@@ -5,13 +5,13 @@ Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
 User Name is Pratik Jaiswal
 User Account is impra
 --------------------------------------------------------------------------------
-Time Stamp is Sunday, Oct 20 2024, 22:46:18:181470, IST (GMT+0530)
+Time Stamp is Saturday, Oct 26 2024, 22:09:26:261564, IST (GMT+0530)
 --------------------------------------------------------------------------------
-Git Summary is 44fe920;  (HEAD -> main, origin/main, origin/HEAD); 2024-09-08 16:06:47 +0530; GitHub <noreply@github.com>; Update README.md
+Git Summary is 488781f;  (HEAD -> main, tag: v4.2.2, origin/main, origin/HEAD); 2024-10-20 22:48:46 +0530; imPratik <impratikjaiswal@gmail.com>; v4.2.2
 --------------------------------------------------------------------------------
-pythonHelpers version is v4.4.2
+pythonHelpers version is v4.4.4
 --------------------------------------------------------------------------------
-tlvPlay version is v4.2.2
+tlvPlay version is v4.2.3
 --------------------------------------------------------------------------------
 Sample Data:
 Simple TLV: {'input_data': '86020102', 'remarks': 'Simple TLV', 'data_group': 'Simple TLV', 'length_in_decimal': False, 'value_in_ascii': False, 'one_liner': True, 'non_tlv_neighbor': True}
