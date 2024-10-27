@@ -14,9 +14,10 @@ invalid_tags_list = [[0x00]]
 
 
 class TlvHandler:
-    def __init__(self, input_data, non_tlv_neighbor):
+    def __init__(self, input_data, non_tlv_neighbor, info_data=None):
         self.input_data_list = []
         self.non_tlv_neighbor = non_tlv_neighbor
+        self.info_data = info_data
         if isinstance(input_data, str):
             input_data = PhUtil.trim_and_kill_all_white_spaces(input_data)
             input_data = PhUtil.decode_to_hex_if_base64(input_data)
@@ -85,11 +86,13 @@ class TlvHandler:
         offset += len_dec
         return Tlv(tag_list, len_list, value_list, len_dec, level), offset
 
-    def process_data(self, input_data_list=None, level=0, non_tlv_neighbor=None):
+    def process_data(self, input_data_list=None, level=0, non_tlv_neighbor=None, info_data=None):
         if input_data_list is None:
             input_data_list = self.input_data_list
         if non_tlv_neighbor is None:
             non_tlv_neighbor = self.non_tlv_neighbor
+        if info_data is None:
+            info_data = self.info_data
         offset = 0
         tlv_data = []
         non_tlv_data = []
@@ -100,8 +103,9 @@ class TlvHandler:
                 break
             offset = temp_offset
             if len(tlv_obj.value_list) > 2:  # Possible nested TLV, parse it & store result in temp list
-                sub_tlv_data_temp = (self.process_data(tlv_obj.value_list, level=level + 1, non_tlv_neighbor=False)
-                                     .get(PhKeys.RESULT_PROCESSED, None))
+                sub_tlv_data_temp = (
+                    self.process_data(tlv_obj.value_list, level=level + 1, non_tlv_neighbor=False, info_data=info_data)
+                    .get(PhKeys.RESULT_PROCESSED, None))
                 # Always returned a list
                 if isinstance(sub_tlv_data_temp[0], Tlv):  # Nested TLV Suspected, & Found
                     tlv_obj.value_list = sub_tlv_data_temp.copy()
@@ -114,10 +118,12 @@ class TlvHandler:
         count_sub_tlv_obj_temp = len(sub_tlv_obj_temp)
         # Check if at least one TLV is found
         if count_sub_tlv_obj_temp > 0:
-            # Check if neighbourhood is perfect or not
+            # Check if a neighborhood is perfect or not
             neighbour_tantrum = True if tlv_obj is None else False
             if neighbour_tantrum:
                 # non TLV data
+                if info_data is not None:
+                    info_data.set_info(f'Non TLV data Found; non_tlv_neighbor is {non_tlv_neighbor}')
                 non_tlv_data = input_data_list[offset:]
                 if non_tlv_neighbor is False:
                     # no need to handle non_tlv_neighbor

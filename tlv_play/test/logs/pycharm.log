@@ -1,0 +1,138 @@
+--------------------------------------------------------- user ---------------------------------------------------------
+test_case_data:
+test_case_id: user
+test_case_name: user
+test_case_file_name: user.log
+execution_mode: USER
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc_tlv_play.bat"
+
+
+
+
+"user"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
+------------------------------------------------------ sample_list -----------------------------------------------------
+test_case_data:
+test_case_id: sample_list
+test_case_name: sample_list
+test_case_file_name: sample_list.log
+execution_mode: SAMPLES_LIST
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+execution_mode: value_original was USER; target_value is SAMPLES_LIST
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc_tlv_play.bat"
+
+
+
+
+"sample_list"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+execution_mode: value_original was SAMPLES_LIST; target_value is USER
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
+---------------------------------------------------------- dev ---------------------------------------------------------
+test_case_data:
+test_case_id: dev
+test_case_name: dev
+test_case_file_name: dev.log
+execution_mode: DEV
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+execution_mode: value_original was USER; target_value is DEV
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc_tlv_play.bat"
+
+
+
+
+"dev"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+execution_mode: value_original was DEV; target_value is USER
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
+------------------------------------------------- unit_testing_external ------------------------------------------------
+test_case_data:
+test_case_id: unit_testing_external
+test_case_name: unit_testing_external
+test_case_file_name: unit_testing_external.log
+execution_mode: UNIT_TESTING_EXTERNAL
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+execution_mode: value_original was USER; target_value is UNIT_TESTING_EXTERNAL
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc_tlv_play.bat"
+
+
+
+
+"unit_testing_external"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+execution_mode: value_original was UNIT_TESTING_EXTERNAL; target_value is USER
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
+---------------------------------------------------------- all ---------------------------------------------------------
+test_case_data:
+test_case_id: all
+test_case_name: all
+test_case_file_name: all.log
+execution_mode: ALL
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+execution_mode: value_original was USER; target_value is ALL
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc_tlv_play.bat"
+
+
+
+
+"all"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+execution_mode: value_original was ALL; target_value is USER
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]

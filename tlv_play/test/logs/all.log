@@ -1,0 +1,299 @@
+--------------------------------------------------------------------------------
+Python version is v3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v.1929 64 bit (AMD64)]
+Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
+--------------------------------------------------------------------------------
+User Name is Pratik Jaiswal
+User Account is impra
+--------------------------------------------------------------------------------
+Time Stamp is Sunday, Oct 27 2024, 17:21:25:304171, IST (GMT+0530)
+--------------------------------------------------------------------------------
+Git Summary is 4cd8d0f;  (HEAD -> main, tag: v4.2.3, origin/main, origin/HEAD); 2024-10-26 22:11:23 +0530; imPratik <impratikjaiswal@gmail.com>; v4.2.3
+--------------------------------------------------------------------------------
+pythonHelpers version is v4.4.5
+--------------------------------------------------------------------------------
+tlvPlay version is v4.2.4
+--------------------------------------------------------------------------------
+------------------------------------------------------ UnitTesting -----------------------------------------------------
+*************************************** BER TLV; Multiple Simple TLV as Children ***************************************
+Remarks: BER TLV; Multiple Simple TLV as Children
+Info => Transaction Id: 6ak98sux5h7j; One Liner: True; Non Tlv Neighbor: True
+Input Data: D00D8103010500820281829902090A
+Output Data:
+D0 0D
+  81 03 010500
+  82 02 8182
+  99 02 090A
+--------------------------------------------------------------------------------
+****************************************** Simple TLV; length_in_decimal=True ******************************************
+Remarks: Simple TLV; length_in_decimal=True
+Info => Transaction Id: 124y3qxl29on; Length In Decimal: True; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 (2) 0102
+--------------------------------------------------------------------------------
+****************************************** Simple TLV; length_in_decimal=False *****************************************
+Remarks: Simple TLV; length_in_decimal=False
+Info => Transaction Id: pp3r605sppu7; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 0102
+--------------------------------------------------------------------------------
+******************************* BER TLV; Multiple Simple TLV as Children; one_liner=True *******************************
+Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=True
+Info => Transaction Id: 7df8xse0mskv; One Liner: True; Non Tlv Neighbor: True
+Input Data: D00D 8103010500 82028182 9902090A
+Output Data:
+D0 0D
+  81 03 010500
+  82 02 8182
+  99 02 090A
+--------------------------------------------------------------------------------
+******************************* BER TLV; Multiple Simple TLV as Children; one_liner=False ******************************
+Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=False
+Info => Transaction Id: j9caum58d0yf; Non Tlv Neighbor: True
+Input Data: D00D 8103010500 82028182 9902090A
+Output Data:
+D0 0D
+  81 03
+    010500
+  82 02
+    8182
+  99 02
+    090A
+--------------------------------------------------------------------------------
+********************************* Simple TLV with ASCII Characters; value_in_ascii=True ********************************
+Remarks: Simple TLV with ASCII Characters; value_in_ascii=True
+Info => Transaction Id: pu80i6yrv01l; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
+Input Data: 50 04 5553494D
+Output Data:
+50 04 5553494D (USIM)
+--------------------------------------------------------------------------------
+******************************** Simple TLV with ASCII Characters; value_in_ascii=False ********************************
+Remarks: Simple TLV with ASCII Characters; value_in_ascii=False
+Info => Transaction Id: h2uyjrxb6k5p; One Liner: True; Non Tlv Neighbor: True
+Input Data: 50 04 5553494D
+Output Data:
+50 04 5553494D
+--------------------------------------------------------------------------------
+******************************************************* Test TLV *******************************************************
+Remarks: Test TLV
+Info Data: Non TLV data Found; non_tlv_neighbor is False
+Info => Transaction Id: oqm7a3tok8wd; Non Tlv Neighbor: True
+Input Data: 
+            9F4005FF80F0F001
+        91102263BCC1C2D9C4420013
+        9F0206000000012345
+        9F0306000000004000
+        9F26088E19ED4BCA5C670A
+        82025C00
+        5F340102
+        9F3602000A
+        9F0702FF00
+        9F080208C1
+        9F09021001
+        8A025931
+        9F3403A40002
+        9F270180
+        9F1E0853455249414C3132
+        9F0D05F040008800
+        9F0E05FCF8FCF8F0
+        9F0F05FCF8FCF8F0
+        5F28020840
+        9F390100
+        9F1A020840
+        9F350122
+        95050000048000
+        5F2A020840
+        9B024800
+        9F2103123456
+        9C0100
+        9F370400BC614E
+        4F07A0000000031010
+        9F0607A0000000031010
+        9F7C0412345678
+        8407A0000000031010
+        9F1006010A03600000
+        9F5B052000000000
+        9F4104000001B3
+        910A2263BCC1C2D9C4420013
+        710A0102030405060708090A
+        720A0102030405060708090A
+            
+Output Data:
+9F40 05
+  FF80F0F001
+91 10
+  2263BCC1C2D9C44200139F0206000000
+01 23
+  459F03060000000040009F26088E19ED4BCA5C670A82025C005F3401029F3602000A9F
+07 02
+  FF00
+9F08 02
+  08C1
+9F09 02
+  1001
+8A 02
+  5931
+9F34 03
+  A40002
+9F27 01
+  80
+9F1E 08
+  53455249414C3132
+9F0D 05
+  F040008800
+9F0E 05
+  FCF8FCF8F0
+9F0F 05
+  FCF8FCF8F0
+5F28 02
+  0840
+9F39 01
+  00
+9F1A 02
+  0840
+9F35 01
+  22
+95 05
+  0000048000
+5F2A 02
+  0840
+9B 02
+  4800
+9F21 03
+  123456
+9C 01
+  00
+9F37 04
+  00BC614E
+4F 07
+  A0000000031010
+9F06 07
+  A0000000031010
+9F7C 04
+  12345678
+84 07
+  A0000000031010
+9F10 06
+  010A03600000
+9F5B 05
+  2000000000
+9F41 04
+  000001B3
+91 0A
+  2263BCC1C2D9C4420013
+71 0A
+  0102030405060708090A
+72 0A
+  0102030405060708090A
+--------------------------------------------------------------------------------
+********************** Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True *********************
+Remarks: Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True
+Info => Transaction Id: 1okadtcwmw7a; Length In Decimal: True; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
+Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
+Output Data:
+06 4B (75)
+  21 22 (34)
+    0D 20 (32) 48656C6C6F2C204275792031204742204461746120666F7220302E3520555344 (Hello, Buy 1 GB Data for 0.5 USD)
+  21 0F (15)
+    0D 0D (13) 41726520596F7520537572653F (Are You Sure?)
+  15 14 (20)
+    31 10 (16) 7777772E66616365626F6F6B2E636F6D (www.facebook.com)
+    05 00 (0)
+--------------------------------------------------------------------------------
+********************************** Multiple Simple TLVs; Neighbors; Non TLV Neighbors **********************************
+Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
+Info Data: Non TLV data Found; non_tlv_neighbor is True
+Info => Transaction Id: 1reiaenuhj6x; One Liner: True; Non Tlv Neighbor: True
+Input Data: 810201020102
+Output Data:
+81 02 0102
+
+Non TLV Neighbor: 0102
+--------------------------------------------------------------------------------
+********************************** Multiple Simple TLVs; Neighbors; Non TLV Neighbors **********************************
+Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
+Info Data: Non TLV data Found; non_tlv_neighbor is True
+Info => Transaction Id: itim2kvmumzt; One Liner: True; Non Tlv Neighbor: True
+Input Data: 81020102810201020102
+Output Data:
+81 02 0102
+81 02 0102
+
+Non TLV Neighbor: 0102
+--------------------------------------------------------------------------------
+******************************************************** Non TLV *******************************************************
+Remarks: Non TLV
+Info => Transaction Id: luw9b4bqtp56; One Liner: True; Non Tlv Neighbor: True
+Input Data: 0102
+Output Data:
+0102
+--------------------------------------------------------------------------------
+******************************************************* 86020102 *******************************************************
+Remarks Generated: 86020102
+Info => Transaction Id: w9lgyv5bmg4q; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 0102
+--------------------------------------------------------------------------------
+*************************************************** Kwargs; raw_data ***************************************************
+Remarks: Kwargs; raw_data
+Info => Transaction Id: mtcorbflanjw; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 0102
+--------------------------------------------------------------------------------
+**************************************************** Kwargs; future ****************************************************
+Remarks: Kwargs; future
+Info => Transaction Id: omzlue6x08rg; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 0102
+--------------------------------------------------------------------------------
+****************************************************** Empty Data ******************************************************
+Remarks: Empty Data
+Info => Transaction Id: s8q93xve53or; One Liner: True; Non Tlv Neighbor: True
+Input Data: 
+Output Data:
+
+--------------------------------------------------------------------------------
+Known Exception Occurred; Details: Missing Input Data
+*************************************************** Garbage Hex Data ***************************************************
+Remarks: Garbage Hex Data
+Info => Transaction Id: 5sx44g3lh9zf; One Liner: True; Non Tlv Neighbor: True
+Input Data: 124
+Output Data:
+
+--------------------------------------------------------------------------------
+Known Exception Occurred; Summary: Check your Input Data; Details: Odd-length string
+------------------------------------------------------- UserData -------------------------------------------------------
+****************************************************** Simple TLV ******************************************************
+Remarks: Simple TLV
+Info => Transaction Id: sek4u3iyouhf; One Liner: True; Non Tlv Neighbor: True
+Input Data: 86020102
+Output Data:
+86 02 0102
+--------------------------------------------------------------------------------
+**************************************************** Nested Ber TLV ****************************************************
+Remarks: Nested Ber TLV
+Info => Transaction Id: 32voikrz1ml0; One Liner: True; Non Tlv Neighbor: True
+Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
+Output Data:
+06 4B
+  21 22
+    0D 20 48656C6C6F2C204275792031204742204461746120666F7220302E3520555344
+  21 0F
+    0D 0D 41726520596F7520537572653F
+  15 14
+    31 10 7777772E66616365626F6F6B2E636F6D
+    05 00
+--------------------------------------------------------------------------------
+---------------------------------- Time Details ----------------------------------
+Current Time Stamp: 2024-10-27 17:21:25.317171+05:30
+Execution Time: 00:00:00; Milliseconds: 8.999109268188477
+Execution Time CPU: 00:00:00; Milliseconds: 0.0
+Timer State: TIMER_OFF
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+              All Done.              
+--------------------------------------------------------------------------------

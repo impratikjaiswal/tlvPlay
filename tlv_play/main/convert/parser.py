@@ -8,7 +8,7 @@ from tlv_play.main.tlv.tlv_handler import TlvHandler
 from tlv_play.main.tlv.tlv_parser import TlvParser
 
 
-def parse_or_update_any_data(data, meta_data=None):
+def process_all_data_types(data, meta_data=None, info_data=None):
     """
 
     :param meta_data:
@@ -26,8 +26,9 @@ def parse_or_update_any_data(data, meta_data=None):
     converter.set_defaults(data, meta_data)
     if not data.input_data:
         raise ValueError(PhExceptionHelper(msg_key=PhConstants.MISSING_INPUT_DATA))
-    tlv_handler_result = TlvHandler(input_data=data.input_data, non_tlv_neighbor=data.non_tlv_neighbor).process_data()
+    tlv_handler_result = TlvHandler(input_data=data.input_data, non_tlv_neighbor=data.non_tlv_neighbor,
+                                    info_data=info_data).process_data()
     meta_data.parsed_data = TlvParser(tlv_handler_result=tlv_handler_result).get_printable_tlv(data.length_in_decimal,
                                                                                                data.value_in_ascii,
                                                                                                data.one_liner)
-    converter.print_data(data, meta_data)
+    converter.print_data(data=data, meta_data=meta_data, info_data=info_data)
