@@ -1,10 +1,5 @@
-import copy
-import os
-
 from python_helpers.ph_constants import PhConstants
 from python_helpers.ph_data_master import PhMasterData, PhMasterDataKeys
-from python_helpers.ph_exception_helper import PhExceptionHelper
-from python_helpers.ph_file_extensions import PhFileExtensions
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
@@ -80,7 +75,7 @@ def parse_config(config_data):
         if isinstance(v, str):
             # Trim Garbage data
             v = PhUtil.trim_white_spaces_in_str(v)
-            v = clear_quotation_marks(v)
+            v = PhUtil.clear_quotation_marks(v)
             v_lower_case = v.lower()
             v_eval = None
             try:
@@ -114,14 +109,15 @@ def parse_config(config_data):
 
 
 def set_defaults_for_printing(data):
-    if data.quite_mode is None:
-        data.quite_mode = Defaults.QUITE_MODE
-    if data.print_input is None:
-        data.print_input = Defaults.PRINT_INPUT
-    if data.print_output is None:
-        data.print_output = Defaults.PRINT_OUTPUT
-    if data.print_info is None:
-        data.print_info = Defaults.PRINT_INFO
+    """
+
+    :param data:
+    :return:
+    """
+    data.quite_mode = PhUtil.set_if_none(data.quite_mode, Defaults.QUITE_MODE)
+    data.print_input = PhUtil.set_if_none(data.print_input, Defaults.PRINT_INPUT)
+    data.print_output = PhUtil.set_if_none(data.print_output, Defaults.PRINT_OUTPUT)
+    data.print_info = PhUtil.set_if_none(data.print_info, Defaults.PRINT_INFO)
 
 
 def set_defaults(data, meta_data):

@@ -5,18 +5,18 @@ Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
 User Name is Pratik Jaiswal
 User Account is impra
 --------------------------------------------------------------------------------
-Time Stamp is Sunday, Oct 27 2024, 17:21:25:304171, IST (GMT+0530)
+Time Stamp is Friday, Nov 01 2024, 12:44:25:805945, IST (GMT+0530)
 --------------------------------------------------------------------------------
-Git Summary is 4cd8d0f;  (HEAD -> main, tag: v4.2.3, origin/main, origin/HEAD); 2024-10-26 22:11:23 +0530; imPratik <impratikjaiswal@gmail.com>; v4.2.3
+Git Summary is 3200c7e;  (HEAD -> main, tag: v4.2.4, origin/main, origin/HEAD); 2024-10-27 17:24:50 +0530; imPratik <impratikjaiswal@gmail.com>; batch testing support added
 --------------------------------------------------------------------------------
 pythonHelpers version is v4.4.5
 --------------------------------------------------------------------------------
-tlvPlay version is v4.2.4
+tlvPlay version is v4.2.5
 --------------------------------------------------------------------------------
 ------------------------------------------------------ UnitTesting -----------------------------------------------------
 *************************************** BER TLV; Multiple Simple TLV as Children ***************************************
 Remarks: BER TLV; Multiple Simple TLV as Children
-Info => Transaction Id: 6ak98sux5h7j; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: hpfbumc7f0j8; One Liner: True; Non Tlv Neighbor: True
 Input Data: D00D8103010500820281829902090A
 Output Data:
 D0 0D
@@ -26,21 +26,21 @@ D0 0D
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=True ******************************************
 Remarks: Simple TLV; length_in_decimal=True
-Info => Transaction Id: 124y3qxl29on; Length In Decimal: True; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 1dde5ro8f1ck; Length In Decimal: True; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 (2) 0102
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=False *****************************************
 Remarks: Simple TLV; length_in_decimal=False
-Info => Transaction Id: pp3r605sppu7; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: edi0c3ar4s5r; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=True *******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=True
-Info => Transaction Id: 7df8xse0mskv; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: hwgcexu1xw4n; One Liner: True; Non Tlv Neighbor: True
 Input Data: D00D 8103010500 82028182 9902090A
 Output Data:
 D0 0D
@@ -50,7 +50,7 @@ D0 0D
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=False ******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=False
-Info => Transaction Id: j9caum58d0yf; Non Tlv Neighbor: True
+Info => Transaction Id: z2zwh1jtlqql; Non Tlv Neighbor: True
 Input Data: D00D 8103010500 82028182 9902090A
 Output Data:
 D0 0D
@@ -63,14 +63,14 @@ D0 0D
 --------------------------------------------------------------------------------
 ********************************* Simple TLV with ASCII Characters; value_in_ascii=True ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=True
-Info => Transaction Id: pu80i6yrv01l; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: tnbdeigt9fzn; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
 Input Data: 50 04 5553494D
 Output Data:
 50 04 5553494D (USIM)
 --------------------------------------------------------------------------------
 ******************************** Simple TLV with ASCII Characters; value_in_ascii=False ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=False
-Info => Transaction Id: h2uyjrxb6k5p; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 0dfj3krl7l7w; One Liner: True; Non Tlv Neighbor: True
 Input Data: 50 04 5553494D
 Output Data:
 50 04 5553494D
@@ -78,7 +78,7 @@ Output Data:
 ******************************************************* Test TLV *******************************************************
 Remarks: Test TLV
 Info Data: Non TLV data Found; non_tlv_neighbor is False
-Info => Transaction Id: oqm7a3tok8wd; Non Tlv Neighbor: True
+Info => Transaction Id: vayz5pr1cmyd; Non Tlv Neighbor: True
 Input Data: 
             9F4005FF80F0F001
         91102263BCC1C2D9C4420013
@@ -189,7 +189,7 @@ Output Data:
 --------------------------------------------------------------------------------
 ********************** Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True *********************
 Remarks: Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True
-Info => Transaction Id: 1okadtcwmw7a; Length In Decimal: True; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: t6mv0ie0lxsm; Length In Decimal: True; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B (75)
@@ -204,7 +204,7 @@ Output Data:
 ********************************** Multiple Simple TLVs; Neighbors; Non TLV Neighbors **********************************
 Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
 Info Data: Non TLV data Found; non_tlv_neighbor is True
-Info => Transaction Id: 1reiaenuhj6x; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: hh0g9pzq54xj; One Liner: True; Non Tlv Neighbor: True
 Input Data: 810201020102
 Output Data:
 81 02 0102
@@ -214,7 +214,7 @@ Non TLV Neighbor: 0102
 ********************************** Multiple Simple TLVs; Neighbors; Non TLV Neighbors **********************************
 Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
 Info Data: Non TLV data Found; non_tlv_neighbor is True
-Info => Transaction Id: itim2kvmumzt; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 0eutul1fpqr0; One Liner: True; Non Tlv Neighbor: True
 Input Data: 81020102810201020102
 Output Data:
 81 02 0102
@@ -224,35 +224,35 @@ Non TLV Neighbor: 0102
 --------------------------------------------------------------------------------
 ******************************************************** Non TLV *******************************************************
 Remarks: Non TLV
-Info => Transaction Id: luw9b4bqtp56; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: mnze442z1858; One Liner: True; Non Tlv Neighbor: True
 Input Data: 0102
 Output Data:
 0102
 --------------------------------------------------------------------------------
 ******************************************************* 86020102 *******************************************************
 Remarks Generated: 86020102
-Info => Transaction Id: w9lgyv5bmg4q; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 8annvrof4v53; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 *************************************************** Kwargs; raw_data ***************************************************
 Remarks: Kwargs; raw_data
-Info => Transaction Id: mtcorbflanjw; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 1i4jmtrdeiau; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 **************************************************** Kwargs; future ****************************************************
 Remarks: Kwargs; future
-Info => Transaction Id: omzlue6x08rg; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: r1lqmejh8jz4; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 ****************************************************** Empty Data ******************************************************
 Remarks: Empty Data
-Info => Transaction Id: s8q93xve53or; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: 089r80txc4o4; One Liner: True; Non Tlv Neighbor: True
 Input Data: 
 Output Data:
 
@@ -260,7 +260,7 @@ Output Data:
 Known Exception Occurred; Details: Missing Input Data
 *************************************************** Garbage Hex Data ***************************************************
 Remarks: Garbage Hex Data
-Info => Transaction Id: 5sx44g3lh9zf; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: ajj9uf19zawz; One Liner: True; Non Tlv Neighbor: True
 Input Data: 124
 Output Data:
 
@@ -269,14 +269,14 @@ Known Exception Occurred; Summary: Check your Input Data; Details: Odd-length st
 ------------------------------------------------------- UserData -------------------------------------------------------
 ****************************************************** Simple TLV ******************************************************
 Remarks: Simple TLV
-Info => Transaction Id: sek4u3iyouhf; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: bo4x4fzmxk1n; One Liner: True; Non Tlv Neighbor: True
 Input Data: 86020102
 Output Data:
 86 02 0102
 --------------------------------------------------------------------------------
 **************************************************** Nested Ber TLV ****************************************************
 Remarks: Nested Ber TLV
-Info => Transaction Id: 32voikrz1ml0; One Liner: True; Non Tlv Neighbor: True
+Info => Transaction Id: irqdu9cgwf0l; One Liner: True; Non Tlv Neighbor: True
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Output Data:
 06 4B
@@ -289,9 +289,9 @@ Output Data:
     05 00
 --------------------------------------------------------------------------------
 ---------------------------------- Time Details ----------------------------------
-Current Time Stamp: 2024-10-27 17:21:25.317171+05:30
-Execution Time: 00:00:00; Milliseconds: 8.999109268188477
-Execution Time CPU: 00:00:00; Milliseconds: 0.0
+Current Time Stamp: 2024-11-01 12:44:25.830945+05:30
+Execution Time: 00:00:00; Milliseconds: 19.00029182434082
+Execution Time CPU: 00:00:00; Milliseconds: 15.625
 Timer State: TIMER_OFF
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
