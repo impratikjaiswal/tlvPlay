@@ -6,7 +6,24 @@ from tlv_play.main.data_type.data_type_master import DataTypeMaster
 from tlv_play.main.helper.data import Data
 
 
+# Data has to be declared in global, so that it can be used by other classes
+
 class Sample(DataTypeMaster):
+
+    def get_sample_data_pool_for_web(self):
+        if not self.data_pool:
+            self.set_data_pool()
+        sample_data_dic = OrderedDict()
+        for data in self.data_pool:
+            remarks = data.remarks
+            remarks = PhUtil.to_list(remarks, all_str=True, trim_data=True)
+            if len(remarks) < 1:
+                raise ValueError("Remarks should not be empty")
+            key, data.data_group = PhUtil.generate_key_and_data_group(remarks)
+            if key in sample_data_dic:
+                raise ValueError(f'Duplicate Sample Remarks: {key}')
+            sample_data_dic.update({key: super().to_dic(data)})
+        return sample_data_dic
 
     def set_print_input(self):
         print_input = None
@@ -27,6 +44,22 @@ class Sample(DataTypeMaster):
     def set_remarks(self):
         remarks = None
         super().set_remarks(remarks)
+
+    def set_encoding(self):
+        encoding = None
+        super().set_encoding(encoding)
+
+    def set_encoding_errors(self):
+        encoding_errors = None
+        super().set_encoding_errors(encoding_errors)
+
+    def set_archive_output(self):
+        archive_output = None
+        super().set_archive_output(archive_output)
+
+    def set_archive_output_format(self):
+        archive_output_format = None
+        super().set_archive_output_format(archive_output_format)
 
     def set_length_in_decimal(self):
         length_in_decimal = None
@@ -119,14 +152,3 @@ class Sample(DataTypeMaster):
             #
         ]
         super().set_data_pool(data_pool)
-
-    def get_sample_data_pool_for_web(self):
-        if not self.data_pool:
-            self.set_data_pool()
-        sample_data_dic = OrderedDict()
-        for data in self.data_pool:
-            key, data.data_group = PhUtil.generate_key_and_data_group(data.remarks)
-            if key in sample_data_dic:
-                raise ValueError(f'Duplicate Sample Remarks: {key}')
-            sample_data_dic.update({key: super().to_dic(data)})
-        return sample_data_dic

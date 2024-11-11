@@ -24,6 +24,22 @@ class UserData(DataTypeMaster):
         remarks = None
         super().set_remarks(remarks)
 
+    def set_encoding(self):
+        encoding = None
+        super().set_encoding(encoding)
+
+    def set_encoding_errors(self):
+        encoding_errors = None
+        super().set_encoding_errors(encoding_errors)
+
+    def set_archive_output(self):
+        archive_output = None
+        super().set_archive_output(archive_output)
+
+    def set_archive_output_format(self):
+        archive_output_format = None
+        super().set_archive_output_format(archive_output_format)
+
     def set_length_in_decimal(self):
         length_in_decimal = None
         super().set_length_in_decimal(length_in_decimal)
@@ -52,5 +68,6 @@ class UserData(DataTypeMaster):
                 remarks='Nested Ber TLV',
                 input_data='064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
             ),
+            #
         ]
         super().set_data_pool(data_pool)

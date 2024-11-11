@@ -4,7 +4,8 @@ import unittest.mock
 from python_helpers.ph_keys import PhKeys
 
 import test_tlv_data
-from tlv_play.main.convert import converter
+from tlv_play.main.convert.converter import set_defaults
+from tlv_play.main.helper.data import Data
 from tlv_play.main.tlv.tlv_handler import TlvHandler
 from tlv_play.main.tlv.tlv_parser import TlvParser
 
@@ -14,16 +15,17 @@ STR_TEST_OBJ = 'test_obj :'
 class TestObjTlv:
     def __init__(self, input_data, expected_op, expected_op_print, test_name='', length_in_decimal=None,
                  value_in_ascii=None, one_liner=None, non_tlv_neighbor=None):
-        length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor = (
-            converter.set_defaults_individual_params(length_in_decimal, value_in_ascii, one_liner, non_tlv_neighbor))
+        data = Data(length_in_decimal=length_in_decimal, value_in_ascii=value_in_ascii, one_liner=one_liner,
+                    non_tlv_neighbor=non_tlv_neighbor)
+        set_defaults(data, None)
         self.input_data = input_data
         self.expected_op = expected_op
         self.expected_op_print = expected_op_print
         self.test_name = test_name
-        self.length_in_decimal = length_in_decimal
-        self.value_in_ascii = value_in_ascii
-        self.one_liner = one_liner
-        self.non_tlv_neighbor = non_tlv_neighbor
+        self.length_in_decimal = data.length_in_decimal
+        self.value_in_ascii = data.value_in_ascii
+        self.one_liner = data.one_liner
+        self.non_tlv_neighbor = data.non_tlv_neighbor
 
 
 class TestTlv(unittest.TestCase):

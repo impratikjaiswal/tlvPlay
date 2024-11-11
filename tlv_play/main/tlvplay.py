@@ -1,8 +1,11 @@
+import sys
+
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
 from python_helpers.ph_modes_execution import PhExecutionModes
 from python_helpers.ph_time import PhTime
 from python_helpers.ph_util import PhUtil
 
+from tlv_play.main.convert.converter import read_web_request
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
 from tlv_play.main.data_type.dev import Dev
 from tlv_play.main.data_type.sample import Sample
@@ -12,9 +15,12 @@ from tlv_play.main.helper.constants_config import ConfigConst
 from tlv_play.main.helper.defaults import Defaults
 from tlv_play.test.test import Test
 
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
 """
 Global Variables
 """
+data_cli = None
 execution_mode = None
 error_handling_mode = None
 
@@ -24,7 +30,7 @@ def process_data():
 
     :return:
     """
-    global execution_mode, error_handling_mode
+    global execution_mode, error_handling_mode, data_cli
     data_type_user = [
         #####
         # Empty class for user usage
@@ -65,15 +71,25 @@ def process_data():
 
     data_types_pool = {
         PhExecutionModes.USER: data_type_user,
-        PhExecutionModes.DEV: data_type_dev,
-        PhExecutionModes.SAMPLE_GENERIC: data_types_sample_generic,
         PhExecutionModes.SAMPLES_LIST: data_types_samples,
+        PhExecutionModes.SAMPLE_GENERIC: data_types_sample_generic,
         PhExecutionModes.SAMPLE_SPECIFIC: data_types_sample_specific,
         PhExecutionModes.UNIT_TESTING: data_type_unit_testing,
         PhExecutionModes.UNIT_TESTING_EXTERNAL: data_type_unit_testing_external,
-        PhExecutionModes.ALL: data_types_sample_generic + data_types_sample_specific + data_type_unit_testing + data_type_user,
+        PhExecutionModes.DEV: data_type_dev,
+        PhExecutionModes.ALL: data_type_user +
+                              data_types_samples +
+                              data_types_sample_generic +
+                              data_types_sample_specific +
+                              data_type_unit_testing +
+                              data_type_unit_testing_external +
+                              data_type_dev,
     }
     data_types = data_types_pool.get(execution_mode, Defaults.EXECUTION_MODE)
+    if data_cli:
+        _data_type = DataTypeMaster()
+        _data_type.set_data_pool(data_pool=[data_cli])
+        data_types = [_data_type]
     for data_type in data_types:
         PhUtil.print_heading(str_heading=str(data_type.__class__.__name__))
         # if isinstance(data_type, UnitTesting):
@@ -86,15 +102,23 @@ def process_data():
         if isinstance(data_type, Sample):
             # Validate & Print Sample Data For Web
             PhUtil.print_iter(Sample().get_sample_data_pool_for_web(), header='Sample Data')
-        data_type.set_print_input()
-        data_type.set_print_output()
-        data_type.set_print_info()
-        data_type.set_quiet_mode()
-        data_type.set_remarks()
-        data_type.set_one_liner()
-        data_type.set_value_in_ascii()
-        data_type.set_length_in_decimal()
-        data_type.set_data_pool()
+        if not data_cli:
+            data_type.set_print_input()
+            data_type.set_print_output()
+            data_type.set_print_info()
+            data_type.set_quiet_mode()
+            data_type.set_remarks()
+            data_type.set_encoding()
+            data_type.set_encoding_errors()
+            data_type.set_archive_output()
+            data_type.set_archive_output_format()
+            #
+            data_type.set_one_liner()
+            data_type.set_value_in_ascii()
+            data_type.set_length_in_decimal()
+            data_type.set_non_tlv_neighbor()
+            #
+            data_type.set_data_pool()
         DataTypeMaster.process_safe(data_type, error_handling_mode)
 
 
@@ -116,6 +140,16 @@ def print_configurations():
     PhUtil.print_version(ConfigConst.TOOL_NAME, ConfigConst.TOOL_VERSION)
 
 
+def handle_args(**kwargs):
+    """
+
+    :param kwargs:
+    :return:
+    """
+    global data_cli
+    data_cli = read_web_request(kwargs)
+
+
 def main():
     """
 
@@ -126,6 +160,17 @@ def main():
     """
     ph_time_obj = PhTime()
     ph_time_obj.start()
+    """
+    Handle Args
+    """
+    if len(sys.argv) > 1:
+        standalone_mode = False
+        # callback is not received for '--help', so handle differently
+        if sys.argv[1] == '--help':
+            # Print Configurations
+            print_configurations()
+            standalone_mode = True
+        handle_args(standalone_mode=standalone_mode)
     """
     Configurations
     """

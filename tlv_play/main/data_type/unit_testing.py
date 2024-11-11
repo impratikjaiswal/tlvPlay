@@ -24,6 +24,22 @@ class UnitTesting(DataTypeMaster):
         remarks = None
         super().set_remarks(remarks)
 
+    def set_encoding(self):
+        encoding = None
+        super().set_encoding(encoding)
+
+    def set_encoding_errors(self):
+        encoding_errors = None
+        super().set_encoding_errors(encoding_errors)
+
+    def set_archive_output(self):
+        archive_output = None
+        super().set_archive_output(archive_output)
+
+    def set_archive_output_format(self):
+        archive_output_format = None
+        super().set_archive_output_format(archive_output_format)
+
     def set_length_in_decimal(self):
         length_in_decimal = None
         super().set_length_in_decimal(length_in_decimal)
@@ -82,6 +98,12 @@ class UnitTesting(DataTypeMaster):
                 remarks='Simple TLV with ASCII Characters; value_in_ascii=False',
                 input_data='50 04 5553494D',
                 value_in_ascii=False,
+            ),
+            #
+            Data(
+                remarks='List',
+                input_data=['50 04 5553494D', 'D00D 8103010500 82028182 9902090A', '86020102',
+                            'D00D8103010500820281829902090A'],
             ),
             #
             Data(

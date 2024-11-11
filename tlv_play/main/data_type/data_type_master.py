@@ -7,6 +7,7 @@ from python_helpers.ph_data_master import PhMasterData, PhMasterDataKeys
 from python_helpers.ph_exception_helper import PhExceptionHelper
 from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
+from python_helpers.ph_util import PhUtil
 
 from tlv_play.main.convert import converter
 from tlv_play.main.convert.converter import read_web_request, set_defaults
@@ -18,11 +19,17 @@ from tlv_play.main.helper.metadata import MetaData
 
 class DataTypeMaster(object):
     def __init__(self):
+        # Common Objects
         self.print_input = None
         self.print_output = None
         self.print_info = None
         self.quite_mode = None
         self.remarks = None
+        self.encoding = None
+        self.encoding_errors = None
+        self.archive_output = None
+        self.archive_output_format = None
+        # Specific Objects
         self.length_in_decimal = None
         self.value_in_ascii = None
         self.one_liner = None
@@ -49,6 +56,18 @@ class DataTypeMaster(object):
 
     def set_remarks(self, remarks):
         self.remarks = remarks
+
+    def set_encoding(self, encoding):
+        self.encoding = encoding
+
+    def set_encoding_errors(self, encoding_errors):
+        self.encoding_errors = encoding_errors
+
+    def set_archive_output(self, archive_output):
+        self.archive_output = archive_output
+
+    def set_archive_output_format(self, archive_output_format):
+        self.archive_output_format = archive_output_format
 
     def set_length_in_decimal(self, length_in_decimal):
         self.length_in_decimal = length_in_decimal
@@ -138,6 +157,10 @@ class DataTypeMaster(object):
             data.print_info = data.print_info if data.print_info is not None else self.print_info
             data.quite_mode = data.quite_mode if data.quite_mode is not None else self.quite_mode
             data.remarks = data.remarks if data.remarks is not None else self.remarks
+            data.encoding = data.encoding if data.encoding is not None else self.encoding
+            data.encoding_errors = data.encoding_errors if data.encoding_errors is not None else self.encoding_errors
+            data.archive_output = data.archive_output if data.archive_output is not None else self.archive_output
+            data.archive_output_format = data.archive_output_format if data.archive_output_format is not None else self.archive_output_format
             data.length_in_decimal = data.length_in_decimal if data.length_in_decimal is not None else self.length_in_decimal
             data.value_in_ascii = data.value_in_ascii if data.value_in_ascii is not None else self.value_in_ascii
             data.one_liner = data.one_liner if data.one_liner is not None else self.one_liner
@@ -150,6 +173,10 @@ class DataTypeMaster(object):
                 print_info=self.print_info,
                 quite_mode=self.quite_mode,
                 remarks=self.remarks,
+                encoding=self.encoding,
+                encoding_errors=self.encoding_errors,
+                archive_output=self.archive_output,
+                archive_output_format=self.archive_output_format,
                 length_in_decimal=self.length_in_decimal,
                 value_in_ascii=self.value_in_ascii,
                 one_liner=self.one_liner,
@@ -174,12 +201,17 @@ class DataTypeMaster(object):
         :return:
         """
         set_defaults(data, None)
-        return {
+        common_data = {
             PhKeys.INPUT_DATA: data.input_data,
             PhKeys.REMARKS: data.get_remarks_as_str(),
             PhKeys.DATA_GROUP: data.data_group,
+            PhKeys.ENCODING: data.encoding,
+            PhKeys.ENCODING_ERRORS: data.encoding_errors,
+            PhKeys.ARCHIVE_OUTPUT: data.archive_output,
+            PhKeys.ARCHIVE_OUTPUT_FORMAT: data.archive_output_format,
             PhKeys.LENGTH_IN_DECIMAL: data.length_in_decimal,
             PhKeys.VALUE_IN_ASCII: data.value_in_ascii,
             PhKeys.ONE_LINER: data.one_liner,
             PhKeys.NON_TLV_NEIGHBOR: data.non_tlv_neighbor,
         }
+        return PhUtil.dict_clean(common_data)
