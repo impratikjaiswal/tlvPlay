@@ -27,7 +27,7 @@ class Data:
         """
         Instantiate the Data Object for further Processing.
 
-        :param input_data: Input Data; File Path(s), Dir Paths(s)
+        :param input_data: Input Data; String(s), File Path(s), Dir Paths(s)
         :param print_input: Printing of input needed?
         :param print_output: Printing of output needed?
         :param print_info:  Printing of info needed?

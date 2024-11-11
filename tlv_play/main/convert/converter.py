@@ -148,11 +148,11 @@ def read_web_request(request_form):
 
 def read_input_file(data, meta_data, info_data):
     try:
-        # Binary File
+        # Text File
         with open(data.input_data, mode='r', encoding=data.encoding, errors=data.encoding_errors) as the_file:
             resp = ''.join(the_file.readlines())
     except UnicodeDecodeError:
-        # Binary File/
+        # Binary File/Encoding Error
         with open(data.input_data, 'rb') as the_file:
             resp = the_file.read()
     if not resp:
