@@ -102,6 +102,7 @@ def process_all_data_types(data, meta_data=None, info_data=None):
     # Needed for a scenario when remarks will be fetched from YML
     data.set_auto_generated_remarks_if_needed()
     converter.set_defaults(data, meta_data)
+    data.set_user_remarks_expand_variables()
     """
     Data Processing
     """

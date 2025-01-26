@@ -5,18 +5,18 @@ Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
 User Name is Pratik Jaiswal
 User Account is impra
 --------------------------------------------------------------------------------
-Time Stamp is Sunday, Jan 26 2025, 12:27:33:794007, IST (GMT+0530)
+Time Stamp is Sunday, Jan 26 2025, 18:49:52:438841, IST (GMT+0530)
 --------------------------------------------------------------------------------
-Git Summary is 81862ec;  (HEAD -> main, origin/main, origin/HEAD); 2024-12-09 21:49:46 +0530; imPratik <impratikjaiswal@gmail.com>; fav icon changed
+Git Summary is 5da3fea;  (HEAD -> main); 2025-01-26 12:35:50 +0530; imPratik <impratikjaiswal@gmail.com>; info object collection is optimized, dict_to_data added, various other chnages
 --------------------------------------------------------------------------------
-pythonHelpers version is v5.2.3.dev10
+pythonHelpers version is v5.2.3.dev17
 --------------------------------------------------------------------------------
-tlvPlay version is v4.4.0
+tlvPlay version is v4.4.0.dev2
 --------------------------------------------------------------------------------
 ------------------------------------------------ Data Class: UnitTesting -----------------------------------------------
 *************************************** BER TLV; Multiple Simple TLV as Children ***************************************
 Remarks: BER TLV; Multiple Simple TLV as Children
-Info => Transaction Id: kuqg35fv9dy7; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: pamdy8qttmt2; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: D00D8103010500820281829902090A
 Input Data Length: 30
 Output Data:
@@ -28,7 +28,7 @@ Output Data Length: 46
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=True ******************************************
 Remarks: Simple TLV; length_in_decimal=True
-Info => Transaction Id: knoz8pfzgay3; Length In Decimal: True; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: reiytyf8emp5; Length In Decimal: True; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -37,7 +37,7 @@ Output Data Length: 14
 --------------------------------------------------------------------------------
 ****************************************** Simple TLV; length_in_decimal=False *****************************************
 Remarks: Simple TLV; length_in_decimal=False
-Info => Transaction Id: bmh98xny5tuq; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: l9ozpcz0d231; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -46,7 +46,7 @@ Output Data Length: 10
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=True *******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=True
-Info => Transaction Id: v25c0jh4po72; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 57nfbn9j6rgi; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: D00D 8103010500 82028182 9902090A
 Input Data Length: 33
 Output Data:
@@ -58,7 +58,7 @@ Output Data Length: 46
 --------------------------------------------------------------------------------
 ******************************* BER TLV; Multiple Simple TLV as Children; one_liner=False ******************************
 Remarks: BER TLV; Multiple Simple TLV as Children; one_liner=False
-Info => Transaction Id: tf54i7wfb861; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 3e1rd4wvddth; Length In Decimal: False; Value In Ascii: False; One Liner: False; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: D00D 8103010500 82028182 9902090A
 Input Data Length: 33
 Output Data:
@@ -73,7 +73,7 @@ Output Data Length: 58
 --------------------------------------------------------------------------------
 ********************************* Simple TLV with ASCII Characters; value_in_ascii=True ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=True
-Info => Transaction Id: e626aoisbflj; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 0rm7z60g0v7k; Length In Decimal: False; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 50 04 5553494D
 Input Data Length: 14
 Output Data:
@@ -82,7 +82,7 @@ Output Data Length: 21
 --------------------------------------------------------------------------------
 ******************************** Simple TLV with ASCII Characters; value_in_ascii=False ********************************
 Remarks: Simple TLV with ASCII Characters; value_in_ascii=False
-Info => Transaction Id: 1p8umf9zciqk; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: htn3ta17u380; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 50 04 5553494D
 Input Data Length: 14
 Output Data:
@@ -91,13 +91,13 @@ Output Data Length: 14
 --------------------------------------------------------------------------------
 ++++++++++++++++++++++++++++++++++++++++++++++++++ List; (4 Elements) ++++++++++++++++++++++++++++++++++++++++++++++++++
 Remarks: List
-Info => Transaction Id: pyc93eld81wb; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 0bw6libzf3ju; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: ['50 04 5553494D', 'D00D 8103010500 82028182 9902090A', '86020102', 'D00D8103010500820281829902090A']
 Input Data Length: 101
 --------------------------------------------------------------------------------
 ***************************************************** List; Item 1 *****************************************************
 Remarks: List
-Info => Transaction Id: ba88j2d4b3az; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 1j047j9aptqx; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 50 04 5553494D
 Input Data Length: 14
 Output Data:
@@ -106,7 +106,7 @@ Output Data Length: 14
 --------------------------------------------------------------------------------
 ***************************************************** List; Item 2 *****************************************************
 Remarks: List
-Info => Transaction Id: 45c5merk2d06; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: wmo4al6ndvk2; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: D00D 8103010500 82028182 9902090A
 Input Data Length: 33
 Output Data:
@@ -118,7 +118,7 @@ Output Data Length: 46
 --------------------------------------------------------------------------------
 ***************************************************** List; Item 3 *****************************************************
 Remarks: List
-Info => Transaction Id: xhkia64wvnz4; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 278g2mn6majz; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -127,7 +127,7 @@ Output Data Length: 10
 --------------------------------------------------------------------------------
 ***************************************************** List; Item 4 *****************************************************
 Remarks: List
-Info => Transaction Id: kyzvsm998k33; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: h0hbtmi9y8f3; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: D00D8103010500820281829902090A
 Input Data Length: 30
 Output Data:
@@ -148,7 +148,7 @@ Info Data:
 	Non TLV data Found; non_tlv_neighbor is False
 	Non TLV data Found; non_tlv_neighbor is False
 Info Data Length: 327
-Info => Transaction Id: 4oc0t3hor6ke; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 669z1sey73p5; Length In Decimal: False; Value In Ascii: False; One Liner: False; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 
             9F4005FF80F0F001
         91102263BCC1C2D9C4420013
@@ -261,7 +261,7 @@ Output Data Length: 706
 --------------------------------------------------------------------------------
 ********************** Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True *********************
 Remarks: Nested BER TLV; length_in_decimal=True; value_in_ascii=True; one_liner=True
-Info => Transaction Id: mcyfu11bpm0m; Length In Decimal: True; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: yka5bm5b3s9n; Length In Decimal: True; Value In Ascii: True; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500
 Input Data Length: 154
 Output Data:
@@ -279,7 +279,7 @@ Output Data Length: 303
 Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
 Info Data: Non TLV data Found; non_tlv_neighbor is True
 Info Data Length: 44
-Info => Transaction Id: sst290bzgy4i; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 9w04vhbx9mat; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 810201020102
 Input Data Length: 12
 Output Data:
@@ -292,7 +292,7 @@ Output Data Length: 34
 Remarks: Multiple Simple TLVs; Neighbors; Non TLV Neighbors
 Info Data: Non TLV data Found; non_tlv_neighbor is True
 Info Data Length: 44
-Info => Transaction Id: oyj75eoup8w9; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: uc9pf4bgo15r; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 81020102810201020102
 Input Data Length: 20
 Output Data:
@@ -304,7 +304,7 @@ Output Data Length: 45
 --------------------------------------------------------------------------------
 ******************************************************** Non TLV *******************************************************
 Remarks: Non TLV
-Info => Transaction Id: n23myieqzd03; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: 519ixwn56uvk; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 0102
 Input Data Length: 4
 Output Data:
@@ -313,7 +313,7 @@ Output Data Length: 4
 --------------------------------------------------------------------------------
 ******************************************************* 86020102 *******************************************************
 Remarks Generated: 86020102
-Info => Transaction Id: 0o8il0aru0gz; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: n634htiqe29j; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -322,7 +322,7 @@ Output Data Length: 10
 --------------------------------------------------------------------------------
 *************************************************** Kwargs; raw_data ***************************************************
 Remarks: Kwargs; raw_data
-Info => Transaction Id: dpu73t6cxx2c; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: ts0w2tx9cy6b; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -331,7 +331,7 @@ Output Data Length: 10
 --------------------------------------------------------------------------------
 **************************************************** Kwargs; future ****************************************************
 Remarks: Kwargs; future
-Info => Transaction Id: hfi3cfbch98f; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: f69za25kxi6d; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 86020102
 Input Data Length: 8
 Output Data:
@@ -340,21 +340,21 @@ Output Data Length: 10
 --------------------------------------------------------------------------------
 ****************************************************** Empty Data ******************************************************
 Remarks: Empty Data
-Info => Transaction Id: oxnigs4uk3rt; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: khczlnripl71; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 
 Input Data Length: 0
 --------------------------------------------------------------------------------
 Known Exception Occurred; Details: Missing Input Data
 *************************************************** Garbage Hex Data ***************************************************
 Remarks: Garbage Hex Data
-Info => Transaction Id: 8qlm9x7s72lu; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip
+Info => Transaction Id: hrzar0xrmpzz; Length In Decimal: False; Value In Ascii: False; One Liner: True; Non Tlv Neighbor: True; Encoding: utf-8; Encoding Errors: replace; Archive Output: True; Archive Output Format: .zip; Quite Mode: False
 Input Data: 124
 Input Data Length: 3
 --------------------------------------------------------------------------------
 Known Exception Occurred; Summary: Check your Input Data; Details: Odd-length string
 ---------------------------------- Time Details ----------------------------------
-Current Time Stamp: 2025-01-26 12:27:33.817034+05:30
-Execution Time: 00:00:00; Milliseconds: 14.04261589050293
+Current Time Stamp: 2025-01-26 18:49:52.460887+05:30
+Execution Time: 00:00:00; Milliseconds: 16.03555679321289
 Execution Time CPU: 00:00:00; Milliseconds: 15.625
 Timer State: TIMER_OFF
 --------------------------------------------------------------------------------
