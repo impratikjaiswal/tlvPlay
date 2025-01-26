@@ -25,6 +25,9 @@ class Sample(DataTypeMaster):
             sample_data_dic.update({key: super().to_dic(data)})
         return sample_data_dic
 
+    def __init__(self):
+        super().__init__()
+
     def set_print_input(self):
         print_input = None
         super().set_print_input(print_input)
@@ -52,6 +55,14 @@ class Sample(DataTypeMaster):
     def set_encoding_errors(self):
         encoding_errors = None
         super().set_encoding_errors(encoding_errors)
+
+    def set_output_path(self):
+        output_path = None
+        super().set_output_path(output_path)
+
+    def set_output_file_name_keyword(self):
+        output_file_name_keyword = None
+        super().set_output_file_name_keyword(output_file_name_keyword)
 
     def set_archive_output(self):
         archive_output = None

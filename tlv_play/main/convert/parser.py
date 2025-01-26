@@ -6,7 +6,7 @@ from python_helpers.ph_keys import PhKeys
 from python_helpers.ph_util import PhUtil
 
 from tlv_play.main.convert import converter
-from tlv_play.main.convert.handler import process_data
+from tlv_play.main.convert.handler import handle_data
 from tlv_play.main.helper.infodata import InfoData
 from tlv_play.main.helper.metadata import MetaData
 
@@ -19,14 +19,14 @@ def process_all_data_types(data, meta_data=None, info_data=None):
     :param data:
     :return:
     """
-    """
-    Bulk Data Handling (Recursive)
-    """
     converter.set_defaults_for_common_objects(data)
     if meta_data is None:
         meta_data = MetaData(input_data_org=data.input_data)
     if info_data is None:
         info_data = InfoData()
+    """
+    Bulk Data Handling (Recursive; List / Tuple / Dict)
+    """
     multiple_inputs = False
     if isinstance(data.input_data, list):
         # List is provided
@@ -36,27 +36,38 @@ def process_all_data_types(data, meta_data=None, info_data=None):
         # CUI (Click) Multi is a tuple
         multiple_inputs = True
         meta_data.input_mode_key = PhKeys.INPUT_TUPLE
+    if isinstance(data.input_data, dict):
+        multiple_inputs = True
+        dict_format = True
+        meta_data.input_mode_key = PhKeys.INPUT_DICT
     if multiple_inputs:
+        elements_count = len(data.input_data)
         data.append_input_modes_hierarchy(meta_data.input_mode_key)
         data.set_auto_generated_remarks_if_needed()
-        data.set_one_time_remarks(f'({len(data.input_data)} Elements)')
+        data.set_one_time_remarks(f'({elements_count} Elements)')
         PhUtil.print_heading(data.get_remarks_as_str(), heading_level=3)
         converter.print_data(data, meta_data)
         parsed_data_list = []
         actual_remarks_length = len(data.remarks)
         current_remarks = PhUtil.extend_list(data.remarks, expected_length=len(data.input_data))
-        for index, input_data_item in enumerate(data.input_data, start=1):
+        iterator = data.input_data
+        for index, input_data_item in enumerate(iterator, start=1):
             sub_data = copy.deepcopy(data)
             sub_data.input_data = input_data_item
             sub_data.reset_auto_generated_remarks()
             sub_data.set_extended_remarks_available(False if index <= actual_remarks_length else True)
             sub_data.set_user_remarks(current_remarks[index - 1])
-            sub_data.set_auto_generated_remarks_if_needed(PhUtil.get_key_value_pair(key='item', value=index,
-                                                                                    sep=PhConstants.SEPERATOR_TWO_WORDS,
-                                                                                    dic_format=False))
+            if elements_count > 1:
+                sub_data.set_auto_generated_remarks_if_needed(
+                    PhUtil.get_key_value_pair(key='item', value=index, sep=PhConstants.SEPERATOR_TWO_WORDS,
+                                              dic_format=False))
             parsed_data_list.append(process_all_data_types(sub_data))
-        return parsed_data_list
-    if data.input_data and os.path.isdir(os.path.abspath(data.input_data)):
+        meta_data.parsed_data = parsed_data_list
+        return meta_data.parsed_data
+    """
+    Dir Handling (Bulk Mode)
+    """
+    if data.input_data and isinstance(data.input_data, str) and os.path.isdir(os.path.abspath(data.input_data)):
         # directory is provided
         meta_data.input_mode_key = PhKeys.INPUT_DIR
         data.append_input_modes_hierarchy(meta_data.input_mode_key)
@@ -76,7 +87,7 @@ def process_all_data_types(data, meta_data=None, info_data=None):
     file_dic_all_str = {}
     data.set_auto_generated_remarks_if_needed()
     PhUtil.print_heading(data.get_remarks_as_str(), heading_level=2)
-    if data.input_data and os.path.isfile(data.input_data):
+    if data.input_data and isinstance(data.input_data, str) and os.path.isfile(os.path.abspath(data.input_data)):
         # file is provided
         resp = converter.read_input_file(data=data, meta_data=meta_data, info_data=info_data)
         # Treat all Files Equally; including YML
@@ -94,7 +105,7 @@ def process_all_data_types(data, meta_data=None, info_data=None):
     """
     Data Processing
     """
-    process_data(data=data, meta_data=meta_data, info_data=info_data)
+    handle_data(data=data, meta_data=meta_data, info_data=info_data)
     converter.print_data(data=data, meta_data=meta_data, info_data=info_data)
     if meta_data.output_file_path:
         PhUtil.make_dirs(file_path=meta_data.output_file_path)

@@ -18,6 +18,9 @@ class MetaData:
         self.excludes = None
         self.output_dic = OrderedDict()
         self.input_mode_value = str(self.input_data_org)
+        #
+        self.output_file_ext_default = None
+        self.output_file_location_default = None
 
     def get_info_data(self):
         if self.output_dic:

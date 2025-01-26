@@ -1,3 +1,52 @@
+--------------------------------------------------------------------------------
+Python version is v3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v.1929 64 bit (AMD64)]
+Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
+--------------------------------------------------------------------------------
+User Name is Pratik Jaiswal
+User Account is impra
+--------------------------------------------------------------------------------
+Time Stamp is Sunday, Jan 26 2025, 12:27:32:925959, IST (GMT+0530)
+--------------------------------------------------------------------------------
+Git Summary is 81862ec;  (HEAD -> main, origin/main, origin/HEAD); 2024-12-09 21:49:46 +0530; imPratik <impratikjaiswal@gmail.com>; fav icon changed
+--------------------------------------------------------------------------------
+pythonHelpers version is v5.2.3.dev10
+--------------------------------------------------------------------------------
+tlvPlay version is v4.4.0
+--------------------------------------------------------------------------------
+----------------------------------------------------- unit_testing -----------------------------------------------------
+test_case_data:
+test_case_id: unit_testing
+test_case_name: unit_testing
+test_case_file_name: unit_testing.log
+execution_mode: UNIT_TESTING
+error_handling_mode: CONTINUE_ON_ERROR
+top_folder_path: []
+
+*********************************************** update_variables_in_file ***********************************************
+execution_mode: value_original was USER; target_value is UNIT_TESTING
+top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
+Executing "run_tc.bat"
+Iteration 1
+Time Stamp is: 26-01-2025 12:27:32.94
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
+
+
+
+
+"unit_testing"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+******************************************************* clean_up *******************************************************
+execution_mode: value_original was UNIT_TESTING; target_value is USER
+top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
 --------------------------------------------------------- user ---------------------------------------------------------
 test_case_data:
 test_case_id: user
@@ -9,7 +58,13 @@ top_folder_path: []
 
 *********************************************** update_variables_in_file ***********************************************
 top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
-Executing "run_tc_tlv_play.bat"
+Executing "run_tc.bat"
+Iteration 2
+Time Stamp is: 26-01-2025 12:27:33.92
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
 
 
 
@@ -24,11 +79,11 @@ Attempting to deactivate existing (and activated) Virtual Environment
 "Batch Execution Done"
 ******************************************************* clean_up *******************************************************
 top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
------------------------------------------------------- sample_list -----------------------------------------------------
+----------------------------------------------------- samples_list -----------------------------------------------------
 test_case_data:
-test_case_id: sample_list
-test_case_name: sample_list
-test_case_file_name: sample_list.log
+test_case_id: samples_list
+test_case_name: samples_list
+test_case_file_name: samples_list.log
 execution_mode: SAMPLES_LIST
 error_handling_mode: CONTINUE_ON_ERROR
 top_folder_path: []
@@ -36,12 +91,18 @@ top_folder_path: []
 *********************************************** update_variables_in_file ***********************************************
 execution_mode: value_original was USER; target_value is SAMPLES_LIST
 top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
-Executing "run_tc_tlv_play.bat"
+Executing "run_tc.bat"
+Iteration 3
+Time Stamp is: 26-01-2025 12:27:34.89
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
 
 
 
 
-"sample_list"
+"samples_list"
 Attempting to activate existing Virtual Environment
 Attempting to deactivate existing (and activated) Virtual Environment
 
@@ -64,7 +125,13 @@ top_folder_path: []
 *********************************************** update_variables_in_file ***********************************************
 execution_mode: value_original was USER; target_value is DEV
 top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
-Executing "run_tc_tlv_play.bat"
+Executing "run_tc.bat"
+Iteration 4
+Time Stamp is: 26-01-2025 12:27:35.89
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
 
 
 
@@ -92,7 +159,13 @@ top_folder_path: []
 *********************************************** update_variables_in_file ***********************************************
 execution_mode: value_original was USER; target_value is UNIT_TESTING_EXTERNAL
 top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
-Executing "run_tc_tlv_play.bat"
+Executing "run_tc.bat"
+Iteration 5
+Time Stamp is: 26-01-2025 12:27:36.85
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
 
 
 
@@ -120,7 +193,13 @@ top_folder_path: []
 *********************************************** update_variables_in_file ***********************************************
 execution_mode: value_original was USER; target_value is ALL
 top_folder_path: value_original was [os.pardir, os.pardir]; target_value is []
-Executing "run_tc_tlv_play.bat"
+Executing "run_tc.bat"
+Iteration 6
+Time Stamp is: 26-01-2025 12:27:37.81
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
 
 
 
@@ -136,3 +215,55 @@ Attempting to deactivate existing (and activated) Virtual Environment
 ******************************************************* clean_up *******************************************************
 execution_mode: value_original was ALL; target_value is USER
 top_folder_path: value_original was []; target_value is [os.pardir, os.pardir]
+----------------------------------------------------- cli_no_param -----------------------------------------------------
+test_case_data:
+test_case_id: cli_no_param
+test_case_name: cli_no_param
+test_case_file_name: cli_no_param.log
+batch_params: 
+
+Executing "run_tc.bat"
+Iteration 1
+Time Stamp is: 26-01-2025 12:27:38.77
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
+
+
+
+
+"cli_no_param"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"
+------------------------------------------------------ cli_--help ------------------------------------------------------
+test_case_data:
+test_case_id: cli_--help
+test_case_name: cli_--help
+test_case_file_name: cli_--help.log
+batch_params: --help
+
+Executing "run_tc.bat"
+Iteration 2
+Time Stamp is: 26-01-2025 12:27:39.78
+impra
+PJ-LEGION
+
+Microsoft Windows [Version 10.0.19045.5371]
+
+
+
+
+"cli_--help"
+Attempting to activate existing Virtual Environment
+Attempting to deactivate existing (and activated) Virtual Environment
+
+
+
+
+"Batch Execution Done"

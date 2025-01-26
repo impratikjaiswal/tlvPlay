@@ -4,6 +4,9 @@ from tlv_play.main.helper.data import Data
 
 class UnitTesting(DataTypeMaster):
 
+    def __init__(self):
+        super().__init__()
+
     def set_print_input(self):
         print_input = None
         super().set_print_input(print_input)
@@ -31,6 +34,14 @@ class UnitTesting(DataTypeMaster):
     def set_encoding_errors(self):
         encoding_errors = None
         super().set_encoding_errors(encoding_errors)
+
+    def set_output_path(self):
+        output_path = None
+        super().set_output_path(output_path)
+
+    def set_output_file_name_keyword(self):
+        output_file_name_keyword = None
+        super().set_output_file_name_keyword(output_file_name_keyword)
 
     def set_archive_output(self):
         archive_output = None
@@ -203,4 +214,8 @@ class UnitTesting(DataTypeMaster):
                 input_data='124',
             ),
         ]
-        super().set_data_pool(data_pool_positive + data_pool_negative)
+        #
+        super().set_data_pool(
+            data_pool_positive
+            + data_pool_negative
+        )

@@ -1,8 +1,7 @@
 from tlv_play.main.data_type.data_type_master import DataTypeMaster
-from tlv_play.main.helper.data import Data
 
 
-class UserData(DataTypeMaster):
+class KnownIssues(DataTypeMaster):
 
     def __init__(self):
         super().__init__()
@@ -69,16 +68,6 @@ class UserData(DataTypeMaster):
 
     def set_data_pool(self):
         data_pool = [
-            #
-            Data(
-                remarks='Simple TLV',
-                input_data='86020102',
-            ),
-            #
-            Data(
-                remarks='Nested Ber TLV',
-                input_data='064B21220D2048656C6C6F2C204275792031204742204461746120666F7220302E3520555344210F0D0D41726520596F7520537572653F151431107777772E66616365626F6F6B2E636F6D0500',
-            ),
             #
         ]
         super().set_data_pool(data_pool)

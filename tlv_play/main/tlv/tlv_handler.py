@@ -86,7 +86,7 @@ class TlvHandler:
         offset += len_dec
         return Tlv(tag_list, len_list, value_list, len_dec, level), offset
 
-    def process_data(self, input_data_list=None, level=0, non_tlv_neighbor=None, info_data=None):
+    def process_tlv(self, input_data_list=None, level=0, non_tlv_neighbor=None, info_data=None):
         if input_data_list is None:
             input_data_list = self.input_data_list
         if non_tlv_neighbor is None:
@@ -104,7 +104,7 @@ class TlvHandler:
             offset = temp_offset
             if len(tlv_obj.value_list) > 2:  # Possible nested TLV, parse it & store result in temp list
                 sub_tlv_data_temp = (
-                    self.process_data(tlv_obj.value_list, level=level + 1, non_tlv_neighbor=False, info_data=info_data)
+                    self.process_tlv(tlv_obj.value_list, level=level + 1, non_tlv_neighbor=False, info_data=info_data)
                     .get(PhKeys.RESULT_PROCESSED, None))
                 # Always returned a list
                 if isinstance(sub_tlv_data_temp[0], Tlv):  # Nested TLV Suspected, & Found

@@ -5,18 +5,18 @@ Python executable Path is D:\Other\Github_Self\tlvPlay\venv\Scripts
 User Name is Pratik Jaiswal
 User Account is impra
 --------------------------------------------------------------------------------
-Time Stamp is Monday, Nov 11 2024, 09:52:06:929718, IST (GMT+0530)
+Time Stamp is Sunday, Jan 26 2025, 12:27:36:757693, IST (GMT+0530)
 --------------------------------------------------------------------------------
-Git Summary is 20fc292;  (HEAD -> main, tag: v4.2.5, origin/main, origin/HEAD); 2024-11-01 12:46:51 +0530; imPratik <impratikjaiswal@gmail.com>; import fixes.
+Git Summary is 81862ec;  (HEAD -> main, origin/main, origin/HEAD); 2024-12-09 21:49:46 +0530; imPratik <impratikjaiswal@gmail.com>; fav icon changed
 --------------------------------------------------------------------------------
-pythonHelpers version is v5.1.0
+pythonHelpers version is v5.2.3.dev10
 --------------------------------------------------------------------------------
-tlvPlay version is v4.3.0
+tlvPlay version is v4.4.0
 --------------------------------------------------------------------------------
----------------------------------------------------------- Dev ---------------------------------------------------------
+---------------------------------------------------- Data Class: Dev ---------------------------------------------------
 ---------------------------------- Time Details ----------------------------------
-Current Time Stamp: 2024-11-11 09:52:06.930718+05:30
-Execution Time: 00:00:00; Milliseconds: 3.9992332458496094
+Current Time Stamp: 2025-01-26 12:27:36.760701+05:30
+Execution Time: 00:00:00; Milliseconds: 4.001617431640625
 Execution Time CPU: 00:00:00; Milliseconds: 0.0
 Timer State: TIMER_OFF
 --------------------------------------------------------------------------------

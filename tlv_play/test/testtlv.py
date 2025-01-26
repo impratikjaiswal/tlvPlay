@@ -412,7 +412,7 @@ class TestTlv(unittest.TestCase):
         expected_op_print = test_obj.expected_op_print[1:] if test_obj.expected_op_print[
                                                                   0] == '\n' else test_obj.expected_op_print
         tlv_handler_result = TlvHandler(input_data=test_obj.input_data,
-                                        non_tlv_neighbor=test_obj.non_tlv_neighbor).process_data()
+                                        non_tlv_neighbor=test_obj.non_tlv_neighbor).process_tlv()
         TlvParser(tlv_handler_result=tlv_handler_result).get_printable_tlv(
             length_in_decimal=test_obj.length_in_decimal,
             value_in_ascii=test_obj.value_in_ascii,
@@ -428,7 +428,7 @@ class TestTlv(unittest.TestCase):
         for count, test_obj in enumerate(TestTlv.test_obj_pool, start=1):
             with self.subTest(STR_TEST_OBJ + (test_obj.test_name if test_obj.test_name else str(count))):
                 tlv_handler_result = TlvHandler(input_data=test_obj.input_data,
-                                                non_tlv_neighbor=test_obj.non_tlv_neighbor).process_data()
+                                                non_tlv_neighbor=test_obj.non_tlv_neighbor).process_tlv()
                 tlv_obj = tlv_handler_result.get(PhKeys.RESULT_PROCESSED)
                 self.assertEqual(tlv_obj, test_obj.expected_op)
 
