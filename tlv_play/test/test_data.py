@@ -48,10 +48,12 @@ class TestData:
         'no_param':
             {
                 PhKeys.BATCH_PARAMS: '',
+                PhKeys.VAR_EXECUTION_MODE: 'USER',
             },
         '--help':
             {
                 PhKeys.BATCH_PARAMS: '--help',
+                PhKeys.VAR_EXECUTION_MODE: 'USER',
             },
     }
 
