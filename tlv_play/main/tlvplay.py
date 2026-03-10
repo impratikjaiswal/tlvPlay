@@ -1,8 +1,8 @@
 import sys
-from python_helpers.ph_modes_error_handling import PhErrorHandlingModes
-from python_helpers.ph_modes_execution import PhExecutionModes
-from python_helpers.ph_time import PhTime
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_modes_error_handling import PhErrorHandlingModes
+from play_helpers.ph_modes_execution import PhExecutionModes
+from play_helpers.ph_time import PhTime
+from play_helpers.ph_util import PhUtil
 
 from tlv_play.main.convert.converter import handle_web_request
 from tlv_play.main.data_type.data_type_master import DataTypeMaster

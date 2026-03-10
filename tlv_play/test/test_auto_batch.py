@@ -1,11 +1,11 @@
 import os
 
-from python_helpers.ph_constants import PhConstants
-from python_helpers.ph_dos import PhDos
-from python_helpers.ph_keys import PhKeys
-from python_helpers.ph_modes_execution import PhExecutionModes
-from python_helpers.ph_process import PhProcess
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_constants import PhConstants
+from play_helpers.ph_dos import PhDos
+from play_helpers.ph_keys import PhKeys
+from play_helpers.ph_modes_execution import PhExecutionModes
+from play_helpers.ph_process import PhProcess
+from play_helpers.ph_util import PhUtil
 
 from tlv_play import MODULE_NAME, PACKAGE_NAME
 from tlv_play.main.tlvplay import print_configurations

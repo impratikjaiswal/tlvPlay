@@ -1,4 +1,4 @@
-from python_helpers.ph_util import PhUtil
+from play_helpers.ph_util import PhUtil
 
 
 class Test:

@@ -1,5 +1,5 @@
-from python_helpers.ph_defaults import PhDefaults, PhDefaultTypesInclude, PhDefaultTypesExclude
-from python_helpers.ph_file_extensions import PhFileExtensions
+from play_helpers.ph_defaults import PhDefaults, PhDefaultTypesInclude, PhDefaultTypesExclude
+from play_helpers.ph_file_extensions import PhFileExtensions
 
 
 class Defaults:

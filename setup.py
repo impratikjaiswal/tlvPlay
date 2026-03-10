@@ -1,7 +1,6 @@
 # -*- coding: UTF−8 -*-
 
 import os
-
 from setuptools import setup, find_packages
 
 from tlv_play.main.helper.constants_config import ConfigConst
@@ -15,15 +14,15 @@ if not packages:
         "tlv_play.test",
     ]
 print(f'Packages are {packages}')
-# potential dependencies
+
+# run-time dependencies
 install_reqs = [
-    'incremental',
-    'click',
-    'twisted',
+    'playhelpers',
 ]
 
+# build-time dependencies
 setup_reqs = [
-    'incremental',
+    'playhelpers',
 ]
 
 # get long description from the README.md
