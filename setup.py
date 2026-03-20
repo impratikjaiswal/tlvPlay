@@ -22,6 +22,9 @@ install_reqs = [
 
 # build-time dependencies
 setup_reqs = [
+    'click',
+    'twisted',
+    'incremental',
     'playhelpers',
 ]
 

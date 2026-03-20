@@ -7,5 +7,5 @@ Provides tlv_play version information.
 
 from incremental import Version
 
-__version__ = Version("tlv_play", 4, 5, 1)
+__version__ = Version("tlv_play", 4, 5, 2)
 __all__ = ["__version__"]
