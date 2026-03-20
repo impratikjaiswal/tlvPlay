@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
 # manage.sh — Unified management script
-# version: 1.1
+# version: 1.2
 #
 # Usage:
 #   ./manage.sh <command> [options]
@@ -17,8 +17,8 @@
 #                                                 types: all | internal_lib | internal_tool | external | build | cicd | experimental | pip
 #   l, ls, list [type]                        List & freeze installed dependencies (default: env)
 #                                                 types: env | system
-#   li, st, lint [type]                       Run lint checks (default: error)
-#                                                 types: error | warning
+#   ci, cd, cicd [type]                       Run cicd stuff (default: lint_error)
+#                                                 types: build | lint_error | lint_warning
 #   t, test, tests, ut, unit-tests [type]     Run unit tests (default: full)
 #                                                 types: full | unit | package
 #   v, ver, version [type]                    Manage project version (default: patch)
@@ -372,42 +372,51 @@ cmd_list() {
     fi
 }
 
-cmd_lint() {
-    local type="${1:-error}"
+cmd_cicd() {
+    local type="${1:-lint_error}"
     shift || true
 
     case "$(_lc "$type")" in
-        e|err) type="error" ;;
-        w|wa|warn) type="warning" ;;
+        b|bu) type="build" ;;
+        e|err) type="lint_error" ;;
+        w|wa|warn) type="lint_warning" ;;
     esac
 
     _activate
     _fetch_python_version
     _fetch_os_type
 
-    local export_lint_error_path="${LOGS_DIR}/lint_${type}_${python_version}_${os_type}.log"
-    local export_lint_warn_path="${LOGS_DIR}/lint_${type}_${python_version}_${os_type}.log"
 
     case "$type" in
-        error)
-            echo "Exporting Errors to $export_lint_error_path"
+        build)
+            local export_build_path="${LOGS_DIR}/build_${python_version}_${os_type}.log"
+            echo "Exporting Build Logs to $export_build_path"
+            echo "Building Project"
+            cd "${ROOT_DIR}"
+            "$python_bin" -m build 2>&1 | tee "$export_build_path"
+            echo "Build artifacts:"
+            ls -la dist/
+            ;;
+        lint_error)
+            local export_lint_error_path="${LOGS_DIR}/${type}_${python_version}_${os_type}.log"
+            echo "Exporting Lint Errors to $export_lint_error_path"
             echo "Error Count is: "
             # Check for Python syntax errors or undefined names
             flake8 "${ROOT_DIR}" --tee --exit-zero --select=E9,F63,F7,F82 --output-file="${export_lint_error_path}"
             ;;
-        warning)
-            echo "Exporting Warnings to $export_lint_warn_path"
+        lint_warning)
+            local export_lint_warn_path="${LOGS_DIR}/${type}_${python_version}_${os_type}.log"
+            echo "Exporting Lint Warnings to $export_lint_warn_path"
             echo "Warning Count is: "
             # Check for other types of warnings.
-            flake8 "${ROOT_DIR}" --tee --exit-zero --max-complexity=10 --output-file="${export_lint_error_path}"
+            flake8 "${ROOT_DIR}" --tee --exit-zero --max-complexity=10 --output-file="${export_lint_warn_path}"
             ;;
         *)
             echo "ERROR: Unknown lint type '$type'"
-            echo "Valid types: error | warning"
+            echo "Valid types: build | lint_error | lint_warning"
             exit 1
             ;;
     esac
-
     _deactivate
 }
 
@@ -532,7 +541,7 @@ case "$(_lc "$COMMAND")" in
     un|rm) COMMAND="uninstall" ;;
     u|up) COMMAND="upgrade" ;;
     l|ls) COMMAND="list" ;;
-    li|st) COMMAND="lint" ;;
+    ci|cd) COMMAND="cicd" ;;
     t|test|tests|ut) COMMAND="unit-tests" ;;
     v|ver) COMMAND="version" ;;
     h|-h|--help) COMMAND="help" ;;
@@ -544,7 +553,7 @@ case "$COMMAND" in
     uninstall)      cmd_uninstall "$@" ;;
     upgrade)        cmd_upgrade "$@" ;;
     list)           cmd_list "$@" ;;
-    lint)           cmd_lint "$@" ;;
+    cicd)           cmd_cicd "$@" ;;
 # TODO: This needs to be fixed
 #    unit-tests)     cmd_unit_tests "$@" ;;
     version)        cmd_version "$@" ;;

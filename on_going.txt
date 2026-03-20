@@ -1,0 +1,33 @@
+}--------------------------------------------------------------------------------{ 
+}--------------------------------------------------------------------------------{ Unut TCs failure
+}--------------------------------------------------------------------------------{ 
+/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/play_helpers/ph_util.py:602: in __print_version
+    print(f'User Account is {cls.get_user_details_account_name()}')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'play_helpers.ph_util.PhUtil'>
+
+    @classmethod
+    def get_user_details_account_name(cls):
+        """
+    
+        :return:
+        """
+>       user_name = os.getlogin()
+E       OSError: [Errno 25] Inappropriate ioctl for device
+
+/opt/hostedtoolcache/Python/3.9.25/x64/lib/python3.9/site-packages/play_helpers/ph_util.py:2315: OSError
+----------------------------- Captured stdout call -----------------------------
+--------------------------------------------------------------------------------
+Python version is v3.9.25 (main, Nov  3 2025, 15:16:36) 
+[GCC 13.3.0]
+Python executable Path is /opt/hostedtoolcache/Python/3.9.25/x64/bin
+--------------------------------------------------------------------------------
+User Name is ,,,
+=========================== short test summary info ============================
+FAILED tlv_play/test/test_auto_batch.py::TestAutoBatch::test_all - OSError: [Errno 25] Inappropriate ioctl for device
+ERROR tlv_play/test/test_auto_batch.py::TestAutoBatch::test
+ERROR tlv_play/test/test_auto_batch.py::TestAutoBatch::test_cli
+========================= 1 failed, 2 errors in 0.71s ==========================
+
+}--------------------------------------------------------------------------------{ 

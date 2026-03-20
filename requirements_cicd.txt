@@ -2,6 +2,9 @@
 #### List of Needed CI CD Tools / Libraries
 ##################################################
 
+# Build
+build
+
 # sphinx Docs
 sphinx
 

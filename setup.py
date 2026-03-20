@@ -10,9 +10,10 @@ packages = find_packages()
 if not packages:
     print('Selecting Hardcoded Packages')
     packages = [
-        "tlv_play.main",
-        "tlv_play.test",
+        ConfigConst.TOOL_PACKAGE_NAME,
+        ConfigConst.TOOL_TEST_PACKAGE_NAME,
     ]
+# Packages are ['tlv_play.main', 'tlv_play.test']
 print(f'Packages are {packages}')
 
 # run-time dependencies
@@ -22,9 +23,6 @@ install_reqs = [
 
 # build-time dependencies
 setup_reqs = [
-    'click',
-    'twisted',
-    'incremental',
     'playhelpers',
 ]
 
