@@ -8,7 +8,7 @@ from tlv_play.main.helper.constants_config import ConfigConst
 # all packages dependencies
 packages = find_packages()
 if not packages:
-    print(f'Selecting Hardcoded Packages')
+    print('Selecting Hardcoded Packages')
     packages = [
         "tlv_play.main",
         "tlv_play.test",

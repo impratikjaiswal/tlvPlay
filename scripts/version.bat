@@ -14,4 +14,4 @@ if not '^%versionValue2%' == '^"' set versionValue=%versionValue%"
 :finalC
 @ECHO ON
 
-call set_specific_version.bat --newversion "Setting Specific Version" %versionValue%
+call version_specific.bat --newversion "Setting Specific Version" %versionValue%
