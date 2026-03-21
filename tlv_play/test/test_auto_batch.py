@@ -1,5 +1,4 @@
 import os
-
 from play_helpers.ph_constants import PhConstants
 from play_helpers.ph_dos import PhDos
 from play_helpers.ph_keys import PhKeys
@@ -92,7 +91,8 @@ class TestAutoBatch:
         :param batch_params:
         :return:
         """
-        log_file_path = os.sep.join([TOOL_SW_PACKAGE_NAME, 'test', 'logs', test_case_data.get(PhKeys.TEST_CASE_FILE_NAME)])
+        log_file_path = os.sep.join(
+            [TOOL_SW_PACKAGE_NAME, 'test', 'logs', test_case_data.get(PhKeys.TEST_CASE_FILE_NAME)])
         executable_script = [
             default_batch_data,
             PhDos.echo_off(),

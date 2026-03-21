@@ -1,6 +1,5 @@
 import io
 import unittest.mock
-
 from play_helpers.ph_keys import PhKeys
 
 import test_tlv_data

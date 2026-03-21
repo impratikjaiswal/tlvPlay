@@ -2,8 +2,11 @@
 #### List of Needed Internal Libraries
 ##################################################
 
-# Required internal Lib
+# Play Helpers (PyPi)
 playHelpers
 
-# Required internal Lib (Local Installation)
+# Play Helpers (Git)
+# git+https://github.com/AmenityPj/playHelpers
+
+# Play Helpers (Local Path)
 # ../../playHelpers

@@ -1,7 +1,6 @@
+import binascii
 import subprocess
 import traceback
-
-import binascii
 from play_helpers.ph_constants import PhConstants
 from play_helpers.ph_data_master import PhMasterData, PhMasterDataKeys
 from play_helpers.ph_exception_helper import PhExceptionHelper

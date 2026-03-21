@@ -1,5 +1,4 @@
 import os
-
 from play_helpers.ph_util import PhUtil
 
 from tlv_play import PACKAGE_NAME
