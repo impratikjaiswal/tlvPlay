@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
 # manage.sh — Unified management script
-# version: 1.2
+# version: 1.3
 #
 # Usage:
 #   ./manage.sh <command> [options]
@@ -372,6 +372,11 @@ cmd_list() {
     fi
 }
 
+cmd_show() {
+    _activate
+    _deactivate
+}
+
 cmd_cicd() {
     local type="${1:-lint_error}"
     shift || true
@@ -385,7 +390,6 @@ cmd_cicd() {
     _activate
     _fetch_python_version
     _fetch_os_type
-
 
     case "$type" in
         build)
@@ -541,6 +545,7 @@ case "$(_lc "$COMMAND")" in
     un|rm) COMMAND="uninstall" ;;
     u|up) COMMAND="upgrade" ;;
     l|ls) COMMAND="list" ;;
+    s|sh) COMMAND="show" ;;
     ci|cd) COMMAND="cicd" ;;
     t|test|tests|ut) COMMAND="unit-tests" ;;
     v|ver) COMMAND="version" ;;
@@ -553,6 +558,7 @@ case "$COMMAND" in
     uninstall)      cmd_uninstall "$@" ;;
     upgrade)        cmd_upgrade "$@" ;;
     list)           cmd_list "$@" ;;
+    show)           cmd_show "$@" ;;
     cicd)           cmd_cicd "$@" ;;
 # TODO: This needs to be fixed
 #    unit-tests)     cmd_unit_tests "$@" ;;

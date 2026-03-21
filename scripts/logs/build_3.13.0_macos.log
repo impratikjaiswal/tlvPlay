@@ -4,7 +4,7 @@
 * Getting build dependencies for sdist...
 Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
 * Installing packages in isolated environment:
-  - playhelpers
+  - playHelpers
 * Building sdist...
 fatal: not a git repository (or any of the parent directories): .git
 Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
@@ -84,7 +84,7 @@ removing 'tlvplay-4.5.4' (and everything under it)
 * Getting build dependencies for wheel...
 Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
 * Installing packages in isolated environment:
-  - playhelpers
+  - playHelpers
 * Building wheel...
 fatal: not a git repository (or any of the parent directories): .git
 Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
@@ -195,7 +195,7 @@ writing manifest file 'tlvPlay.egg-info/SOURCES.txt'
 Copying tlvPlay.egg-info to build/bdist.macosx-10.13-universal2/wheel/./tlvPlay-4.5.4-py3.13.egg-info
 running install_scripts
 creating build/bdist.macosx-10.13-universal2/wheel/tlvplay-4.5.4.dist-info/WHEEL
-creating '/Users/impra/Other/Github_Self/tlvPlay/dist/.tmp-7028f5ya/tlvplay-4.5.4-py3-none-any.whl' and adding 'build/bdist.macosx-10.13-universal2/wheel' to it
+creating '/Users/impra/Other/Github_Self/tlvPlay/dist/.tmp-k02nkq6u/tlvplay-4.5.4-py3-none-any.whl' and adding 'build/bdist.macosx-10.13-universal2/wheel' to it
 adding 'tlv_play/__init__.py'
 adding 'tlv_play/_defaults.py'
 adding 'tlv_play/_git_info.py'

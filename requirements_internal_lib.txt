@@ -3,7 +3,7 @@
 ##################################################
 
 # Required internal Lib
-playhelpers
+playHelpers
 
 # Required internal Lib (Local Installation)
-# ../../playhelpers
+# ../../playHelpers

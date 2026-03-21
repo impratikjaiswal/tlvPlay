@@ -18,12 +18,12 @@ print(f'Packages are {packages}')
 
 # run-time dependencies
 install_reqs = [
-    'playhelpers',
+    'playHelpers',
 ]
 
 # build-time dependencies
 setup_reqs = [
-    'playhelpers',
+    'playHelpers',
 ]
 
 # get long description from the README.md
