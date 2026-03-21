@@ -1,0 +1,242 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools >= 40.8.0
+* Getting build dependencies for sdist...
+Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
+* Installing packages in isolated environment:
+  - playhelpers
+* Building sdist...
+fatal: not a git repository (or any of the parent directories): .git
+Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
+running sdist
+running egg_info
+writing tlvPlay.egg-info/PKG-INFO
+writing dependency_links to tlvPlay.egg-info/dependency_links.txt
+writing requirements to tlvPlay.egg-info/requires.txt
+writing top-level names to tlvPlay.egg-info/top_level.txt
+reading manifest file 'tlvPlay.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'tlvPlay.egg-info/SOURCES.txt'
+running check
+creating tlvplay-4.5.4
+creating tlvplay-4.5.4/tlvPlay.egg-info
+creating tlvplay-4.5.4/tlv_play
+creating tlvplay-4.5.4/tlv_play/main
+creating tlvplay-4.5.4/tlv_play/main/convert
+creating tlvplay-4.5.4/tlv_play/main/data_type
+creating tlvplay-4.5.4/tlv_play/main/helper
+creating tlvplay-4.5.4/tlv_play/main/tlv
+creating tlvplay-4.5.4/tlv_play/test
+copying files to tlvplay-4.5.4...
+copying LICENSE -> tlvplay-4.5.4
+copying README.md -> tlvplay-4.5.4
+copying setup.py -> tlvplay-4.5.4
+copying tlvPlay.egg-info/PKG-INFO -> tlvplay-4.5.4/tlvPlay.egg-info
+copying tlvPlay.egg-info/SOURCES.txt -> tlvplay-4.5.4/tlvPlay.egg-info
+copying tlvPlay.egg-info/dependency_links.txt -> tlvplay-4.5.4/tlvPlay.egg-info
+copying tlvPlay.egg-info/requires.txt -> tlvplay-4.5.4/tlvPlay.egg-info
+copying tlvPlay.egg-info/top_level.txt -> tlvplay-4.5.4/tlvPlay.egg-info
+copying tlv_play/__init__.py -> tlvplay-4.5.4/tlv_play
+copying tlv_play/_defaults.py -> tlvplay-4.5.4/tlv_play
+copying tlv_play/_git_info.py -> tlvplay-4.5.4/tlv_play
+copying tlv_play/_tool_name.py -> tlvplay-4.5.4/tlv_play
+copying tlv_play/_version.py -> tlvplay-4.5.4/tlv_play
+copying tlv_play/main/__init__.py -> tlvplay-4.5.4/tlv_play/main
+copying tlv_play/main/tlvplay.py -> tlvplay-4.5.4/tlv_play/main
+copying tlv_play/main/convert/__init__.py -> tlvplay-4.5.4/tlv_play/main/convert
+copying tlv_play/main/convert/converter.py -> tlvplay-4.5.4/tlv_play/main/convert
+copying tlv_play/main/convert/handler.py -> tlvplay-4.5.4/tlv_play/main/convert
+copying tlv_play/main/convert/parser.py -> tlvplay-4.5.4/tlv_play/main/convert
+copying tlv_play/main/data_type/__init__.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/data_type_master.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/dev.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/known_issues.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/sample.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/unit_testing.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/data_type/user_data.py -> tlvplay-4.5.4/tlv_play/main/data_type
+copying tlv_play/main/helper/__init__.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/constants_config.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/data.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/defaults.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/folders.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/infodata.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/keywords.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/helper/metadata.py -> tlvplay-4.5.4/tlv_play/main/helper
+copying tlv_play/main/tlv/__init__.py -> tlvplay-4.5.4/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv.py -> tlvplay-4.5.4/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_handler.py -> tlvplay-4.5.4/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_parser.py -> tlvplay-4.5.4/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_print.py -> tlvplay-4.5.4/tlv_play/main/tlv
+copying tlv_play/test/__init__.py -> tlvplay-4.5.4/tlv_play/test
+copying tlv_play/test/test.py -> tlvplay-4.5.4/tlv_play/test
+copying tlv_play/test/test_auto_batch.py -> tlvplay-4.5.4/tlv_play/test
+copying tlv_play/test/test_data.py -> tlvplay-4.5.4/tlv_play/test
+copying tlv_play/test/test_tlv_data.py -> tlvplay-4.5.4/tlv_play/test
+copying tlv_play/test/testtlv.py -> tlvplay-4.5.4/tlv_play/test
+copying tlvPlay.egg-info/SOURCES.txt -> tlvplay-4.5.4/tlvPlay.egg-info
+Writing tlvplay-4.5.4/setup.cfg
+Creating tar archive
+removing 'tlvplay-4.5.4' (and everything under it)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools >= 40.8.0
+* Getting build dependencies for wheel...
+Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
+* Installing packages in isolated environment:
+  - playhelpers
+* Building wheel...
+fatal: not a git repository (or any of the parent directories): .git
+Packages are ['tlv_play', 'tlv_play.test', 'tlv_play.main', 'tlv_play.main.tlv', 'tlv_play.main.helper', 'tlv_play.main.data_type', 'tlv_play.main.convert']
+running bdist_wheel
+running build
+running build_py
+creating build/lib/tlv_play
+copying tlv_play/_git_info.py -> build/lib/tlv_play
+copying tlv_play/_version.py -> build/lib/tlv_play
+copying tlv_play/__init__.py -> build/lib/tlv_play
+copying tlv_play/_defaults.py -> build/lib/tlv_play
+copying tlv_play/_tool_name.py -> build/lib/tlv_play
+creating build/lib/tlv_play/test
+copying tlv_play/test/test_auto_batch.py -> build/lib/tlv_play/test
+copying tlv_play/test/__init__.py -> build/lib/tlv_play/test
+copying tlv_play/test/test.py -> build/lib/tlv_play/test
+copying tlv_play/test/test_data.py -> build/lib/tlv_play/test
+copying tlv_play/test/test_tlv_data.py -> build/lib/tlv_play/test
+copying tlv_play/test/testtlv.py -> build/lib/tlv_play/test
+creating build/lib/tlv_play/main
+copying tlv_play/main/__init__.py -> build/lib/tlv_play/main
+copying tlv_play/main/tlvplay.py -> build/lib/tlv_play/main
+creating build/lib/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_parser.py -> build/lib/tlv_play/main/tlv
+copying tlv_play/main/tlv/__init__.py -> build/lib/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_handler.py -> build/lib/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv_print.py -> build/lib/tlv_play/main/tlv
+copying tlv_play/main/tlv/tlv.py -> build/lib/tlv_play/main/tlv
+creating build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/metadata.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/infodata.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/keywords.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/__init__.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/constants_config.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/defaults.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/folders.py -> build/lib/tlv_play/main/helper
+copying tlv_play/main/helper/data.py -> build/lib/tlv_play/main/helper
+creating build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/data_type_master.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/known_issues.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/__init__.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/unit_testing.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/user_data.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/sample.py -> build/lib/tlv_play/main/data_type
+copying tlv_play/main/data_type/dev.py -> build/lib/tlv_play/main/data_type
+creating build/lib/tlv_play/main/convert
+copying tlv_play/main/convert/handler.py -> build/lib/tlv_play/main/convert
+copying tlv_play/main/convert/converter.py -> build/lib/tlv_play/main/convert
+copying tlv_play/main/convert/__init__.py -> build/lib/tlv_play/main/convert
+copying tlv_play/main/convert/parser.py -> build/lib/tlv_play/main/convert
+installing to build/bdist.macosx-10.13-universal2/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.13-universal2/wheel
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play
+copying build/lib/tlv_play/_git_info.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/test
+copying build/lib/tlv_play/test/test_auto_batch.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/test/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/test/test.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/test/test_data.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/test/test_tlv_data.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/test/testtlv.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/test
+copying build/lib/tlv_play/_version.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play
+copying build/lib/tlv_play/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play
+copying build/lib/tlv_play/_defaults.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play
+copying build/lib/tlv_play/_tool_name.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/main
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/main/tlv
+copying build/lib/tlv_play/main/tlv/tlv_parser.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/tlv
+copying build/lib/tlv_play/main/tlv/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/tlv
+copying build/lib/tlv_play/main/tlv/tlv_handler.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/tlv
+copying build/lib/tlv_play/main/tlv/tlv_print.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/tlv
+copying build/lib/tlv_play/main/tlv/tlv.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/tlv
+copying build/lib/tlv_play/main/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main
+copying build/lib/tlv_play/main/tlvplay.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/metadata.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/infodata.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/keywords.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/constants_config.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/defaults.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/folders.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+copying build/lib/tlv_play/main/helper/data.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/helper
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/data_type_master.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/known_issues.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/unit_testing.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/user_data.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/sample.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+copying build/lib/tlv_play/main/data_type/dev.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/data_type
+creating build/bdist.macosx-10.13-universal2/wheel/tlv_play/main/convert
+copying build/lib/tlv_play/main/convert/handler.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/convert
+copying build/lib/tlv_play/main/convert/converter.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/convert
+copying build/lib/tlv_play/main/convert/__init__.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/convert
+copying build/lib/tlv_play/main/convert/parser.py -> build/bdist.macosx-10.13-universal2/wheel/./tlv_play/main/convert
+running install_egg_info
+running egg_info
+writing tlvPlay.egg-info/PKG-INFO
+writing dependency_links to tlvPlay.egg-info/dependency_links.txt
+writing requirements to tlvPlay.egg-info/requires.txt
+writing top-level names to tlvPlay.egg-info/top_level.txt
+reading manifest file 'tlvPlay.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file 'tlvPlay.egg-info/SOURCES.txt'
+Copying tlvPlay.egg-info to build/bdist.macosx-10.13-universal2/wheel/./tlvPlay-4.5.4-py3.13.egg-info
+running install_scripts
+creating build/bdist.macosx-10.13-universal2/wheel/tlvplay-4.5.4.dist-info/WHEEL
+creating '/Users/impra/Other/Github_Self/tlvPlay/dist/.tmp-7028f5ya/tlvplay-4.5.4-py3-none-any.whl' and adding 'build/bdist.macosx-10.13-universal2/wheel' to it
+adding 'tlv_play/__init__.py'
+adding 'tlv_play/_defaults.py'
+adding 'tlv_play/_git_info.py'
+adding 'tlv_play/_tool_name.py'
+adding 'tlv_play/_version.py'
+adding 'tlv_play/main/__init__.py'
+adding 'tlv_play/main/tlvplay.py'
+adding 'tlv_play/main/convert/__init__.py'
+adding 'tlv_play/main/convert/converter.py'
+adding 'tlv_play/main/convert/handler.py'
+adding 'tlv_play/main/convert/parser.py'
+adding 'tlv_play/main/data_type/__init__.py'
+adding 'tlv_play/main/data_type/data_type_master.py'
+adding 'tlv_play/main/data_type/dev.py'
+adding 'tlv_play/main/data_type/known_issues.py'
+adding 'tlv_play/main/data_type/sample.py'
+adding 'tlv_play/main/data_type/unit_testing.py'
+adding 'tlv_play/main/data_type/user_data.py'
+adding 'tlv_play/main/helper/__init__.py'
+adding 'tlv_play/main/helper/constants_config.py'
+adding 'tlv_play/main/helper/data.py'
+adding 'tlv_play/main/helper/defaults.py'
+adding 'tlv_play/main/helper/folders.py'
+adding 'tlv_play/main/helper/infodata.py'
+adding 'tlv_play/main/helper/keywords.py'
+adding 'tlv_play/main/helper/metadata.py'
+adding 'tlv_play/main/tlv/__init__.py'
+adding 'tlv_play/main/tlv/tlv.py'
+adding 'tlv_play/main/tlv/tlv_handler.py'
+adding 'tlv_play/main/tlv/tlv_parser.py'
+adding 'tlv_play/main/tlv/tlv_print.py'
+adding 'tlv_play/test/__init__.py'
+adding 'tlv_play/test/test.py'
+adding 'tlv_play/test/test_auto_batch.py'
+adding 'tlv_play/test/test_data.py'
+adding 'tlv_play/test/test_tlv_data.py'
+adding 'tlv_play/test/testtlv.py'
+adding 'tlvplay-4.5.4.dist-info/licenses/LICENSE'
+adding 'tlvplay-4.5.4.dist-info/METADATA'
+adding 'tlvplay-4.5.4.dist-info/WHEEL'
+adding 'tlvplay-4.5.4.dist-info/top_level.txt'
+adding 'tlvplay-4.5.4.dist-info/RECORD'
+removing build/bdist.macosx-10.13-universal2/wheel
+Successfully built tlvplay-4.5.4.tar.gz and tlvplay-4.5.4-py3-none-any.whl

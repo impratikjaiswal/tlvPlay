@@ -378,8 +378,8 @@ cmd_cicd() {
 
     case "$(_lc "$type")" in
         b|bu) type="build" ;;
-        e|err) type="lint_error" ;;
-        w|wa|warn) type="lint_warning" ;;
+        e|er|err|error|li_er) type="lint_error" ;;
+        w|wa|warn|li_wa) type="lint_warning" ;;
     esac
 
     _activate
@@ -402,14 +402,14 @@ cmd_cicd() {
             echo "Exporting Lint Errors to $export_lint_error_path"
             echo "Error Count is: "
             # Check for Python syntax errors or undefined names
-            flake8 "${ROOT_DIR}" --tee --exit-zero --select=E9,F63,F7,F82 --output-file="${export_lint_error_path}"
+            flake8 "${ROOT_DIR}" --exit-zero --select=E9,F63,F7,F82 | tee "${export_lint_error_path}"
             ;;
         lint_warning)
             local export_lint_warn_path="${LOGS_DIR}/${type}_${python_version}_${os_type}.log"
             echo "Exporting Lint Warnings to $export_lint_warn_path"
             echo "Warning Count is: "
             # Check for other types of warnings.
-            flake8 "${ROOT_DIR}" --tee --exit-zero --max-complexity=10 --output-file="${export_lint_warn_path}"
+            flake8 "${ROOT_DIR}" --exit-zero --max-complexity=10 | tee "${export_lint_warn_path}"
             ;;
         *)
             echo "ERROR: Unknown lint type '$type'"

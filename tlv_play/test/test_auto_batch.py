@@ -7,7 +7,7 @@ from play_helpers.ph_modes_execution import PhExecutionModes
 from play_helpers.ph_process import PhProcess
 from play_helpers.ph_util import PhUtil
 
-from tlv_play import MODULE_NAME, PACKAGE_NAME
+from tlv_play.main.helper.constants_config import TOOL_SW_MODULE_NAME, TOOL_SW_PACKAGE_NAME
 from tlv_play.main.tlvplay import print_configurations
 from tlv_play.test.test_data import TestData
 
@@ -92,7 +92,7 @@ class TestAutoBatch:
         :param batch_params:
         :return:
         """
-        log_file_path = os.sep.join([PACKAGE_NAME, 'test', 'logs', test_case_data.get(PhKeys.TEST_CASE_FILE_NAME)])
+        log_file_path = os.sep.join([TOOL_SW_PACKAGE_NAME, 'test', 'logs', test_case_data.get(PhKeys.TEST_CASE_FILE_NAME)])
         executable_script = [
             default_batch_data,
             PhDos.echo_off(),
@@ -103,7 +103,7 @@ class TestAutoBatch:
             PhDos.create_directory(file_path=log_file_path),
             PhDos.call_script_for_env_handling(True),
             PhConstants.SEPERATOR_TWO_WORDS.join(filter(None, [
-                PhDos.run_python(module_name=MODULE_NAME),
+                PhDos.run_python(module_name=TOOL_SW_MODULE_NAME),
                 batch_params,
                 PhDos.redirect_output(file_path=log_file_path)
             ])),

@@ -10,7 +10,7 @@ packages = find_packages()
 if not packages:
     print('Selecting Hardcoded Packages')
     packages = [
-        ConfigConst.TOOL_PACKAGE_NAME,
+        ConfigConst.TOOL_SW_PACKAGE_NAME,
         ConfigConst.TOOL_TEST_PACKAGE_NAME,
     ]
 # Packages are ['tlv_play.main', 'tlv_play.test']
